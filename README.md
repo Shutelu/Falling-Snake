@@ -1,4 +1,4 @@
 # Project_Snake
 
-Resume :
+Description :</br>
 A cannon that shoot a snake
