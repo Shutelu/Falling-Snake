@@ -1,2 +1,4 @@
 # Project_Snake
-Shoot the snake
+
+Resume :
+A cannon that shoot a snake
