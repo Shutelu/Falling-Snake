@@ -12,6 +12,9 @@ public class App{
         int mainWindowLocationX = 600;
         int mainWindowLocationY = 200;
 
+        //Main codes
+        System.out.println("main code (git test)");
+
         //mainWindow configuration
         mainWindow.setSize(mainWindowSizeX, mainWindowSizeY);
         mainWindow.setLocation(mainWindowLocationX, mainWindowLocationY);
@@ -23,7 +26,6 @@ public class App{
         JLabel label = new JLabel("Ca va etre une superbe application !",JLabel.CENTER);
         mainWindow.add(label);
 
-        //Main codes
     }
 
 }
