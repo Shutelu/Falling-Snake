@@ -9,14 +9,14 @@ public class GameManager extends JFrame implements KeyListener{
     public GameManager(String title){
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(WIDTH, HEIGHT);
+        this.setSize(ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
         this.setLocationRelativeTo(null);//put in center should be after size
         this.setResizable(false);
         this.setLayout(null);
         this.addKeyListener(this);
 
         canon = new JLabel();
-        canon.setBounds(((WIDTH/2)-20), (HEIGHT-60), 20, 20);;
+        canon.setBounds(((ConstantVariable.MAIN_WINDOW_WIDTH/2)-20), (ConstantVariable.MAIN_WINDOW_HEIGHT-60), 20, 20);;
         canon.setBackground(Color.RED);
         canon.setOpaque(true);
 
@@ -24,8 +24,6 @@ public class GameManager extends JFrame implements KeyListener{
         this.setVisible(true);
     }
 
-    private final int WIDTH = 500;
-    private final int HEIGHT = 700;
     private final int LEFT_BORDER_LIMIT = 0;
     private final int RIGHT_BORDER_LIMIT = 464;
     private final int SPEED = 5;
