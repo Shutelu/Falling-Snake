@@ -2,7 +2,7 @@
 
 public abstract class ConstantVariable{
 
-    /*//////////Window//////////*/
+    /***********Window***********/
 
     //Window Dimension
     public static final int MAIN_WINDOW_WIDTH = 500;

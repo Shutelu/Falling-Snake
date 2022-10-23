@@ -4,30 +4,41 @@ import java.awt.Color;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
+//Game Management class
+
 public class GameManager extends JFrame implements KeyListener{
     
-    public GameManager(String title){
-        super(title);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public GameManager(){
+        super("Failing Snake");
+        //window settings
         this.setSize(ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
-        this.setLocationRelativeTo(null);//put in center should be after size
         this.setResizable(false);
+        this.setLocationRelativeTo(null);//put in center should be after size
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setAlwaysOnTop(true);
         this.setLayout(null);
         this.addKeyListener(this);
+        
+        //game scene
+        gameScene = new GameScene();
+        this.setContentPane(gameScene);
 
+        //canon init and settings
         canon = new JLabel();
         canon.setBounds(((ConstantVariable.MAIN_WINDOW_WIDTH/2)-20), (ConstantVariable.MAIN_WINDOW_HEIGHT-60), 20, 20);;
         canon.setBackground(Color.RED);
         canon.setOpaque(true);
-
+        
+        //adding
         this.add(canon);
-        this.setVisible(true);
+        this.setVisible(true);//must be last
     }
 
     private final int LEFT_BORDER_LIMIT = 0;
     private final int RIGHT_BORDER_LIMIT = 464;
     private final int SPEED = 5;
     private JLabel canon;
+    public static GameScene gameScene;
     
 
     @Override
