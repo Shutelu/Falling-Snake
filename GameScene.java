@@ -37,9 +37,10 @@ public class GameScene extends JPanel{
         g2.fillRect(20, 650, 455, 5);
         
         //Draw canon
-        g2.setColor(cannon.getColor());
-        // g2.fillRect(cannon.getEntityPosX(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
-        g2.fillRect(cannon.move(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
+        // g2.setColor(cannon.getColor());
+        // // g2.fillRect(cannon.getEntityPosX(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
+        // g2.fillRect(cannon.move(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
+        cannon.draw(g2);
 
     }
 }

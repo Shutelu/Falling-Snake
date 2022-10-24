@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 public class Cannon extends Entity{
     
     public Cannon(){
@@ -24,6 +26,12 @@ public class Cannon extends Entity{
             entity_position_x += entity_move_x;
         }
         return entity_position_x;
+    }
+
+    public void draw(Graphics g){
+        g.setColor(entity_color);
+        // g.fillRect(entity_position_x, entity_move_x, entity_width, entity_height);
+        g.fillRect(move(), entity_position_y, entity_width, entity_height);
     }
 
 }
