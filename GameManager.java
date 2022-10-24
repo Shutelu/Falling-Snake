@@ -23,14 +23,15 @@ public class GameManager extends JFrame implements KeyListener{
         gameScene = new GameScene();
         this.setContentPane(gameScene);
 
+        // DEPRECATED 
         //canon init and settings
-        canon = new JLabel();
-        canon.setBounds(((ConstantVariable.MAIN_WINDOW_WIDTH/2)-20), (ConstantVariable.MAIN_WINDOW_HEIGHT-60), 20, 20);;
-        canon.setBackground(Color.RED);
-        canon.setOpaque(true);
+        // canon = new JLabel();
+        // canon.setBounds(((ConstantVariable.MAIN_WINDOW_WIDTH/2)-20), (ConstantVariable.MAIN_WINDOW_HEIGHT-60), 20, 20);;
+        // canon.setBackground(Color.RED);
+        // canon.setOpaque(true);
+        //this.add(canon);
         
-        //adding
-        this.add(canon);
+        
         this.setVisible(true);//must be last
     }
 

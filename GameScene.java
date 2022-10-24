@@ -7,7 +7,10 @@ public class GameScene extends JPanel{
     
     public GameScene(){
         super();
+        cannon = new Cannon();
     }
+
+    private Cannon cannon;
 
     /**
      * called when we need to paint
@@ -24,6 +27,9 @@ public class GameScene extends JPanel{
         //Draw edge
         g2.setColor(Color.GREEN);
         g2.fillRect(20, 650, 455, 5);
-        System.out.println("drawline");
+        
+        //Draw canon
+        g2.setColor(cannon.getColor());
+        g2.fillRect(cannon.getEntityPosX(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
     }
 }
