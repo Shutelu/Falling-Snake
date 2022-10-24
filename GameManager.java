@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 //Game Management class
 
-public class GameManager extends JFrame implements KeyListener{
+public class GameManager extends JFrame{
     
     public GameManager(){
         super("Failing Snake");
@@ -17,7 +17,6 @@ public class GameManager extends JFrame implements KeyListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);
         this.setLayout(null);
-        this.addKeyListener(this);
         
         //game scene
         gameScene = new GameScene();
@@ -35,47 +34,48 @@ public class GameManager extends JFrame implements KeyListener{
         this.setVisible(true);//must be last
     }
 
-    private final int LEFT_BORDER_LIMIT = 0;
-    private final int RIGHT_BORDER_LIMIT = 464;
-    private final int SPEED = 5;
-    private JLabel canon;
+    //DEPRECATED
+    // private final int LEFT_BORDER_LIMIT = 0;
+    // private final int RIGHT_BORDER_LIMIT = 464;
+    // private final int SPEED = 5;
+    // private JLabel canon;
     public static GameScene gameScene;
     
 
-    @Override
-    public void keyTyped(KeyEvent e){
-        switch(e.getKeyChar()){
-            case 'a':
-                if(LEFT_BORDER_LIMIT < canon.getX())
-                    canon.setLocation(canon.getX()-SPEED, canon.getY());
-                break;
-            case 'd':
-                if(canon.getX() < RIGHT_BORDER_LIMIT )
-                    canon.setLocation(canon.getX()+SPEED, canon.getY());
-                break;
-        }
-    }
+    // @Override
+    // public void keyTyped(KeyEvent e){
+    //     switch(e.getKeyChar()){
+    //         case 'a':
+    //             if(LEFT_BORDER_LIMIT < canon.getX())
+    //                 canon.setLocation(canon.getX()-SPEED, canon.getY());
+    //             break;
+    //         case 'd':
+    //             if(canon.getX() < RIGHT_BORDER_LIMIT )
+    //                 canon.setLocation(canon.getX()+SPEED, canon.getY());
+    //             break;
+    //     }
+    // }
 
-    @Override
-    public void keyPressed(KeyEvent e){
-        switch(e.getKeyCode()){
-            case 37:
-                if(LEFT_BORDER_LIMIT < canon.getX())
-                    canon.setLocation(canon.getX()-SPEED, canon.getY());
-                break;
-            case 39:
-                if(canon.getX() < RIGHT_BORDER_LIMIT )
-                    canon.setLocation(canon.getX()+SPEED, canon.getY());
-                break;
-        }
-    }
+    // @Override
+    // public void keyPressed(KeyEvent e){
+    //     switch(e.getKeyCode()){
+    //         case 37:
+    //             if(LEFT_BORDER_LIMIT < canon.getX())
+    //                 canon.setLocation(canon.getX()-SPEED, canon.getY());
+    //             break;
+    //         case 39:
+    //             if(canon.getX() < RIGHT_BORDER_LIMIT )
+    //                 canon.setLocation(canon.getX()+SPEED, canon.getY());
+    //             break;
+    //     }
+    // }
 
-    @Override
-    public void keyReleased(KeyEvent e){
-        //debug
-       System.out.println(e.getKeyCode());
-       System.out.println(canon.getX() + " " +canon.getY());
-    }
+    // @Override
+    // public void keyReleased(KeyEvent e){
+    //     //debug
+    //    System.out.println(e.getKeyCode());
+    //    System.out.println(canon.getX() + " " +canon.getY());
+    // }
 
 
 }

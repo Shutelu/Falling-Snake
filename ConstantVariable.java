@@ -8,7 +8,7 @@ public abstract class ConstantVariable{
 
     public static final int MAIN_WINDOW_WIDTH = 500;
     public static final int MAIN_WINDOW_HEIGHT = 700;
-    public static final int MAIN_BORDER_LIMIT = 50;
+    public static final int MAIN_BORDER_LIMIT = 50;//a changer
 
     /***********Cannon***********/
     public static final int CANNON_WIDTH = 20;
@@ -19,5 +19,9 @@ public abstract class ConstantVariable{
 
     public static final int CANNON_SPEED = 1;//uniter de deplacement pour le moment
     public static final Color CANNON_COLOR = Color.RED;//?
+
+    public static final int CANNON_BORDER_LIMIT_LEFT = 10;
+    public static final int CANNON_BORDER_LIMIT_RIGHT = 450;
+
 
 }

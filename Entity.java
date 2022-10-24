@@ -17,6 +17,9 @@ public abstract class Entity {
     public int getEntityHeight(){return entity_height;}
 
     //setters
+    public void setEntityPosX(int x){entity_position_x = x;}//a changer
+    public void setEntityPosy(int y){entity_position_y = y;}//a changer
+    public void setEntityMoveX(int x){entity_move_x = x;}
 
 
 }
