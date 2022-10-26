@@ -2,6 +2,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
+//GameScene will contain the game settings
+
 public class GameScene extends JPanel{
     
     public GameScene(){

@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 
-//Game Frame
+//Game Frame will contain the frame settings
 
 public class GameFrame extends JFrame{
     
