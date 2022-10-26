@@ -14,8 +14,8 @@ public class GameScene extends JPanel{
         this.addKeyListener(new KeyboardListening());
 
         //infini repaint
-        Thread infinitePanting = new Thread(new Chrono());
-        infinitePanting.start();
+        Thread infiniteRepanting = new Thread(new Chrono());
+        infiniteRepanting.start();
     }
 
     public Cannon cannon;

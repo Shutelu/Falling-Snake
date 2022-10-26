@@ -1,21 +1,21 @@
 import javax.swing.JFrame;
 
-//Game Management class
+//Game Frame
 
-public class GameManager extends JFrame{
+public class GameFrame extends JFrame{
     
-    public GameManager(){
-        super("Failing Snake");
+    public GameFrame(){
+        super(ConstantVariable.MAIN_WINDOW_TITLE);
 
-        //window settings
+        //Window Settings
         this.setSize(ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);//put in center should be after size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);
-        this.setLayout(null);
+        this.setLayout(null);// ?
         
-        //game scene
+        //Game Scene
         gameScene = new GameScene();
         this.setContentPane(gameScene);       
         this.setVisible(true);//must be last

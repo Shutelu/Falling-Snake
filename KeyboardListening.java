@@ -6,8 +6,8 @@ public class KeyboardListening implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         System.out.println(
-            "posX : " + GameManager.gameScene.cannon.getEntityPosX() +
-            " posY : " + GameManager.gameScene.cannon.getEntityPosY() + 
+            "posX : " + GameFrame.gameScene.cannon.getEntityPosX() +
+            " posY : " + GameFrame.gameScene.cannon.getEntityPosY() + 
             " keyChar : " + e.getKeyChar() + 
             " keyCode : " + e.getKeyCode()
         );
@@ -23,36 +23,36 @@ public class KeyboardListening implements KeyListener {
                 // - ConstantVariable.CANNON_SPEED);
                 //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 10);
                 // GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
-                GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() - 1);
+                GameFrame.gameScene.cannon.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() - 1);
                 break;
             case 'd':
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
                 // + ConstantVariable.CANNON_SPEED);
                 //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() - 10);
-                GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 1);
+                GameFrame.gameScene.cannon.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + 1);
                 // GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
             case 'w':
-            GameManager.gameScene.cannon.setEntityPosY(GameManager.gameScene.cannon.getEntityPosY() - 1);
+            GameFrame.gameScene.cannon.setEntityPosY(GameFrame.gameScene.cannon.getEntityPosY() - 1);
                 // GameManager.gameScene.cannon.setEntityMoveY(-ConstantVariable.CANNON_SPEED_Y);
                 break;
             case 's':
                 // GameManager.gameScene.cannon.setEntityMoveY(ConstantVariable.CANNON_SPEED_Y);
-                GameManager.gameScene.cannon.setEntityPosY(GameManager.gameScene.cannon.getEntityPosY() + 1);
+                GameFrame.gameScene.cannon.setEntityPosY(GameFrame.gameScene.cannon.getEntityPosY() + 1);
         }
         switch (e.getKeyCode()) {
             case 37:
-                GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
+                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
                 break;
             case 39:
-                GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
+                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if(GameManager.gameScene.projectil.getCanonFire() == false){
-                GameManager.gameScene.projectil.setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
-                GameManager.gameScene.projectil.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + ConstantVariable.PROJECTIL_WIDTH/2 - 1);
-                GameManager.gameScene.projectil.setCanonFire(true);
+            if(GameFrame.gameScene.projectil.getCanonFire() == false){
+                GameFrame.gameScene.projectil.setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
+                GameFrame.gameScene.projectil.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.PROJECTIL_WIDTH/2 - 1);
+                GameFrame.gameScene.projectil.setCanonFire(true);
             }
         }
 
@@ -60,8 +60,8 @@ public class KeyboardListening implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        GameManager.gameScene.cannon.setEntityMoveX(0);
-        GameManager.gameScene.cannon.setEntityMoveY(0);
+        GameFrame.gameScene.cannon.setEntityMoveX(0);
+        GameFrame.gameScene.cannon.setEntityMoveY(0);
 
     }
 

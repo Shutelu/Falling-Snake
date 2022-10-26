@@ -8,9 +8,10 @@ public abstract class ConstantVariable{
 
     public static final int MAIN_WINDOW_WIDTH = 500;
     public static final int MAIN_WINDOW_HEIGHT = 700;
+    public static final String MAIN_WINDOW_TITLE = "Falling Snake";
     // public static final int MAIN_WINDOW_REAL_WIDTH = 464;
     // public static final int MAIN_WINDOW_REAL_HEIGHT = 640;
-    public static final int MAIN_BORDER_LIMIT = 50;//a changer
+    // public static final int MAIN_BORDER_LIMIT = 50;//a changer
 
     //real screen size for 500 - 700
     //topleft = 0,0

@@ -6,7 +6,7 @@ public class Chrono implements Runnable{
     @Override
     public void run(){
         while(true){
-            GameManager.gameScene.repaint();//call to paintComponent of GameScene
+            GameFrame.gameScene.repaint();//call to paintComponent of GameScene
             try {
                 Thread.sleep(PAUSE);
             } catch (InterruptedException e) {
