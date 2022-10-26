@@ -5,7 +5,12 @@ public class KeyboardListening implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println("keyChar : " + e.getKeyChar() + " keyCode : " + e.getKeyCode());
+        System.out.println(
+            "posX : " + GameManager.gameScene.cannon.getEntityPosX() +
+            " posY : " + GameManager.gameScene.cannon.getEntityPosY() + 
+            " keyChar : " + e.getKeyChar() + 
+            " keyCode : " + e.getKeyCode()
+        );
     }
 
     @Override
@@ -17,14 +22,23 @@ public class KeyboardListening implements KeyListener {
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
                 // - ConstantVariable.CANNON_SPEED);
                 //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 10);
-                GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
+                // GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
+                GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() - 1);
                 break;
             case 'd':
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
                 // + ConstantVariable.CANNON_SPEED);
                 //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() - 10);
-                GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
+                GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 1);
+                // GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
+            case 'w':
+            GameManager.gameScene.cannon.setEntityPosY(GameManager.gameScene.cannon.getEntityPosY() - 1);
+                // GameManager.gameScene.cannon.setEntityMoveY(-ConstantVariable.CANNON_SPEED_Y);
+                break;
+            case 's':
+                // GameManager.gameScene.cannon.setEntityMoveY(ConstantVariable.CANNON_SPEED_Y);
+                GameManager.gameScene.cannon.setEntityPosY(GameManager.gameScene.cannon.getEntityPosY() + 1);
         }
         switch (e.getKeyCode()) {
             case 37:
@@ -47,6 +61,7 @@ public class KeyboardListening implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         GameManager.gameScene.cannon.setEntityMoveX(0);
+        GameManager.gameScene.cannon.setEntityMoveY(0);
 
     }
 
