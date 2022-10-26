@@ -5,7 +5,7 @@ public class KeyboardListening implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        System.out.println("keyChar : " + e.getKeyChar() + " keyCode : " + e.getKeyCode());
     }
 
     @Override
@@ -16,11 +16,13 @@ public class KeyboardListening implements KeyListener {
                 // canon.setLocation(canon.getX()-SPEED, canon.getY());
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
                 // - ConstantVariable.CANNON_SPEED);
+                //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 10);
                 GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
                 break;
             case 'd':
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
                 // + ConstantVariable.CANNON_SPEED);
+                //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() - 10);
                 GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
         }
@@ -31,6 +33,13 @@ public class KeyboardListening implements KeyListener {
             case 39:
                 GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(GameManager.gameScene.projectil.getCanonFire() == false){
+                GameManager.gameScene.projectil.setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
+                GameManager.gameScene.projectil.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + ConstantVariable.PROJECTIL_WIDTH/2 - 1);
+                GameManager.gameScene.projectil.setCanonFire(true);
+            }
         }
 
     }

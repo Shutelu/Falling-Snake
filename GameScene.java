@@ -8,6 +8,7 @@ public class GameScene extends JPanel{
     public GameScene(){
         super();
         cannon = new Cannon();
+        projectil = new Projectil();
 
         this.setFocusable(true);//set the focus
         this.requestFocusInWindow();//focus from this scene
@@ -19,6 +20,7 @@ public class GameScene extends JPanel{
     }
 
     public Cannon cannon;
+    public Projectil projectil;
 
     /**
      * called when we need to paint
@@ -41,6 +43,7 @@ public class GameScene extends JPanel{
         // // g2.fillRect(cannon.getEntityPosX(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
         // g2.fillRect(cannon.move(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
         cannon.draw(g2);
+        projectil.draw(g2);
 
     }
 }

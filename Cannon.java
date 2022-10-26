@@ -17,11 +17,11 @@ public class Cannon extends Entity{
 
     public int move(){
 
-        //left
+        //left and not limit | -1
         if(entity_move_x < 0 && ConstantVariable.CANNON_BORDER_LIMIT_LEFT < entity_position_x){
             entity_position_x += entity_move_x;
         }
-        //right
+        //right and not limit | 1
         else if(0 < entity_move_x && entity_position_x + entity_move_x < ConstantVariable.CANNON_BORDER_LIMIT_RIGHT){
             entity_position_x += entity_move_x;
         }
@@ -30,7 +30,7 @@ public class Cannon extends Entity{
 
     public void draw(Graphics g){
         g.setColor(entity_color);
-        // g.fillRect(entity_position_x, entity_move_x, entity_width, entity_height);
+        //g.fillRect(entity_position_x, entity_position_y, entity_width, entity_height);
         g.fillRect(move(), entity_position_y, entity_width, entity_height);
     }
 
