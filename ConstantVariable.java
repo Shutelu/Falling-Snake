@@ -6,8 +6,8 @@ public abstract class ConstantVariable{
 
     /***********Window***********/
 
-    public static final int MAIN_WINDOW_WIDTH = 500;
-    public static final int MAIN_WINDOW_HEIGHT = 700;
+    public static final int MAIN_WINDOW_SETTING_WIDTH = 500;
+    public static final int MAIN_WINDOW_SETTING_HEIGHT = 700;
     public static final int MAIN_WINDOW_REAL_WIDTH = 464;
     public static final int MAIN_WINDOW_REAL_HEIGHT = 640;
     public static final int MAIN_BORDER_LIMIT = 50;//a changer
@@ -18,11 +18,14 @@ public abstract class ConstantVariable{
     //bottomleft = 0,640
     //bottomright = 464,640
 
+    /***********Color***********/
+    public static final Color COLOR_MAIN_WINDOW_BACKGROUND = Color.BLACK;
+
     /***********Cannon***********/
     public static final int CANNON_WIDTH = 20;
     public static final int CANNON_HEIGHT = 20;
 
-    public static final int CANNON_INITIAl_POSITION_X = (MAIN_WINDOW_WIDTH - CANNON_WIDTH) / 2;
+    public static final int CANNON_INITIAl_POSITION_X = (MAIN_WINDOW_SETTING_WIDTH - CANNON_WIDTH) / 2;
     public static final int CANNON_POSITION_Y = 610;
 
     public static final int CANNON_SPEED = 1;//uniter de deplacement pour le moment

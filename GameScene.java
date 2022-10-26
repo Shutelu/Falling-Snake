@@ -31,8 +31,9 @@ public class GameScene extends JPanel{
         Graphics g2 = (Graphics2D) g;//g2 plus performant
 
         //Draw Background //a changer 
-        g2.setColor(Color.BLACK); //utiliser un setBackground
-        g2.fillRect(0, 0, ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
+        // g2.setColor(Color.BLACK); //utiliser un setBackground
+        // g2.fillRect(0, 0, ConstantVariable.MAIN_WINDOW_SETTING_WIDTH, ConstantVariable.MAIN_WINDOW_SETTING_HEIGHT);
+        setBackground(ConstantVariable.COLOR_MAIN_WINDOW_BACKGROUND);
 
         //Draw edge
         g2.setColor(Color.GREEN);

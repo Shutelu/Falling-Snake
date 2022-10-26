@@ -6,9 +6,9 @@ public class GameManager extends JFrame{
     
     public GameManager(){
         super("Failing Snake");
-        
+
         //window settings
-        this.setSize(ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
+        this.setSize(ConstantVariable.MAIN_WINDOW_SETTING_WIDTH, ConstantVariable.MAIN_WINDOW_SETTING_HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);//put in center should be after size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
