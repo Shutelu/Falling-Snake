@@ -4,9 +4,7 @@ import java.awt.event.KeyListener;
 public class KeyboardListening implements KeyListener {
 
     @Override
-    public void keyTyped(KeyEvent e) {
-        System.out.println("keyChar : " + e.getKeyChar() + " keyCode : " + e.getKeyCode());
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -18,6 +16,7 @@ public class KeyboardListening implements KeyListener {
                 // - ConstantVariable.CANNON_SPEED);
                 //GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX() + 10);
                 GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
+                System.out.println(e.getKeyCode());
                 break;
             case 'd':
                 // GameManager.gameScene.cannon.setEntityPosX(GameManager.gameScene.cannon.getEntityPosX()
@@ -29,6 +28,7 @@ public class KeyboardListening implements KeyListener {
         switch (e.getKeyCode()) {
             case 37:
                 GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
+                System.out.println(e.getKeyCode());
                 break;
             case 39:
                 GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
@@ -47,7 +47,7 @@ public class KeyboardListening implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         GameManager.gameScene.cannon.setEntityMoveX(0);
-
+        System.out.println("keyChar : " + e.getKeyChar() + " keyCode : " + e.getKeyCode());
     }
 
 }
