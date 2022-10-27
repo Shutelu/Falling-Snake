@@ -5,6 +5,7 @@ public class KeyboardListening implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        //debug
         System.out.println(
             "posX : " + GameFrame.gameScene.cannon.getEntityPosX() +
             " posY : " + GameFrame.gameScene.cannon.getEntityPosY() + 
