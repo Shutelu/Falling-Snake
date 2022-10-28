@@ -29,21 +29,21 @@ public class KeyboardListening implements KeyListener {
         // }
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED_X);
+                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
                 break;
             case KeyEvent.VK_D:
-                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED_X);
+                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
                 break;
             case KeyEvent.VK_LEFT:
-                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED_X);
+                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
                 break;
             case KeyEvent.VK_RIGHT:
-                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED_X);
+                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
                 break;
             case KeyEvent.VK_SPACE:
                 if(GameFrame.gameScene.projectil.getCanonFire() == false){
                     GameFrame.gameScene.projectil.setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
-                    GameFrame.gameScene.projectil.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.PROJECTIL_WIDTH/2 - 1);
+                    GameFrame.gameScene.projectil.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
                     GameFrame.gameScene.projectil.setCanonFire(true);
                 }
         }

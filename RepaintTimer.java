@@ -1,7 +1,7 @@
-public class Chrono implements Runnable{
+public class RepaintTimer implements Runnable{
     
     private final int PAUSE = 5;//temps attente entre 2 boucles 5ms
-    public static int compteTours = 0;//plus tard
+    // public static int compteTours = 0;//plus tard
 
     @Override
     public void run(){
