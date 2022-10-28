@@ -10,7 +10,7 @@ public class Cannon extends Entity{
         super.entity_height = ConstantVariable.CANNON_HEIGHT;
         super.entity_move_x = 0;//mettre speed
         super.entity_move_y = 0; //a supp
-        super.entity_color = ConstantVariable.CANNON_COLOR;
+        super.entity_color = ConstantVariable.COLOR_CANNON;
 
         //define entity shape
     }

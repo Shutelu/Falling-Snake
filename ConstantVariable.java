@@ -22,6 +22,7 @@ public abstract class ConstantVariable{
     /***********Color***********/
     public static final Color COLOR_MAIN_WINDOW_BACKGROUND = Color.BLACK;
     public static final Color COLOR_PLATFORM = Color.GREEN;
+    public static final Color COLOR_CANNON = Color.RED;
 
     /***********Cannon***********/
     public static final int CANNON_WIDTH = 20;
@@ -32,7 +33,6 @@ public abstract class ConstantVariable{
 
     public static final int CANNON_SPEED_X = 1;//uniter de deplacement pour le moment
     public static final int CANNON_SPEED_Y = 1;
-    public static final Color CANNON_COLOR = Color.RED;//?
 
     public static final int CANNON_BORDER_LIMIT_LEFT = 10;
     public static final int CANNON_BORDER_LIMIT_RIGHT = 450;
