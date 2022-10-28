@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 public abstract class Entity {
     
@@ -22,6 +21,7 @@ public abstract class Entity {
     public void setEntityPosX(int x){entity_position_x = x;}//a changer
     public void setEntityPosY(int y){entity_position_y = y;}//a changer
     public void setEntityMoveX(int x){entity_move_x = x;}
+    public void setEntityMoveY(int y){entity_move_y = y;}
 
     public abstract int move();
     public abstract void draw(Graphics g);

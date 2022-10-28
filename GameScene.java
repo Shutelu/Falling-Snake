@@ -1,7 +1,8 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+
+//GameScene will contain the game settings
 
 public class GameScene extends JPanel{
     
@@ -15,8 +16,8 @@ public class GameScene extends JPanel{
         this.addKeyListener(new KeyboardListening());
 
         //infini repaint
-        Thread infinitePanting = new Thread(new Chrono());
-        infinitePanting.start();
+        Thread infiniteRepanting = new Thread(new Chrono());
+        infiniteRepanting.start();
     }
 
     public Cannon cannon;
@@ -30,13 +31,12 @@ public class GameScene extends JPanel{
         super.paintComponent(g);//heritage
         Graphics g2 = (Graphics2D) g;//g2 plus performant
 
-        //Draw Background //a changer 
-        g2.setColor(Color.BLACK); //utiliser un setBackground
-        g2.fillRect(0, 0, ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
+        //background
+        setBackground(ConstantVariable.COLOR_MAIN_WINDOW_BACKGROUND);
 
-        //Draw edge
-        g2.setColor(Color.GREEN);
-        g2.fillRect(20, 650, 455, 5);
+        //Draw platform
+        g2.setColor(ConstantVariable.COLOR_PLATFORM);
+        g2.fillRect(20, 640, 444, 4);
         
         //Draw canon
         // g2.setColor(cannon.getColor());
