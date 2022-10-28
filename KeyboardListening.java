@@ -26,11 +26,11 @@ public class KeyboardListening implements KeyListener {
                 break;
         }
         switch (e.getKeyCode()) {
-            case 37:
+            case KeyEvent.VK_LEFT:
                 GameManager.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_SPEED);
                 System.out.println(e.getKeyCode());
                 break;
-            case 39:
+            case KeyEvent.VK_RIGHT:
                 GameManager.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_SPEED);
                 break;
         }
