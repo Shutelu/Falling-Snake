@@ -30,7 +30,7 @@ public abstract class ConstantVariable{
     public static final int CANNON_INITIAl_POSITION_X = (MAIN_WINDOW_WIDTH - CANNON_WIDTH) / 2;
     public static final int CANNON_POSITION_Y = 610;
 
-    public static final int CANNON_SPEED = 1;//uniter de deplacement pour le moment
+    public static final int CANNON_SPEED_X = 1;//uniter de deplacement pour le moment
     public static final int CANNON_SPEED_Y = 1;
     public static final Color CANNON_COLOR = Color.RED;//?
 
