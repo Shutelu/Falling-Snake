@@ -11,11 +11,11 @@ public abstract class Entity {
 
 
     //getters
-    public Color getColor(){return entity_color;}
     public int getEntityPosX(){return entity_position_x;}
     public int getEntityPosY(){return entity_position_y;}
     public int getEntityWidth(){return entity_width;}
     public int getEntityHeight(){return entity_height;}
+    public Color getColor(){return entity_color;}
 
     //setters
     public void setEntityPosX(int x){entity_position_x = x;}//a changer
