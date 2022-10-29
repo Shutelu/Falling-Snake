@@ -10,33 +10,24 @@ public class Projectil extends Entity{
         super.entity_height = ConstantVariable.PROJECTIL_HEIGHT;
         super.entity_move_x = 0;
         super.entity_move_y = ConstantVariable.PROJECTIL_MOVESPEED_Y;
-        super.entityIsAlive = true;
+        super.entityIsAlive = false;
         super.entity_color = ConstantVariable.COLOR_PROJECTIL;
     }
 
-    private boolean canonFire = false;
-
-    //getter
-    public boolean getCanonFire(){return canonFire;}
-
-    //setter
-    public void setCanonFire(boolean bool){canonFire = bool;}
-
     public int move(){
-        if(canonFire == true){
-            //in screen
+        if(entityIsAlive == true){
             if(this.entity_position_y > 0){
                 this.entity_position_y -= ConstantVariable.PROJECTIL_MOVESPEED_Y;
             }
             else{
-                setCanonFire(false);
+                this.entityIsAlive = false;
             }
         }
         return this.entity_position_y;
     }
 
     public void draw(Graphics g){
-        if(this.canonFire == true){
+        if(entityIsAlive == true){
             g.setColor(entity_color);
             g.fillRect(entity_position_x, move(), entity_width, entity_height);
         }

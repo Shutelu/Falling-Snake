@@ -5,12 +5,9 @@ import java.awt.Color;
 public abstract class ConstantVariable{
 
     /***********Window***********/
-
     public static final int MAIN_WINDOW_WIDTH = 500;
     public static final int MAIN_WINDOW_HEIGHT = 700;
     public static final String MAIN_WINDOW_TITLE = "Falling Snake";
-    // public static final int MAIN_WINDOW_REAL_WIDTH = 464;
-    // public static final int MAIN_WINDOW_REAL_HEIGHT = 640;
     // public static final int MAIN_BORDER_LIMIT = 50;//a changer
 
     //real screen size for 500 - 700
@@ -42,6 +39,8 @@ public abstract class ConstantVariable{
     public static final int PROJECTIL_WIDTH = 5;
     public static final int PROJECTIL_HEIGHT = 15;
     
-    public static final int PROJECTIL_MOVESPEED_Y = 2;
+    public static final int PROJECTIL_MOVESPEED_Y = 1;
+    
+    public static final int PROJECTIL_MAX = 10;//the maximum number of projectil you may store
 
 }
