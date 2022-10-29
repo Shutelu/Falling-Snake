@@ -13,8 +13,11 @@ public class Cannon extends Entity{
         super.entityIsAlive = true;
         super.entity_color = ConstantVariable.COLOR_CANNON;
 
-        //define entity shape
+        //own
+        canFire = true;
     }
+
+    public boolean canFire;
 
     public int move(){
 

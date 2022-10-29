@@ -10,8 +10,13 @@ public class GameScene extends JPanel{
         super();
         
         //instanciation
+        projectilCompter = 0;
         cannon = new Cannon();
-        projectil = new Projectil();
+        // projectil = new Projectil();
+        projectilList = new Projectil[ConstantVariable.PROJECTIL_MAX];
+        for(int i = 0; i<projectilList.length; i++){
+            projectilList[i] = new Projectil();
+        }
 
         //focus
         this.setFocusable(true);//set the focus
@@ -24,7 +29,9 @@ public class GameScene extends JPanel{
     }
 
     public Cannon cannon;
-    public Projectil projectil;
+    // public Projectil projectil;
+    public Projectil[] projectilList; //munitions
+    public int projectilCompter;
 
     @Override
     public void paintComponent(Graphics g){
@@ -41,7 +48,11 @@ public class GameScene extends JPanel{
         // // g2.fillRect(cannon.getEntityPosX(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
         // g2.fillRect(cannon.move(), cannon.getEntityPosY(), cannon.getEntityWidth(), cannon.getEntityHeight());
         cannon.draw(g2);
-        projectil.draw(g2);
 
+        //draw projectils
+        for(int i = 0; i< projectilList.length; i++){
+            projectilList[i].draw(g2);
+        }
+        // projectil.draw(g2);
     }
 }

@@ -29,23 +29,25 @@ public class KeyboardListening implements KeyListener {
         // }
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
-                break;
-            case KeyEvent.VK_D:
-                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
-                break;
             case KeyEvent.VK_LEFT:
                 GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
                 break;
+            case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
                 GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
                 break;
-            case KeyEvent.VK_SPACE:
-                if(GameFrame.gameScene.projectil.getCanonFire() == false){
-                    GameFrame.gameScene.projectil.setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
-                    GameFrame.gameScene.projectil.setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
-                    GameFrame.gameScene.projectil.setCanonFire(true);
-                }
+            
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            if(GameFrame.gameScene.cannon.canFire == true){
+                int compter = GameFrame.gameScene.projectilCompter;
+                GameFrame.gameScene.projectilList[compter].setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
+                GameFrame.gameScene.projectilList[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
+                GameFrame.gameScene.projectilList[compter].entityIsAlive = true;
+                GameFrame.gameScene.cannon.canFire = false;
+                new Thread(new CannonLoadTimer()).start();;//reload
+                GameFrame.gameScene.projectilCompter = (GameFrame.gameScene.projectilCompter + 1) % ConstantVariable.PROJECTIL_MAX;
+            }
         }
     }
 
