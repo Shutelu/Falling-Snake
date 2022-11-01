@@ -1,15 +1,13 @@
-public class RepaintTimer implements Runnable{
-    
-    private final int PAUSE = 5;//temps attente entre 2 boucles 5ms
-    // public static int compteTours = 0;//plus tard
+public class RepaintTimer implements Runnable {
 
+    private final int PAUSE = 5;// temps attente entre 2 boucles 5ms
     public static int compteur = 0;
 
     @Override
-    public void run(){
-        while(true){
-            compteur+= 5;
-            GameFrame.gameScene.repaint();//call to paintComponent of GameScene
+    public void run() {
+        while (true) {
+            compteur += 5;
+            GameFrame.gameScene.repaint();// call to paintComponent of GameScene
             try {
                 Thread.sleep(PAUSE);
             } catch (InterruptedException e) {

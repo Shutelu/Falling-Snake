@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Snake extends JPanel implements Runnable {
+public class Snake extends JPanel{
 
     public int length;
     ArrayList<Square> body = new ArrayList<Square>();
@@ -20,35 +20,12 @@ public class Snake extends JPanel implements Runnable {
 
     }
 
-    // Lancement du JEU
-
-    // @Override
-    // public void paintComponent(Graphics g) {
-    // super.paintComponent(g);
-    //
-    // if (isMoving == true){
-    //
-    // drawSnake(g);
-    // }
-
-    // AFFICHE JUSTE LES COORDONNEES
-    // for (int i = 0; i < this.body.size(); i++){
-    //
-    // //Récupère l'anneau dans le tableau de carré
-    // System.out.println(body.get(i) + "" + i);
-    //
-    //
-    // }
-    //
-    // }
-
     // CRREER LE SERPENT
     public void createSnake() {
 
         for (int i = 0; i < this.length; i++) {
 
             // Ajout du nouvelle anneau
-
             body.add(new Square(((i) * 20), 0, Color.GREEN));
 
         }
@@ -107,7 +84,6 @@ public class Snake extends JPanel implements Runnable {
                     this.Direction = "left";
                     mooveSnake();
                     break;
-
                 case "left":
                     this.Direction = "down";
                     mooveSnake();
@@ -138,20 +114,20 @@ public class Snake extends JPanel implements Runnable {
 
     }
 
-    @Override
-    public void run() {
+    // @Override
+    // public void run() {
 
-        while (true) {
-            try {
-                Thread.sleep(100);
-                GameFrame.gameScene.repaint();// call to paintComponent of GameScene
+    //     while (true) {
+    //         try {
+    //             Thread.sleep(100);
+    //             GameFrame.gameScene.repaint();// call to paintComponent of GameScene
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                System.out.println("There seems to be an error in with the sleep ...");
-            }
+    //         } catch (InterruptedException e) {
+    //             e.printStackTrace();
+    //             System.out.println("There seems to be an error in with the sleep ...");
+    //         }
 
-        }
-    }
+    //     }
+    // }
 
 }
