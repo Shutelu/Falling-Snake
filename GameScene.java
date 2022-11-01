@@ -26,7 +26,7 @@ public class GameScene extends JPanel{
     }
 
     public Cannon cannon;
-    public Projectil[] projecti_list; //munitions
+    public Projectil[] projectil_list; //munitions
     public int projectilCompter;
     public Obstacle[] obstacle_list;
 
@@ -55,9 +55,9 @@ public class GameScene extends JPanel{
 
     private void projectil_init(){
         projectilCompter = 0;
-        projecti_list = new Projectil[ConstantVariable.PROJECTIL_MAX];
-        for(int i = 0; i<projecti_list.length; i++){
-            projecti_list[i] = new Projectil();
+        projectil_list = new Projectil[ConstantVariable.PROJECTIL_MAX];
+        for(int i = 0; i<projectil_list.length; i++){
+            projectil_list[i] = new Projectil();
         }
     }
 
@@ -92,8 +92,8 @@ public class GameScene extends JPanel{
     }
 
     private void draw_projectil(Graphics g){
-        for(int i = 0; i< projecti_list.length; i++){
-            projecti_list[i].draw(g);
+        for(int i = 0; i< projectil_list.length; i++){
+            projectil_list[i].draw(g);
         }
     }
 
