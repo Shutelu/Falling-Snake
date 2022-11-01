@@ -7,7 +7,7 @@ public abstract class ConstantVariable{
     /***********Window***********/
     public static final int MAIN_WINDOW_WIDTH = 500;
     public static final int MAIN_WINDOW_HEIGHT = 700;
-    public static final String MAIN_WINDOW_TITLE = "Falling Snake";
+    public static final String MAIN_WINDOW_TITLE = "Falling Snakes";
     // public static final int MAIN_BORDER_LIMIT = 50;//a changer
 
     //real screen size for 500 - 700
@@ -21,6 +21,10 @@ public abstract class ConstantVariable{
     public static final Color COLOR_PLATFORM = Color.GREEN;
     public static final Color COLOR_CANNON = Color.RED;
     public static final Color COLOR_PROJECTIL = Color.WHITE;
+    public static final Color COLOR_BOIS = new Color(112,83,4);
+    public static final Color COLOR_FRAISE = new Color(191,19,51);
+    public static final Color COLOR_MYRTILLE = new Color(97, 19, 191);
+    public static final Color COLOR_OR = new Color(219, 222, 29);
 
     /***********Cannon***********/
     public static final int CANNON_WIDTH = 20;
@@ -42,5 +46,11 @@ public abstract class ConstantVariable{
     public static final int PROJECTIL_MOVESPEED_Y = 1;
     
     public static final int PROJECTIL_MAX = 10;//the maximum number of projectil you may store
+
+    /***********Obstacle***********/
+    public static final int OBSTACLE_WIDTH = 10;
+    public static final int OBSTACLE_HEIGHT = 10;
+
+    public static final int OBSTACLE_INITAIL_OBS_NOMBER = 10;
 
 }
