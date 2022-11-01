@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Snake extends JPanel{
+public class Snake extends JPanel {
 
     public int length;
     ArrayList<Square> body = new ArrayList<Square>();
@@ -20,12 +20,9 @@ public class Snake extends JPanel{
     }
 
     public void createSnake() {
-
         for (int i = 0; i < this.length; i++) {
-
             // Ajout du nouvelle anneau
             body.add(new Square(((i) * 20), 0, Color.GREEN));
-
         }
     }
 
@@ -55,12 +52,10 @@ public class Snake extends JPanel{
     }
 
     public void checkCollision() {
-
         if (this.body.get(this.length - 1).getCoordX() == ConstantVariable.MAIN_WINDOW_WIDTH - 40
                 || this.body.get(this.length - 1).getCoordX() == 0) {
 
             switch (this.Direction) {
-
                 case "right":
                     this.Direction = "down";
                     mooveSnake();
@@ -77,40 +72,16 @@ public class Snake extends JPanel{
         }
     }
 
-    // DESSINER LE SNAKE
     public void drawSnake(Graphics g) {
-
         // Faire bouger le snake tout les 100ms
         if (RepaintTimer.compteur % 100 == 0) {
-
             mooveSnake();
-
         }
 
         for (int j = 0; j < this.body.size(); j++) {
-
             g.setColor(this.body.get(j).color);
-
             g.fillRect(this.body.get(j).getCoordX(), this.body.get(j).getCoordY(), 20, 20);
-
         }
-
     }
-
-    // @Override
-    // public void run() {
-
-    //     while (true) {
-    //         try {
-    //             Thread.sleep(100);
-    //             GameFrame.gameScene.repaint();// call to paintComponent of GameScene
-
-    //         } catch (InterruptedException e) {
-    //             e.printStackTrace();
-    //             System.out.println("There seems to be an error in with the sleep ...");
-    //         }
-
-    //     }
-    // }
 
 }
