@@ -13,8 +13,6 @@
 
     Color color;
 
-
-
     public Square(int CoordX, int CoordY,Color color){
 
         this.CoordX = CoordX;
