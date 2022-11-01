@@ -18,6 +18,8 @@ public class GameScene extends JPanel{
             projectilList[i] = new Projectil();
         }
 
+        snake = new Snake(4);
+
         //focus
         this.setFocusable(true);//set the focus
         this.requestFocusInWindow();//focus from this scene
@@ -31,6 +33,9 @@ public class GameScene extends JPanel{
     public Cannon cannon;
     // public Projectil projectil;
     public Projectil[] projectilList; //munitions
+
+    //Create snake
+    public Snake snake;
     public int projectilCompter;
 
     @Override
@@ -54,5 +59,9 @@ public class GameScene extends JPanel{
             projectilList[i].draw(g2);
         }
         // projectil.draw(g2);
+
+
+        //Draw snake
+        snake.drawSnake(g2);
     }
 }

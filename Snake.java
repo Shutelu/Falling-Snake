@@ -1,16 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class Snake extends JPanel  {
+public class Snake extends JPanel implements Runnable {
 
 public int length;
 ArrayList<Square> body = new ArrayList<Square>();
 Graphics graphics;
-public boolean isMoving = true;
+public static boolean isMoving = false;
 
 public String Direction;
+
 
 
 
@@ -22,9 +29,13 @@ public Snake( int length){
 
 this.length = length;
 
+    this.isMoving = true;
     this.Direction = "right";
 
     createSnake();
+
+
+
 
 }
 
@@ -35,26 +46,26 @@ this.length = length;
 
 
 
-@Override
-    public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-
-if (isMoving == true){
-
-    drawSnake(g);
-}
+//@Override
+//    public void paintComponent(Graphics g) {
+//    super.paintComponent(g);
+//
+//if (isMoving == true){
+//
+//    drawSnake(g);
+//}
 
 
 //AFFICHE JUSTE LES COORDONNEES
-    for (int i = 0; i < this.body.size(); i++){
-
-        //Récupère l'anneau dans le tableau de carré
-        System.out.println(body.get(i) + "" + i);
-
-
-    }
-
-}
+//    for (int i = 0; i < this.body.size(); i++){
+//
+//        //Récupère l'anneau dans le tableau de carré
+//        System.out.println(body.get(i) + "" + i);
+//
+//
+//    }
+//
+//}
 
 
 
@@ -82,7 +93,6 @@ public void createSnake(){
 public void mooveSnake() {
 
 
-
     ArrayList<Square> newbody = new ArrayList<Square>();
     Square first = this.body.get(this.length - 1);
     Square head = new Square(first.getCoordX(), first.getCoordY(), first.color);
@@ -104,6 +114,8 @@ public void mooveSnake() {
     this.body = newbody;
     checkCollision();
 
+
+
 }
 
 
@@ -124,7 +136,7 @@ public void sleep(int time){
 
     public void checkCollision(){
 
-    if (this.body.get(this.length-1).getCoordX() == Screen.mainWindowSizeWidth - 40 || this.body.get(this.length-1).getCoordX() == 0){
+    if (this.body.get(this.length-1).getCoordX() == ConstantVariable.MAIN_WINDOW_WIDTH - 40 || this.body.get(this.length-1).getCoordX() == 0){
 
         switch(this.Direction){
 
@@ -158,7 +170,14 @@ public void sleep(int time){
 
     //DESSINER LE SNAKE
     public void drawSnake(Graphics g) {
+
+    //Faire bouger le snake tout les 100ms
+    if (RepaintTimer.compteur % 100 == 0){
+
         mooveSnake();
+
+
+    }
 
 
 
@@ -176,6 +195,25 @@ public void sleep(int time){
 
 
 
+    }
+
+
+    @Override
+    public void run() {
+
+
+        while(true){
+            try {
+                Thread.sleep(100);
+                GameFrame.gameScene.repaint();//call to paintComponent of GameScene
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("There seems to be an error in with the sleep ...");
+            }
+
+
+        }
     }
 
 
