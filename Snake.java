@@ -10,7 +10,6 @@ public class Snake extends JPanel{
 
     public String Direction;
 
-    // Constructor
     public Snake(int length) {
 
         this.length = length;
@@ -20,7 +19,6 @@ public class Snake extends JPanel{
 
     }
 
-    // CRREER LE SERPENT
     public void createSnake() {
 
         for (int i = 0; i < this.length; i++) {
@@ -32,7 +30,6 @@ public class Snake extends JPanel{
     }
 
     // FAIT AVANCER LE SNAKE DUNE CASE SUR L'AXE DES X
-
     public void mooveSnake() {
 
         ArrayList<Square> newbody = new ArrayList<Square>();
@@ -56,20 +53,6 @@ public class Snake extends JPanel{
         this.body = newbody;
         checkCollision();
     }
-
-    // FONCTION SLEEP() NON UTILISE
-
-    public void sleep(int time) {
-
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
-    }
-
-    // COLLISION
 
     public void checkCollision() {
 
