@@ -77,7 +77,7 @@ public class Snake extends JPanel {
 
         if(isKilled() == false){
             // Faire bouger le snake tout les 100ms
-            if (RepaintTimer.compteur % 500 == 0) {
+            if (RepaintTimer.compteur % 100 == 0) {
                 moveSnake();
             }
     
