@@ -1,30 +1,25 @@
-import java.awt.*;
 
-public class Square extends Component {
+import java.awt.Graphics;
 
-    public int CoordX;
-    public int CoordY;
+public class Square extends Entity {
 
-    public final int square_width = 20;
-    public final int square_height = 20;
+    public Square(int positionX, int positionY) {
 
-    Color color;
-
-    public Square(int CoordX, int CoordY, Color color) {
-
-        this.CoordX = CoordX;
-        this.CoordY = CoordY;
-        this.color = color;
+        //super class vriable initiation
+        super.entity_position_x = positionX;
+        super.entity_position_y = positionY;
+        super.entity_width = 20;
+        super.entity_height = 20;
+        super.entity_move_x = 0;
+        super.entity_move_y = 0;
+        super.entityIsAlive = true;
+        super.entity_color = ConstantVariable.COLOR_SNAKE;
 
     }
 
-    public int getCoordX() {return CoordX;}
-    public int getCoordY() {return CoordY;}
-    public int getSquareWidth(){return square_width;}
-    public int getSquareHeight(){return square_height;}
-
-    public boolean intersect(Square s1) {return this.CoordX == s1.CoordX && this.CoordY == s1.CoordY;}
+    @Override
+    public int move(){return 0;}
 
     @Override
-    public String toString() {return "X: " + this.CoordX + " Y: " + this.CoordY + this.color;}
+    public void draw(Graphics g){}
 }

@@ -20,6 +20,7 @@ public abstract class ConstantVariable{
     public static final Color COLOR_MAIN_WINDOW_BACKGROUND = Color.BLACK;
     public static final Color COLOR_PLATFORM = Color.GREEN;
     public static final Color COLOR_CANNON = Color.RED;
+    public static final Color COLOR_SNAKE = Color.GREEN;
     public static final Color COLOR_PROJECTIL = Color.WHITE;
     public static final Color COLOR_BOIS = new Color(112,83,4);
     public static final Color COLOR_FRAISE = new Color(191,19,51);

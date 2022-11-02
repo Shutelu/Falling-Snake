@@ -46,12 +46,12 @@ public class Projectil extends Entity{
     }
 
     public boolean collisionWithSnake(Square snakeBody){
-        if(this.entity_position_y <= snakeBody.getCoordY() + snakeBody.getSquareHeight() 
-        && this.entity_position_x >= snakeBody.getCoordX()
-        && this.entity_position_x <= snakeBody.getCoordX() + snakeBody.getSquareWidth()
-        || this.entity_position_y <= snakeBody.getCoordY() + snakeBody.getSquareHeight()
-        && this.entity_position_x + this.entity_width <= snakeBody.getCoordX() + snakeBody.getSquareWidth()
-        && this.entity_position_x + this.entity_width >= snakeBody.getCoordX())
+        if(this.entity_position_y <= snakeBody.getEntityPosX() + snakeBody.getEntityWidth()
+        && this.entity_position_x >= snakeBody.getEntityPosX()
+        && this.entity_position_x <= snakeBody.getEntityPosX() + snakeBody.getEntityWidth()
+        || this.entity_position_y <= snakeBody.getEntityPosX() + snakeBody.getEntityHeight()
+        && this.entity_position_x + this.entity_width <= snakeBody.getEntityPosX() + snakeBody.getEntityWidth()
+        && this.entity_position_x + this.entity_width >= snakeBody.getEntityPosX())
         {return true;}
         return false;
     }
