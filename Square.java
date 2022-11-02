@@ -18,22 +18,13 @@ public class Square extends Component {
 
     }
 
-    public int getCoordX() {
-        return CoordX;
-    }
+    public int getCoordX() {return CoordX;}
+    public int getCoordY() {return CoordY;}
+    public int getSquareWidth(){return square_width;}
+    public int getSquareHeight(){return square_height;}
 
-    public int getCoordY() {
-        return CoordY;
-    }
-
-    public boolean intersect(Square s1) {
-
-        return this.CoordX == s1.CoordX && this.CoordY == s1.CoordY;
-
-    }
+    public boolean intersect(Square s1) {return this.CoordX == s1.CoordX && this.CoordY == s1.CoordY;}
 
     @Override
-    public String toString() {
-        return "X: " + this.CoordX + " Y: " + this.CoordY + this.color;
-    }
+    public String toString() {return "X: " + this.CoordX + " Y: " + this.CoordY + this.color;}
 }

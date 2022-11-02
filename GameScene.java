@@ -10,6 +10,7 @@ public class GameScene extends JPanel{
     public GameScene(){
         super();
         
+        gameIsFinished = false;
         cannon_init();
         snake_init();
         projectil_init();
@@ -24,6 +25,7 @@ public class GameScene extends JPanel{
         infiniteRepanting.start();
     }
 
+    private boolean gameIsFinished;
     public Cannon cannon;
     public Snake snake;
     public Projectil[] projectil_list; //munitions
@@ -46,9 +48,8 @@ public class GameScene extends JPanel{
         draw_projectil(g2);
         draw_obstacle(g2);
 
-
         collisionProjectilObstacle();
-        
+        collisionProjectilSnake();
 
     }
 
@@ -118,16 +119,27 @@ public class GameScene extends JPanel{
         }
     }
 
+    /***********Methodes***********/
+
     private void collisionProjectilObstacle(){
         for(int i = 0; i< projectil_list.length; i++){
             for(int j = 0; j<obstacle_list.length; j++){
                 if(obstacle_list[j] != null && projectil_list[i] != null){
                     if(projectil_list[i].collisionWithObstacle(obstacle_list[j])){
                         obstacle_list[j] = null;
-                        projectil_list[i].entity_position_x = -10;
+                        // projectil_list[i].entity_position_x = -10;
+                        projectil_list[i] = null;
                         System.out.println("toucher");
                     }
                 }
+            }
+        }
+    }
+
+    public void collisionProjectilSnake(){
+        for(int i=0; i<projectil_list.length; i++){
+            if(projectil_list[i] != null){
+                snake.collisionWithProjectil(projectil_list[i]);
             }
         }
     }

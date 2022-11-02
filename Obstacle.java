@@ -21,9 +21,7 @@ public class Obstacle extends Entity{
     ObstacleType obstacleType;
 
     @Override
-    public int move(){
-        return 0;
-    }
+    public int move(){return 0;}
 
     @Override 
     public void draw(Graphics g){
