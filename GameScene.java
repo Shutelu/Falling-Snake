@@ -46,6 +46,7 @@ public class GameScene extends JPanel{
         draw_projectil(g2);
         draw_obstacle(g2);
 
+
         collisionProjectilObstacle();
         
 
@@ -58,7 +59,7 @@ public class GameScene extends JPanel{
     }
 
     private void snake_init(){
-        snake = new Snake(4);
+        snake = new Snake(10);
     }
 
     private void projectil_init(){
@@ -123,7 +124,7 @@ public class GameScene extends JPanel{
                 if(obstacle_list[j] != null && projectil_list[i] != null){
                     if(projectil_list[i].collisionWithObstacle(obstacle_list[j])){
                         obstacle_list[j] = null;
-                        projectil_list[i] = null;
+                        projectil_list[i].entity_position_x = -10;
                         System.out.println("toucher");
                     }
                 }

@@ -72,7 +72,39 @@ public class Snake extends JPanel {
         }
     }
 
+    public void killSnake(){
+
+        for (int i = 0; i < this.body.size(); i++){
+            for (int j = 0; j < GameFrame.gameScene.projectil_list.length; j++){
+
+
+                if (this.body.get(i).getCoordX() < GameFrame.gameScene.projectil_list[j].entity_position_x + GameFrame.gameScene.projectil_list[j].entity_width+ 10
+                        && this.body.get(i).getCoordX()+ this.body.get(i).getWidth() +10 > GameFrame.gameScene.projectil_list[j].entity_position_x
+
+                        && this.body.get(i).getCoordY()+ this.body.get(i).getHeight() + 15 > GameFrame.gameScene.projectil_list[j].entity_position_y
+
+                        && this.body.get(i).getCoordY()< GameFrame.gameScene.projectil_list[j].entity_position_y + GameFrame.gameScene.projectil_list[j].entity_height + 5 ){
+
+
+                    GameFrame.gameScene.projectil_list[j].entity_position_x = -10;
+
+                    this.body.remove(0);
+                    this.length--;
+
+
+                }
+
+            }
+
+
+        }
+
+
+    }
+
     public void drawSnake(Graphics g) {
+
+        killSnake();
         // Faire bouger le snake tout les 100ms
         if (RepaintTimer.compteur % 100 == 0) {
             mooveSnake();

@@ -40,8 +40,8 @@ public abstract class ConstantVariable{
     public static final int CANNON_BORDER_LIMIT_RIGHT = 455;
 
     /***********Projectil***********/
-    public static final int PROJECTIL_WIDTH = 5;
-    public static final int PROJECTIL_HEIGHT = 15;
+    public static final int PROJECTIL_WIDTH = 7;
+    public static final int PROJECTIL_HEIGHT = 3;
     
     public static final int PROJECTIL_MOVESPEED_Y = 1;
     
