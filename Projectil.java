@@ -32,4 +32,19 @@ public class Projectil extends Entity{
             g.fillRect(entity_position_x, move(), entity_width, entity_height);
         }
     }
+
+    public boolean collisionWithObstacle(Obstacle obstacle){
+        if(this.entity_position_y <= obstacle.entity_position_y + obstacle.entity_height 
+        && this.entity_position_x >= obstacle.entity_position_x
+        && this.entity_position_x <= obstacle.entity_position_x + obstacle.entity_width
+        || this.entity_position_y <= obstacle.entity_position_y + obstacle.entity_height
+        && this.entity_position_x + this.entity_width <= obstacle.entity_position_x + obstacle.entity_width
+        && this.entity_position_x + this.entity_width >= obstacle.entity_position_x)
+        {return true;}
+        
+        return false;
+    }
+
+
+
 }

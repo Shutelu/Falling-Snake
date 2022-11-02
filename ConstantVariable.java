@@ -51,6 +51,6 @@ public abstract class ConstantVariable{
     public static final int OBSTACLE_WIDTH = 10;
     public static final int OBSTACLE_HEIGHT = 10;
 
-    public static final int OBSTACLE_INITAIL_OBS_NOMBER = 10;
+    public static final int OBSTACLE_INITAIL_OBS_NOMBER = 15;
 
 }
