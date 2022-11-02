@@ -8,9 +8,11 @@ public class Snake extends JPanel {
     public ArrayList<Square> body;
     public Graphics graphics;
     public String direction;
+    private boolean canKillBodyPart;
 
     public Snake(int length) {
 
+        canKillBodyPart = true;
         body = new ArrayList<Square>();
         this.length = length;
         this.direction = "right";
@@ -75,7 +77,7 @@ public class Snake extends JPanel {
 
         if(isKilled() == false){
             // Faire bouger le snake tout les 100ms
-            if (RepaintTimer.compteur % 100 == 0) {
+            if (RepaintTimer.compteur % 500 == 0) {
                 moveSnake();
             }
     
@@ -90,14 +92,29 @@ public class Snake extends JPanel {
     }
 
     public void collisionWithProjectil(Projectil projectil){
-        for(Square snakeBody : body){
-            if(projectil.collisionWithSnake(snakeBody)){
-                projectil.entity_position_x = -10;
-                body.remove(0);
-                length--;
-                break;
+        
+            for(Square snakeBody : body){
+                if(canKillBodyPart){
+                    if(projectil.collisionWithSnake(snakeBody)){
+                        canKillBodyPart = false;
+                        projectil.entity_position_x = -10;
+                        projectil.entity_position_y = -10;
+                        // projectil = null;
+                        body.remove(0);
+                        length--;
+                        new Thread(new SnakeBodyTimer(this)).start();
+                        break;
+                    }
+                }
+                else{
+                    if(projectil.collisionWithSnake(snakeBody)){
+                        projectil.entity_position_x = -10;
+                        projectil.entity_position_y = -10;
+                    }
+                }
+
+                
             }
-        }
     }
 
     private boolean isKilled(){
@@ -105,6 +122,10 @@ public class Snake extends JPanel {
             return true;
         }
         return false;
+    }
+
+    public void setCanKillBodyPart(boolean b){
+        canKillBodyPart = b;
     }
 
 }

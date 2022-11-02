@@ -11,6 +11,7 @@ public class GameScene extends JPanel{
         super();
         
         gameIsFinished = false;
+        // canKillBodyPart = true;
         cannon_init();
         snake_init();
         projectil_init();
@@ -26,6 +27,7 @@ public class GameScene extends JPanel{
     }
 
     private boolean gameIsFinished;
+    // private boolean canKillBodyPart;
     public Cannon cannon;
     public Snake snake;
     public Projectil[] projectil_list; //munitions
@@ -131,8 +133,9 @@ public class GameScene extends JPanel{
                 if(obstacle_list[j] != null && projectil_list[i] != null){
                     if(projectil_list[i].collisionWithObstacle(obstacle_list[j])){
                         obstacle_list[j] = null;
-                        // projectil_list[i].entity_position_x = -10;
-                        projectil_list[i] = null;
+                        projectil_list[i].entity_position_x = -10;
+                        projectil_list[i].entity_position_y = -10;
+                        // projectil_list[i] = null;
                         System.out.println("toucher");
                     }
                 }
@@ -141,21 +144,27 @@ public class GameScene extends JPanel{
     }
 
     public void collisionProjectilSnake(){
-        for(int i=0; i<projectil_list.length; i++){
-            if(projectil_list[i] != null){
-                snake.collisionWithProjectil(projectil_list[i]);
+        // if(canKillBodyPart){
+            for(int i=0; i<projectil_list.length; i++){
+                if(projectil_list[i] != null){
+                    snake.collisionWithProjectil(projectil_list[i]);
+                }
             }
-        }
+        // }
     }
 
 
     //getter
-    public boolean getGameIsFinished(){
-        return gameIsFinished;
-    }
+    public boolean getGameIsFinished(){return gameIsFinished;}
+
+    // public boolean getCanKillBodyPart(){return canKillBodyPart;}
 
     //setter
     public void setGameIsFinished(boolean finished){
         gameIsFinished = finished;
     }
+
+    // public void setCanKillBodyPart(boolean can){
+    //     canKillBodyPart = can;
+    // }
 }
