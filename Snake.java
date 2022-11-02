@@ -114,15 +114,21 @@ public class Snake extends JPanel {
 
     public void drawSnake(Graphics g) {
 
-        // killSnake();
-        // Faire bouger le snake tout les 100ms
-        if (RepaintTimer.compteur % 100 == 0) {
-            moveSnake();
-        }
+        if(isKilled() == false){
 
-        for (int j = 0; j < this.body.size(); j++) {
-            g.setColor(this.body.get(j).color);
-            g.fillRect(this.body.get(j).getCoordX(), this.body.get(j).getCoordY(), 20, 20);
+            // killSnake();
+            // Faire bouger le snake tout les 100ms
+            if (RepaintTimer.compteur % 100 == 0) {
+                moveSnake();
+            }
+    
+            for (int j = 0; j < this.body.size(); j++) {
+                g.setColor(this.body.get(j).color);
+                g.fillRect(this.body.get(j).getCoordX(), this.body.get(j).getCoordY(), 20, 20);
+            }
+        }
+        else{
+            GameFrame.gameScene.setGameIsFinished(true);
         }
     }
 
@@ -137,8 +143,8 @@ public class Snake extends JPanel {
         }
     }
 
-    public boolean isKilled(){
-        if(body.size() < 0){
+    private boolean isKilled(){
+        if(body.size() < 1){
             return true;
         }
         return false;

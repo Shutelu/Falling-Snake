@@ -21,7 +21,7 @@ public class GameScene extends JPanel{
         this.requestFocusInWindow();//focus from this scene
         this.addKeyListener(new KeyboardListening());
 
-        Thread infiniteRepanting = new Thread(new RepaintTimer());
+        Thread infiniteRepanting = new Thread(new RepaintTimer(this));
         infiniteRepanting.start();
     }
 
@@ -50,6 +50,10 @@ public class GameScene extends JPanel{
 
         collisionProjectilObstacle();
         collisionProjectilSnake();
+
+        if(gameIsFinished){
+            System.out.println("Vous avez gagné !");
+        }
 
     }
 
@@ -144,4 +148,14 @@ public class GameScene extends JPanel{
         }
     }
 
+
+    //getter
+    public boolean getGameIsFinished(){
+        return gameIsFinished;
+    }
+
+    //setter
+    public void setGameIsFinished(boolean finished){
+        gameIsFinished = finished;
+    }
 }
