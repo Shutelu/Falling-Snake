@@ -32,4 +32,5 @@ public class Obstacle extends Entity{
             g.fillRect(entity_position_x, entity_position_y, entity_width, entity_height);
         }
     }
+
 }

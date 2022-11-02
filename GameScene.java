@@ -46,6 +46,9 @@ public class GameScene extends JPanel{
         draw_projectil(g2);
         draw_obstacle(g2);
 
+        collisionProjectilObstacle();
+        
+
     }
 
     /***********Initialisation***********/
@@ -100,15 +103,32 @@ public class GameScene extends JPanel{
 
     private void draw_projectil(Graphics g){
         for(int i = 0; i< projectil_list.length; i++){
-            projectil_list[i].draw(g);
+            if(projectil_list[i] != null){
+                projectil_list[i].draw(g);
+            }
         }
     }
 
     private void draw_obstacle(Graphics g){
         for(int i = 0; i< obstacle_list.length; i++){
-            obstacle_list[i].draw(g);
+            if(obstacle_list[i] !=null){
+                obstacle_list[i].draw(g);
+            }
         }
     }
 
+    private void collisionProjectilObstacle(){
+        for(int i = 0; i< projectil_list.length; i++){
+            for(int j = 0; j<obstacle_list.length; j++){
+                if(obstacle_list[j] != null && projectil_list[i] != null){
+                    if(projectil_list[i].collisionWithObstacle(obstacle_list[j])){
+                        obstacle_list[j] = null;
+                        projectil_list[i] = null;
+                        System.out.println("toucher");
+                    }
+                }
+            }
+        }
+    }
 
 }
