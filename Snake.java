@@ -75,56 +75,60 @@ public class Snake extends JPanel {
 
     public void drawSnake(Graphics g) {
 
-        if(isKilled() == false){
+        if (isKilled() == false) {
             // Faire bouger le snake tout les 100ms
-            if (RepaintTimer.compteur % 100 == 0) {
+            if (RepaintTimer.compteur % 50 == 0) {
                 moveSnake();
             }
-    
+
             for (int j = 0; j < this.body.size(); j++) {
                 g.setColor(this.body.get(j).getEntityColor());
                 g.fillRect(this.body.get(j).getEntityPosX(), this.body.get(j).getEntityPosY(), 20, 20);
             }
-        }
-        else{
+        } else {
             GameFrame.gameScene.setGameIsFinished(true);
+            GameFrame.gameScene.setWin(true);
         }
     }
 
-    public void collisionWithProjectil(Projectil projectil){
-        
-            for(Square snakeBody : body){
-                if(canKillBodyPart){
-                    if(projectil.collisionWithSnake(snakeBody)){
-                        canKillBodyPart = false;
-                        projectil.entity_position_x = -10;
-                        projectil.entity_position_y = -10;
-                        // projectil = null;
-                        body.remove(0);
-                        length--;
-                        new Thread(new SnakeBodyTimer(this)).start();
-                        break;
-                    }
+    public void collisionWithProjectil(Projectil projectil) {
+        for (Square snakeBody : body) {
+            if (canKillBodyPart) {
+                if (projectil.collisionWithSnake(snakeBody)) {
+                    canKillBodyPart = false;
+                    projectil.entity_position_x = -10;
+                    projectil.entity_position_y = -10;
+                    // projectil = null;
+                    body.remove(0);
+                    length--;
+                    new Thread(new SnakeBodyTimer(this)).start();
+                    break;
                 }
-                else{
-                    if(projectil.collisionWithSnake(snakeBody)){
-                        projectil.entity_position_x = -10;
-                        projectil.entity_position_y = -10;
-                    }
+            } else {
+                if (projectil.collisionWithSnake(snakeBody)) {
+                    projectil.entity_position_x = -10;
+                    projectil.entity_position_y = -10;
                 }
-
-                
             }
+        }
     }
 
-    private boolean isKilled(){
-        if(body.size() < 1){
+    public void collisionWithCannon(Cannon cannon){
+        Square head = body.get(body.size() - 1);
+        if(cannon.collisionWithSnake(head)){
+            GameFrame.gameScene.setGameIsFinished(true);
+            GameFrame.gameScene.setLose(true);
+        }
+    }
+
+    private boolean isKilled() {
+        if (body.size() < 1) {
             return true;
         }
         return false;
     }
 
-    public void setCanKillBodyPart(boolean b){
+    public void setCanKillBodyPart(boolean b) {
         canKillBodyPart = b;
     }
 

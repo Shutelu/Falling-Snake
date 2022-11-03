@@ -56,13 +56,6 @@ public class KeyboardListening implements KeyListener {
     public void keyReleased(KeyEvent e) {
         GameFrame.gameScene.cannon.setEntityMoveX(0);
         GameFrame.gameScene.cannon.setEntityMoveY(0);
-        //debug
-        System.out.println(
-            "posX : " + GameFrame.gameScene.cannon.getEntityPosX() +
-            " posY : " + GameFrame.gameScene.cannon.getEntityPosY() + 
-            " keyChar : " + e.getKeyChar() + 
-            " keyCode : " + e.getKeyCode()
-        );
     }
 
     @Override

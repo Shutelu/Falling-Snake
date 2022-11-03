@@ -29,23 +29,6 @@ public class Cannon extends Entity{
         else if(0 < entity_move_x && entity_position_x + entity_move_x < ConstantVariable.CANNON_BORDER_LIMIT_RIGHT){
             entity_position_x += entity_move_x;
         }
-
-        // if(entity_move_x < 0 ){
-        //     entity_position_x += entity_move_x;
-        // }
-        // //right and not limit | 1
-        // else if(0 < entity_move_x ){
-        //     entity_position_x += entity_move_x;
-        // }
-
-        // //up
-        // if(entity_move_y < 0){
-        //     entity_position_y += entity_move_y;
-        // }
-        // //down
-        // else if(0 < entity_move_y){
-        //     entity_position_y += entity_move_y;
-        // }
         
         return entity_position_x;
     }
@@ -53,7 +36,17 @@ public class Cannon extends Entity{
     public void draw(Graphics g){
         g.setColor(entity_color);
         g.fillRect(move(), entity_position_y, entity_width, entity_height);
-        // g.fillRect(entity_position_x, entity_position_y, entity_width, entity_height);
+    }
+
+    public boolean collisionWithSnake(Square snakeHead){
+        if(
+        //between left and right
+        this.entity_position_x <= snakeHead.entity_position_x + snakeHead.entity_width
+        && this.entity_position_y <= snakeHead.entity_position_y + snakeHead.entity_height
+        && this.entity_position_x + this.entity_width >= snakeHead.entity_position_x
+        && this.entity_position_y <= snakeHead.entity_position_y + snakeHead.entity_height)
+        {return true;}
+        return false;
     }
 
 }
