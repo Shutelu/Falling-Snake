@@ -31,4 +31,17 @@ public class Obstacle extends Entity{
         }
     }
 
+    public boolean collisionWithObstacle(Square square){
+
+        if(this.entity_position_y <= square.entity_position_y + square.entity_height
+                && this.entity_position_x >= square.entity_position_x
+                && this.entity_position_x <= square.entity_position_x + square.entity_width
+                || this.entity_position_y <= square.entity_position_y + square.entity_height
+                && this.entity_position_x + this.entity_width <= square.entity_position_x + square.entity_width
+                && this.entity_position_x + this.entity_width >= square.entity_position_x)
+        {return true;}
+
+        return false;
+    }
+
 }

@@ -52,6 +52,7 @@ public class GameScene extends JPanel{
 
         collisionProjectilObstacle();
         collisionProjectilSnake();
+        collisionObstacleSnake();
 
         if(gameIsFinished){
             System.out.println("Vous avez gagné !");
@@ -66,7 +67,7 @@ public class GameScene extends JPanel{
     }
 
     private void snake_init(){
-        snake = new Snake(10);
+        snake = new Snake(2);
     }
 
     private void projectil_init(){
@@ -141,6 +142,28 @@ public class GameScene extends JPanel{
                 }
             }
         }
+    }
+
+    public void collisionObstacleSnake(){
+
+        for(int j = 0; j<obstacle_list.length; j++){
+            if (obstacle_list[j] != null && snake.body.get(snake.length-1) != null){
+
+                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.length-1))){
+
+
+                    snake.collisionWithObstacle( obstacle_list[j]);
+                    obstacle_list[j] = null;
+
+
+                }
+
+
+            }
+            }
+
+
+
     }
 
     public void collisionProjectilSnake(){
