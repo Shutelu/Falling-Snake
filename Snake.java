@@ -114,10 +114,12 @@ public class Snake extends JPanel {
     }
 
     public void collisionWithCannon(Cannon cannon){
-        Square head = body.get(body.size() - 1);
-        if(cannon.collisionWithSnake(head)){
-            GameFrame.gameScene.setGameIsFinished(true);
-            GameFrame.gameScene.setLose(true);
+        if(body.size() > 1){
+            Square head = body.get(body.size() - 1);
+            if(cannon.collisionWithSnake(head)){
+                GameFrame.gameScene.setGameIsFinished(true);
+                GameFrame.gameScene.setLose(true);
+            }
         }
     }
 
