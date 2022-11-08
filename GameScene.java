@@ -94,16 +94,16 @@ public class GameScene extends JPanel {
             rand = new Random().nextInt(4);
             switch (rand) {
                 case 0:
-                    obstacle_list[i] = new Obstacle(ObstacleType.BOIS);
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.BOIS));
                     break;
                 case 1:
-                    obstacle_list[i] = new Obstacle(ObstacleType.FRAISE);
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.FRAISE));
                     break;
                 case 2:
-                    obstacle_list[i] = new Obstacle(ObstacleType.MYRTILLE);
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.MYRTILLE));
                     break;
                 case 3:
-                    obstacle_list[i] = new Obstacle(ObstacleType.PIECE_DOR);
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.PIECE_DOR));
                     break;
             }
         }
@@ -136,6 +136,20 @@ public class GameScene extends JPanel {
     }
 
     /*********** Methodes ***********/
+
+    private Obstacle checkObstaclePosition(Obstacle[] list,Obstacle obstacle){
+        Obstacle temp;
+        for(int i=0; i< list.length; i++){
+            if(list[0] == null) return obstacle;
+            //if(list[i] == null)continue;
+            else if(list[i].entity_position_x == obstacle.entity_position_x && list[i].entity_position_y == obstacle.entity_position_y){
+                temp = new Obstacle(obstacle.gType());
+                checkObstaclePosition(list, temp);
+            }
+            else{return obstacle;}
+        }
+        return obstacle;
+    }
 
     private void collisionProjectilObstacle() {
         for (int i = 0; i < projectil_list.length; i++) {

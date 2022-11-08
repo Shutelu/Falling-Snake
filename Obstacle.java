@@ -31,4 +31,7 @@ public class Obstacle extends Entity{
         }
     }
 
+    //getter
+    public ObstacleType gType(){return obstacleType;}
+
 }
