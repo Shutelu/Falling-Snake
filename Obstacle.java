@@ -5,8 +5,8 @@ public class Obstacle extends Entity{
     
     public Obstacle(ObstacleType type){
         //super class variable initiation
-        super.entity_position_x = new Random().nextInt(450 - 10) + 10;
-        super.entity_position_y = new Random().nextInt(540 - 100) + 100;
+        super.entity_position_x = ( (int) (new Random().nextInt(450 - 30) + 30) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
+        super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
         super.entity_width = ConstantVariable.OBSTACLE_WIDTH;
         super.entity_height = ConstantVariable.OBSTACLE_HEIGHT;
         //super.entity_move_x = 0;
