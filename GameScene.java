@@ -140,13 +140,12 @@ public class GameScene extends JPanel {
     private Obstacle checkObstaclePosition(Obstacle[] list,Obstacle obstacle){
         Obstacle temp;
         for(int i=0; i< list.length; i++){
-            if(list[0] == null) return obstacle;
-            //if(list[i] == null)continue;
-            else if(list[i].entity_position_x == obstacle.entity_position_x && list[i].entity_position_y == obstacle.entity_position_y){
+            //if(list[0] == null) return obstacle;
+            //if(list[i] == null) continue;
+            if(list[i]!=null && list[i].entity_position_x == obstacle.entity_position_x && list[i].entity_position_y == obstacle.entity_position_y){
                 temp = new Obstacle(obstacle.gType());
-                checkObstaclePosition(list, temp);
+                return checkObstaclePosition(list, temp);
             }
-            else{return obstacle;}
         }
         return obstacle;
     }
