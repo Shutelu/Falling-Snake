@@ -57,12 +57,12 @@ public class GameScene extends JPanel {
         collisionProjectilObstacle();
         collisionProjectilSnake();
         collisionSnakeCannon();
+        collisionObstacleSnake();
 
         if (gameIsFinished) {
-            if(win){
+            if (win) {
                 System.out.println("Vous avez gagné !");
-            }
-            else if(lose){
+            } else if (lose) {
                 System.out.println("Vous avez perdu !");
             }
         }
@@ -94,16 +94,16 @@ public class GameScene extends JPanel {
             rand = new Random().nextInt(4);
             switch (rand) {
                 case 0:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.BOIS));
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.BOIS));
                     break;
                 case 1:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.FRAISE));
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.FRAISE));
                     break;
                 case 2:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.MYRTILLE));
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));
                     break;
                 case 3:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list,new Obstacle(ObstacleType.PIECE_DOR));
+                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.PIECE_DOR));
                     break;
             }
         }
@@ -137,12 +137,13 @@ public class GameScene extends JPanel {
 
     /*********** Methodes ***********/
 
-    private Obstacle checkObstaclePosition(Obstacle[] list,Obstacle obstacle){
+    private Obstacle checkObstaclePosition(Obstacle[] list, Obstacle obstacle) {
         Obstacle temp;
-        for(int i=0; i< list.length; i++){
-            //if(list[0] == null) return obstacle;
-            //if(list[i] == null) continue;
-            if(list[i]!=null && list[i].entity_position_x == obstacle.entity_position_x && list[i].entity_position_y == obstacle.entity_position_y){
+        for (int i = 0; i < list.length; i++) {
+            // if(list[0] == null) return obstacle;
+            // if(list[i] == null) continue;
+            if (list[i] != null && list[i].entity_position_x == obstacle.entity_position_x
+                    && list[i].entity_position_y == obstacle.entity_position_y) {
                 temp = new Obstacle(obstacle.gType());
                 return checkObstaclePosition(list, temp);
             }
@@ -165,7 +166,25 @@ public class GameScene extends JPanel {
         }
     }
 
-    private void collisionProjectilSnake() {
+    public void collisionObstacleSnake() {
+
+        for (int j = 0; j < obstacle_list.length; j++) {
+            if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
+
+                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.length - 1))) {
+
+                    snake.collisionWithObstacle(obstacle_list[j]);
+                    obstacle_list[j] = null;
+
+                }
+
+            }
+        }
+
+    }
+
+    public void collisionProjectilSnake() {
+        // if(canKillBodyPart){
         for (int i = 0; i < projectil_list.length; i++) {
             if (projectil_list[i] != null) {
                 snake.collisionWithProjectil(projectil_list[i]);
@@ -173,15 +192,28 @@ public class GameScene extends JPanel {
         }
     }
 
-    private void collisionSnakeCannon(){
+    
+
+    private void collisionSnakeCannon() {
         snake.collisionWithCannon(cannon);
     }
+
     // getter
-    public boolean getGameIsFinished() {return gameIsFinished;}
+    public boolean getGameIsFinished() {
+        return gameIsFinished;
+    }
 
     // setter
-    public void setGameIsFinished(boolean finished) {gameIsFinished = finished;}
-    public void setWin(boolean win){this.win = win;}
-    public void setLose(boolean lose){this.lose = lose;}
+    public void setGameIsFinished(boolean finished) {
+        gameIsFinished = finished;
+    }
+
+    public void setWin(boolean win) {
+        this.win = win;
+    }
+
+    public void setLose(boolean lose) {
+        this.lose = lose;
+    }
 
 }

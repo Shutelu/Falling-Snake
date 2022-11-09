@@ -1,13 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Snake extends JPanel {
 
     public int length;
     public ArrayList<Square> body;
+    public ObstacleType [] type = new ObstacleType[]{
+
+         ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
+
+    };
     public Graphics graphics;
     public String direction;
+
+    public long chrono;
+    public long chrono2;
     private boolean canKillBodyPart;
 
     public Snake(int length) {
@@ -123,8 +132,70 @@ public class Snake extends JPanel {
         }
     }
 
-    private boolean isKilled() {
-        if (body.size() < 1) {
+    public void collisionWithObstacle(Obstacle obstacle){
+
+
+            switch (obstacle.obstacleType) {
+                case BOIS:
+
+                    if(this.direction == "right") {
+                        this.direction = "down";
+                        moveSnake();
+                        this.direction = "left";
+                        moveSnake();
+                    }else if (this.direction == "left"){
+
+                        this.direction = "down";
+                        moveSnake();
+                        this.direction = "right";
+                        moveSnake();
+
+                    }
+                    break;
+                case FRAISE:
+
+                    switch (this.direction) {
+                        case "right" -> this.body.add(new Square(this.body.get(0).entity_position_x-20, this.body.get(0).entity_position_y));
+                        case "left" -> this.body.add(new Square(this.body.get(0).entity_position_x+20, this.body.get(0).entity_position_y));
+                    /*ERREUR*/    case "up" -> this.body.add(new Square(this.body.get(0).entity_position_x, this.body.get(0).entity_position_y + 20));
+                        case "down" ->  this.body.add(new Square(this.body.get(0).entity_position_x, this.body.get(0).entity_position_y - 20));
+                    }
+
+                    this.length ++;
+                    break;
+
+
+                case MYRTILLE:
+
+
+                    this.canKillBodyPart = false;
+                    new Thread(new InvincibilityTimer(this)).start();
+
+
+                    break;
+                case PIECE_DOR:
+
+                    Random random = new Random();
+                    for (int i = 0; i < GameFrame.gameScene.obstacle_list.length-1; i++){
+
+                        if (GameFrame.gameScene.obstacle_list[i] != null) {
+
+                            GameFrame.gameScene.obstacle_list[i].obstacleType = type[random.nextInt(type.length)];
+
+
+                        }
+
+                    }
+                break;
+
+            }
+
+
+
+    }
+
+    private boolean isKilled(){
+        if(body.size() < 1){
             return true;
         }
         return false;
