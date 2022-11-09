@@ -20,6 +20,7 @@ public abstract class ConstantVariable{
     public static final Color COLOR_PLATFORM = Color.GREEN;
     public static final Color COLOR_CANNON = Color.RED;
     public static final Color COLOR_SNAKE = Color.GREEN;
+    public static final Color COLOR_SNAKE_INVINCIBLE = new Color(245, 233, 66);
     public static final Color COLOR_PROJECTIL = Color.WHITE;
     public static final Color COLOR_BOIS = new Color(112,83,4);
     public static final Color COLOR_FRAISE = new Color(191,19,51);
@@ -53,5 +54,10 @@ public abstract class ConstantVariable{
 
     public static final int OBSTACLE_INITAIL_OBS_NOMBER = 15;
     public static final int OBSTACLE_BLOCS = 20;
+
+    /***********Timer(ms)***********/
+
+    public static final int TIMER_CANKILL = 500;
+    public static final int TIMER_INVINCIBLE = 2000;
 
 }

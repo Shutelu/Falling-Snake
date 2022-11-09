@@ -76,7 +76,7 @@ public class GameScene extends JPanel {
     }
 
     private void snake_init() {
-        snake = new Snake(10);
+        snake = new Snake(2);
     }
 
     private void projectil_init() {
