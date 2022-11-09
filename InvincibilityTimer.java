@@ -15,7 +15,7 @@ public class InvincibilityTimer implements Runnable{
     public void run() {
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
             snake.setCanKillBodyPart(true);
             System.out.println("INVINSIBLE !");
         } catch (InterruptedException e) {

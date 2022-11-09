@@ -6,6 +6,9 @@ public enum ObstacleType {
     MYRTILLE(ConstantVariable.COLOR_MYRTILLE),
     PIECE_DOR(ConstantVariable.COLOR_OR);
 
+
+
+
     private ObstacleType(Color c){this.color = c;}
 
     private final Color color;
