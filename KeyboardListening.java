@@ -47,7 +47,7 @@ public class KeyboardListening implements KeyListener {
                 GameFrame.gameScene.projectil_list[compter].entityIsAlive = true;
                 GameFrame.gameScene.cannon.canFire = false;
                 new Thread(new CannonLoadTimer()).start();;//reload
-                GameFrame.gameScene.projectilCompter = (GameFrame.gameScene.projectilCompter + 1) % ConstantVariable.PROJECTIL_MAX;
+                GameFrame.gameScene.projectilCompter = (GameFrame.gameScene.projectilCompter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER;
             }
         }
     }

@@ -8,10 +8,9 @@ public class Projectil extends Entity{
         super.entity_position_y = -10;
         super.entity_width = ConstantVariable.PROJECTIL_WIDTH;
         super.entity_height = ConstantVariable.PROJECTIL_HEIGHT;
-        super.entity_move_x = 0;
         super.entity_move_y = ConstantVariable.PROJECTIL_MOVESPEED_Y;
-        super.entityIsAlive = false;
         super.entity_color = ConstantVariable.COLOR_PROJECTIL;
+        super.entityIsAlive = false;
     }
 
     public int move(){

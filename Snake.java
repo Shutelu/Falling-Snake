@@ -5,24 +5,22 @@ import java.util.Random;
 
 public class Snake extends JPanel {
 
-    private int snakeLength;
     public ArrayList<Square> body;
+    private int snakeLength;
+    private boolean canKillBodyPart;
     public ObstacleType[] type = new ObstacleType[] {
-
             ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
-
     };
     public Graphics graphics;
     public String direction;
 
     public long chrono;
     public long chrono2;
-    private boolean canKillBodyPart;
 
     public Snake(int length) {
 
-        canKillBodyPart = true;
-        body = new ArrayList<Square>();
+        this.body = new ArrayList<Square>();
+        this.canKillBodyPart = true;
         this.snakeLength = length;
         this.direction = "right";
 
@@ -31,8 +29,8 @@ public class Snake extends JPanel {
     }
 
     public void createSnake() {
-        for (int i = 0; i < this.snakeLength; i++) {
-            body.add(new Square(((i) * 20), 0));
+        for (int i = 0; i < snakeLength; i++) {
+            body.add(new Square((i * 20), 0));
         }
     }
 
@@ -160,8 +158,7 @@ public class Snake extends JPanel {
                 break;
 
             case MYRTILLE:
-                if (this.canKillBodyPart) {
-                    this.canKillBodyPart = false;
+                if (this.canKillBodyPart) {                    this.canKillBodyPart = false;
                     for (Square s : this.body) {
                         s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
                     }
@@ -192,7 +189,9 @@ public class Snake extends JPanel {
         canKillBodyPart = b;
     }
 
-    //getter
-    public int getSnakeLength(){return snakeLength;}
+    // getter
+    public int getSnakeLength() {
+        return snakeLength;
+    }
 
 }

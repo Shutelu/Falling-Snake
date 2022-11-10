@@ -46,13 +46,13 @@ public abstract class ConstantVariable{
     
     public static final int PROJECTIL_MOVESPEED_Y = 1;
     
-    public static final int PROJECTIL_MAX = 10;//the maximum number of projectil you may store
+    public static final int PROJECTIL_MAX_NUMBER = 10;//the maximum number of projectil you may store
 
     /***********Obstacle***********/
     public static final int OBSTACLE_WIDTH = 20;
     public static final int OBSTACLE_HEIGHT = 20;
 
-    public static final int OBSTACLE_INITAIL_OBS_NOMBER = 15;
+    public static final int OBSTACLE_INITAIL_OBSTACLE_NOMBER = 15;
     public static final int OBSTACLE_BLOCS = 20;
 
     /***********Timer(ms)***********/

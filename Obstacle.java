@@ -9,10 +9,7 @@ public class Obstacle extends Entity{
         super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
         super.entity_width = ConstantVariable.OBSTACLE_WIDTH;
         super.entity_height = ConstantVariable.OBSTACLE_HEIGHT;
-        //super.entity_move_x = 0;
-        //super.entity_move_y = ConstantVariable.PROJECTIL_MOVESPEED_Y;
         super.entityIsAlive = true;
-        //super.entity_color = null;
 
         //own
         obstacleType = type;

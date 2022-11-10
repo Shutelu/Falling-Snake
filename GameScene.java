@@ -1,6 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Random;
 import javax.swing.JPanel;
 
 //GameScene will contain the game settings
@@ -13,7 +12,7 @@ public class GameScene extends JPanel {
         gameIsFinished = false;
         win = false;
         lose = false;
-        // canKillBodyPart = true;
+
         cannon_init();
         snake_init();
         projectil_init();
@@ -28,15 +27,14 @@ public class GameScene extends JPanel {
         infiniteRepanting.start();
     }
 
-    private boolean gameIsFinished;
-    private boolean win;
-    private boolean lose;
-    // private boolean canKillBodyPart;
+    public Obstacle[] obstacle_list;
+    public Projectil[] projectil_list; // munitions
     public Cannon cannon;
     public Snake snake;
     public int projectilCompter;
-    public Projectil[] projectil_list; // munitions
-    public Obstacle[] obstacle_list;
+    private boolean gameIsFinished;
+    private boolean win;
+    private boolean lose;
 
     @Override
     public void paintComponent(Graphics g) {
@@ -81,31 +79,18 @@ public class GameScene extends JPanel {
 
     private void projectil_init() {
         projectilCompter = 0;
-        projectil_list = new Projectil[ConstantVariable.PROJECTIL_MAX];
+        projectil_list = new Projectil[ConstantVariable.PROJECTIL_MAX_NUMBER];
+
         for (int i = 0; i < projectil_list.length; i++) {
             projectil_list[i] = new Projectil();
         }
     }
 
     private void obstacle_init() {
-        int rand;
-        obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBS_NOMBER];
+        obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
+
         for (int i = 0; i < obstacle_list.length; i++) {
-            rand = new Random().nextInt(4);
-            switch (rand) {
-                case 0:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.BOIS));
-                    break;
-                case 1:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.FRAISE));
-                    break;
-                case 2:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));
-                    break;
-                case 3:
-                    obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.PIECE_DOR));
-                    break;
-            }
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
         }
     }
 
