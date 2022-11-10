@@ -181,8 +181,7 @@ public class Snake extends JPanel {
 
                 }
                 break;
-
-        }
+    }
 
     }
 
