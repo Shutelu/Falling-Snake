@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Snake extends JPanel {
 
-    public int length;
+    private int snakeLength;
     public ArrayList<Square> body;
     public ObstacleType[] type = new ObstacleType[] {
 
@@ -23,7 +23,7 @@ public class Snake extends JPanel {
 
         canKillBodyPart = true;
         body = new ArrayList<Square>();
-        this.length = length;
+        this.snakeLength = length;
         this.direction = "right";
 
         createSnake();
@@ -31,7 +31,7 @@ public class Snake extends JPanel {
     }
 
     public void createSnake() {
-        for (int i = 0; i < this.length; i++) {
+        for (int i = 0; i < this.snakeLength; i++) {
             body.add(new Square(((i) * 20), 0));
         }
     }
@@ -40,7 +40,7 @@ public class Snake extends JPanel {
     public void moveSnake() {
 
         ArrayList<Square> newbody = new ArrayList<Square>();
-        Square first = this.body.get(this.length - 1);
+        Square first = this.body.get(this.snakeLength - 1);
         Square head = new Square(first.getEntityPosX(), first.getEntityPosY());
 
         switch (this.direction) {
@@ -62,8 +62,8 @@ public class Snake extends JPanel {
     }
 
     public void checkWindowLimitCollision() {
-        if (this.body.get(this.length - 1).getEntityPosX() == ConstantVariable.MAIN_WINDOW_WIDTH - 40
-                || this.body.get(this.length - 1).getEntityPosX() == 0) {
+        if (this.body.get(snakeLength - 1).getEntityPosX() == ConstantVariable.MAIN_WINDOW_WIDTH - 40
+                || this.body.get(snakeLength - 1).getEntityPosX() == 0) {
             switch (this.direction) {
                 case "right":
                     this.direction = "down";
@@ -107,8 +107,8 @@ public class Snake extends JPanel {
                     projectil.entity_position_y = -10;
                     // projectil = null;
                     body.remove(0);
-                    length--;
-                    new Thread(new SnakeBodyTimer(this,ConstantVariable.TIMER_CANKILL,false)).start();
+                    snakeLength--;
+                    new Thread(new SnakeBodyTimer(this, ConstantVariable.TIMER_CANKILL, false)).start();
                     break;
                 }
             } else {
@@ -156,32 +156,28 @@ public class Snake extends JPanel {
                     case "down" -> this.body.add(
                             new Square(this.body.get(0).entity_position_x, this.body.get(0).entity_position_y - 20));
                 }
-                this.length++;
+                snakeLength++;
                 break;
 
             case MYRTILLE:
-
-                this.canKillBodyPart = false;
-                for(Square s : this.body){
-                    s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
+                if (this.canKillBodyPart) {
+                    this.canKillBodyPart = false;
+                    for (Square s : this.body) {
+                        s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
+                    }
+                    new Thread(new SnakeBodyTimer(this, ConstantVariable.TIMER_INVINCIBLE, true)).start();
                 }
-                new Thread(new SnakeBodyTimer(this,ConstantVariable.TIMER_INVINCIBLE,true)).start();
-
                 break;
             case PIECE_DOR:
 
                 Random random = new Random();
                 for (int i = 0; i < GameFrame.gameScene.obstacle_list.length - 1; i++) {
-
                     if (GameFrame.gameScene.obstacle_list[i] != null) {
-
                         GameFrame.gameScene.obstacle_list[i].obstacleType = type[random.nextInt(type.length)];
-
                     }
-
                 }
                 break;
-    }
+        }
 
     }
 
@@ -195,5 +191,8 @@ public class Snake extends JPanel {
     public void setCanKillBodyPart(boolean b) {
         canKillBodyPart = b;
     }
+
+    //getter
+    public int getSnakeLength(){return snakeLength;}
 
 }

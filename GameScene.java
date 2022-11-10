@@ -34,8 +34,8 @@ public class GameScene extends JPanel {
     // private boolean canKillBodyPart;
     public Cannon cannon;
     public Snake snake;
-    public Projectil[] projectil_list; // munitions
     public int projectilCompter;
+    public Projectil[] projectil_list; // munitions
     public Obstacle[] obstacle_list;
 
     @Override
@@ -169,8 +169,8 @@ public class GameScene extends JPanel {
     public void collisionObstacleSnake() {
         if(snake.body.size() <= 1)return;
         for (int j = 0; j < obstacle_list.length; j++) {
-            if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
-                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.length - 1))) {
+            if (obstacle_list[j] != null && snake.body.get(snake.getSnakeLength() - 1) != null) {
+                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.getSnakeLength() - 1))) {
                     snake.collisionWithObstacle(obstacle_list[j]);
                     obstacle_list[j] = null;
                 }

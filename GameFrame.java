@@ -13,7 +13,7 @@ public class GameFrame extends JFrame{
         this.setLocationRelativeTo(null);//put in center should be after size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);
-        this.setLayout(null);// ?
+
         
         //Game Scene
         gameScene = new GameScene();
