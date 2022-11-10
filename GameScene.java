@@ -1,5 +1,4 @@
 import java.awt.Graphics;
-
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,7 +26,7 @@ public class GameScene extends JPanel {
         this.requestFocusInWindow();// focus from this scene
         this.addKeyListener(new KeyboardListening());
 
-        Thread repanting = new Thread(new RepaintTimer(this));
+        Thread repanting = new Thread(new RepaintTimer(this, snake));
         repanting.start();
     }
 
@@ -69,7 +68,7 @@ public class GameScene extends JPanel {
     }
 
     private void snake_init() {
-        snake = new Snake(2);
+        snake = new Snake(10);
     }
 
     private void projectil_init() {
@@ -85,7 +84,8 @@ public class GameScene extends JPanel {
         obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
-            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));
         }
     }
 
@@ -125,8 +125,6 @@ public class GameScene extends JPanel {
     private Obstacle checkObstaclePosition(Obstacle[] list, Obstacle obstacle) {
         Obstacle temp;
         for (int i = 0; i < list.length; i++) {
-            // if(list[0] == null) return obstacle;
-            // if(list[i] == null) continue;
             if (list[i] != null && list[i].entity_position_x == obstacle.entity_position_x
                     && list[i].entity_position_y == obstacle.entity_position_y) {
                 temp = new Obstacle(obstacle.gType());
@@ -144,7 +142,6 @@ public class GameScene extends JPanel {
                         obstacle_list[j] = null;
                         projectil_list[i].entity_position_x = -10;
                         projectil_list[i].entity_position_y = -10;
-                        // projectil_list[i] = null;
                     }
                 }
             }
@@ -152,10 +149,10 @@ public class GameScene extends JPanel {
     }
 
     public void collisionObstacleSnake() {
-        if(snake.body.size() <= 1)return;
+        if(snake.body.size() <= 0)return;
         for (int j = 0; j < obstacle_list.length; j++) {
-            if (obstacle_list[j] != null && snake.body.get(snake.getSnakeLength() - 1) != null) {
-                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.getSnakeLength() - 1))) {
+            if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
+                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.length - 1))) {
                     snake.collisionWithObstacle(obstacle_list[j]);
                     obstacle_list[j] = null;
                 }

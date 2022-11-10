@@ -19,7 +19,7 @@ public class SnakeBodyTimer implements Runnable{
         synchronized(snake){
             if(!invincible){
                 try {
-                    Thread.sleep(duration);
+                    Thread.sleep(0);
                     snake.setCanKillBodyPart(true);
                     System.out.println("fin can kill");
                 } catch (InterruptedException e) {
