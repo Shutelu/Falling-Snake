@@ -20,14 +20,12 @@ public class KeyboardListening implements KeyListener {
                 if(GameFrame.gameScene.cannon.getCanFire() == true){
                     Projectil[] projectils_list = GameFrame.gameScene.projectil_list;
                     int compter = GameFrame.gameScene.projectilCompter;
+                    GameFrame.gameScene.cannon.setCanFire(false);
 
                     projectils_list[compter].setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
                     projectils_list[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
 
                     projectils_list[compter].entityIsAlive = true;
-                    GameFrame.gameScene.cannon.setCanFire(false);
-
-                    new Thread(new CannonLoadTimer()).start();;//reload
 
                     GameFrame.gameScene.projectilCompter = (compter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER;
                 }
