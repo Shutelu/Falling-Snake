@@ -18,13 +18,12 @@ public class Cannon extends Entity{
     private boolean canFire;
 
     public int move(){
-
         //left and limit | -1
         if(entity_move_x < 0 && ConstantVariable.CANNON_BORDER_LIMIT_LEFT < entity_position_x){
             entity_position_x += entity_move_x;
         }
         //right and limit | 1
-        else if(0 < entity_move_x && entity_position_x + entity_move_x < ConstantVariable.CANNON_BORDER_LIMIT_RIGHT){
+        else if(0 < entity_move_x && entity_position_x < ConstantVariable.CANNON_BORDER_LIMIT_RIGHT){
             entity_position_x += entity_move_x;
         }
         

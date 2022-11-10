@@ -16,7 +16,7 @@ public class GameFrame extends JFrame{
 
         
         //Game Scene
-        gameScene = new GameScene();
+        gameScene = new GameScene(this);
         this.setContentPane(gameScene);       
         this.setVisible(true);//must be last
     }

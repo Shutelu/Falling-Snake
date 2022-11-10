@@ -1,13 +1,18 @@
 import java.awt.Graphics;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //GameScene will contain the game settings
 
 public class GameScene extends JPanel {
 
-    public GameScene() {
+    public GameScene(JFrame frame) {
         super();
 
+        gameFrame = frame;
         gameIsFinished = false;
         win = false;
         lose = false;
@@ -28,6 +33,7 @@ public class GameScene extends JPanel {
 
     public Obstacle[] obstacle_list;
     public Projectil[] projectil_list; // munitions
+    private JFrame gameFrame;
     public Cannon cannon;
     public Snake snake;
     public int projectilCompter;
@@ -52,13 +58,7 @@ public class GameScene extends JPanel {
         collisionSnakeCannon();
         collisionObstacleSnake();
 
-        if (gameIsFinished) {
-            if (win) {
-                System.out.println("Vous avez gagné !");
-            } else if (lose) {
-                System.out.println("Vous avez perdu !");
-            }
-        }
+        checkEndGame();
 
     }
 
@@ -166,7 +166,6 @@ public class GameScene extends JPanel {
     }
 
     public void collisionProjectilSnake() {
-        // if(canKillBodyPart){
         for (int i = 0; i < projectil_list.length; i++) {
             if (projectil_list[i] != null) {
                 snake.collisionWithProjectil(projectil_list[i]);
@@ -178,22 +177,32 @@ public class GameScene extends JPanel {
         snake.collisionWithCannon(cannon);
     }
 
-    // getter
-    public boolean getGameIsFinished() {
-        return gameIsFinished;
+    private void checkEndGame(){
+        if (gameIsFinished) {
+            JDialog dialog = new JDialog(gameFrame);
+            JLabel label = new JLabel();
+
+            if (win) {
+                dialog.setTitle("Bien jouer !");
+                label.setText("Vous avez gagné !");
+            } else if (lose) {
+                dialog.setTitle("Oh non !");
+                label.setText("Vous avez perdu !");
+            }
+
+            dialog.add(label);
+            dialog.setSize(200, 200);
+            dialog.setLocationRelativeTo(gameFrame);
+            dialog.setVisible(true);
+        }
     }
+
+    // getter
+    public boolean getGameIsFinished() {return gameIsFinished;}
 
     // setter
-    public void setGameIsFinished(boolean finished) {
-        gameIsFinished = finished;
-    }
-
-    public void setWin(boolean win) {
-        this.win = win;
-    }
-
-    public void setLose(boolean lose) {
-        this.lose = lose;
-    }
+    public void setGameIsFinished(boolean finished) {gameIsFinished = finished;}
+    public void setWin(boolean win) {this.win = win;}
+    public void setLose(boolean lose) {this.lose = lose;}
 
 }
