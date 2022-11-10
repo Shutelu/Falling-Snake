@@ -4,7 +4,7 @@ public class CannonLoadTimer implements Runnable{
     public void run(){
         try {
             Thread.sleep(300);
-            GameFrame.gameScene.cannon.canFire = true;
+            GameFrame.gameScene.cannon.setCanFire(true);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

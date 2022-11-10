@@ -15,7 +15,7 @@ public class Cannon extends Entity{
         canFire = true;
     }
 
-    public boolean canFire;
+    private boolean canFire;
 
     public int move(){
 
@@ -47,4 +47,9 @@ public class Cannon extends Entity{
         return false;
     }
 
+    //getter
+    public boolean getCanFire(){return canFire;}
+
+    //setter
+    public void setCanFire(boolean b){canFire = b;}
 }
