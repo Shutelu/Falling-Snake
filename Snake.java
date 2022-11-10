@@ -122,12 +122,10 @@ public class Snake extends JPanel {
         for (Square snakeBody : body) {
             if (canKillBodyPart) {
                 if (projectil.collisionWithSnake(snakeBody)) {
-                    // canKillBodyPart = false;
                     projectil.entity_position_x = -10;
                     projectil.entity_position_y = -10;
                     body.remove(0);
                     length--;
-                    // new Thread(new SnakeBodyTimer(this,ConstantVariable.TIMER_CANKILL,false)).start();
                     break;
                 }
             } 
@@ -174,9 +172,6 @@ public class Snake extends JPanel {
                 if(canKillBodyPart){
                     this.canKillBodyPart = false;
                     System.out.println("invincible time !");
-
-                    
-                    // new Thread(new SnakeBodyTimer(this,ConstantVariable.TIMER_INVINCIBLE,true)).start();
                 }
 
                 break;
