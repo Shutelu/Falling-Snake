@@ -1,5 +1,4 @@
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 //GameScene will contain the game settings
@@ -23,8 +22,8 @@ public class GameScene extends JPanel {
         this.requestFocusInWindow();// focus from this scene
         this.addKeyListener(new KeyboardListening());
 
-        Thread infiniteRepanting = new Thread(new RepaintTimer(this));
-        infiniteRepanting.start();
+        Thread repanting = new Thread(new RepaintTimer(this));
+        repanting.start();
     }
 
     public Obstacle[] obstacle_list;
@@ -38,19 +37,15 @@ public class GameScene extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);// heritage
-        Graphics g2 = (Graphics2D) g;// g2 plus performant
+        super.paintComponent(g);
 
         this.setBackground(ConstantVariable.COLOR_MAIN_WINDOW_BACKGROUND);
 
-        // Draw platform
-        g2.setColor(ConstantVariable.COLOR_PLATFORM);
-        g2.fillRect(20, 640, 444, 4);
-
-        draw_cannon(g2);
-        draw_snake(g2);
-        draw_projectil(g2);
-        draw_obstacle(g2);
+        draw_platform(g);
+        draw_cannon(g);
+        draw_snake(g);
+        draw_projectil(g);
+        draw_obstacle(g);
 
         collisionProjectilObstacle();
         collisionProjectilSnake();
@@ -95,6 +90,11 @@ public class GameScene extends JPanel {
     }
 
     /*********** Draw ***********/
+
+    private void draw_platform(Graphics g){
+        g.setColor(ConstantVariable.COLOR_PLATFORM);
+        g.fillRect(20, 640, 444, 4);
+    }
 
     private void draw_cannon(Graphics g) {
         cannon.draw(g);

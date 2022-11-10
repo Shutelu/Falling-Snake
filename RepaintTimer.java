@@ -2,7 +2,6 @@ public class RepaintTimer implements Runnable {
 
     private final int PAUSE = 5;// temps attente entre 2 boucles 5ms
     public static int compteur = 0;
-    // private boolean gameIsFinished;
     private GameScene gameScene;
 
     public RepaintTimer(GameScene gameScene){
