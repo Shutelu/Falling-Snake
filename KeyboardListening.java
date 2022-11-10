@@ -15,16 +15,21 @@ public class KeyboardListening implements KeyListener {
             case KeyEvent.VK_RIGHT:
                 GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
                 break;
-                
+
             case KeyEvent.VK_SPACE:
                 if(GameFrame.gameScene.cannon.canFire == true){
+                    Projectil[] projectils_list = GameFrame.gameScene.projectil_list;
                     int compter = GameFrame.gameScene.projectilCompter;
-                    GameFrame.gameScene.projectil_list[compter].setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
-                    GameFrame.gameScene.projectil_list[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
-                    GameFrame.gameScene.projectil_list[compter].entityIsAlive = true;
+
+                    projectils_list[compter].setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
+                    projectils_list[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
+
+                    projectils_list[compter].entityIsAlive = true;
                     GameFrame.gameScene.cannon.canFire = false;
+
                     new Thread(new CannonLoadTimer()).start();;//reload
-                    GameFrame.gameScene.projectilCompter = (GameFrame.gameScene.projectilCompter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER;
+                    
+                    GameFrame.gameScene.projectilCompter = (compter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER;
                 }
                 break;
         }
