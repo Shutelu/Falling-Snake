@@ -1,7 +1,6 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Snake extends JPanel {
 
@@ -9,11 +8,11 @@ public class Snake extends JPanel {
 
     public boolean eatFraise = false;
     public ArrayList<Square> body;
-    public ObstacleType[] type = new ObstacleType[] {
+    // public ObstacleType[] type = new ObstacleType[] {
 
-            ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
+    //         ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
 
-    };
+    // };
     
     public Graphics graphics;
     public String direction;
@@ -150,7 +149,7 @@ public class Snake extends JPanel {
     }
 
     public void collisionWithObstacle(Obstacle obstacle) {
-        switch (obstacle.obstacleType) {
+        switch (obstacle.getType()) {
             case BOIS:
                 if (this.direction == "right") {
                     this.direction = "down";
@@ -177,10 +176,9 @@ public class Snake extends JPanel {
                 break;
 
             case PIECE_DOR:
-                Random random = new Random();
                 for (int i = 0; i < gameScene.getObstacleList().length - 1; i++) {
                     if (gameScene.getObstacleList()[i] != null) {
-                        gameScene.getObstacleList()[i].obstacleType = type[random.nextInt(type.length)];
+                        gameScene.getObstacleList()[i].setType(ObstacleType.randomType());
                     }
                 }
                 break;

@@ -131,7 +131,7 @@ public class GameScene extends JPanel {
             if (list[i] == null) continue;
             else if (list[i].entity_position_x == obstacle.entity_position_x
                     && list[i].entity_position_y == obstacle.entity_position_y) {
-                temp = new Obstacle(obstacle.gType());
+                temp = new Obstacle(obstacle.getType());
                 return checkObstaclePosition(list, temp);
             }
         }
@@ -156,7 +156,7 @@ public class GameScene extends JPanel {
         if(snake.body.size() <= 0)return;
         for (int j = 0; j < obstacle_list.length; j++) {
             if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
-                if (obstacle_list[j].collisionWithObstacle(snake.body.get(snake.length - 1))) {
+                if (obstacle_list[j].collisionWithSnake(snake.body.get(snake.length - 1))) {
                     snake.collisionWithObstacle(obstacle_list[j]);
                     obstacle_list[j] = null;
                 }

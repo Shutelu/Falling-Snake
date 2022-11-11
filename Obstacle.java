@@ -12,10 +12,10 @@ public class Obstacle extends Entity{
         super.entityIsAlive = true;
 
         //own
-        obstacleType = type;
+        this.obstacleType = type;
     }
 
-    ObstacleType obstacleType;
+    private ObstacleType obstacleType;
 
     @Override
     public int move(){return 0;}
@@ -28,9 +28,7 @@ public class Obstacle extends Entity{
         }
     }
 
-    //getter
-    public ObstacleType gType(){return obstacleType;}
-    public boolean collisionWithObstacle(Square square){
+    public boolean collisionWithSnake(Square square){
 
         if(this.entity_position_y <= square.entity_position_y + square.entity_height
                 && this.entity_position_x >= square.entity_position_x
@@ -42,5 +40,10 @@ public class Obstacle extends Entity{
 
         return false;
     }
-
+    
+    //getter
+    public ObstacleType getType(){return obstacleType;}
+    
+    //setter
+    public void setType(ObstacleType type){this.obstacleType = type;}
 }

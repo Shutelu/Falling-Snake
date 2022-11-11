@@ -9,13 +9,6 @@ public abstract class Entity {
     protected boolean entityIsAlive;
     protected Color entity_color;
 
-    //setters
-    // public void setEntityPosX(int x){entity_position_x = x;}
-    // public void setEntityPosY(int y){entity_position_y = y;}
-    // public void setEntityMoveX(int x){entity_move_x = x;}
-    // public void setEntityMoveY(int y){entity_move_y = y;}
-    // public void setEntityColor(Color c){entity_color = c;}
-
     public abstract int move();
     public abstract void draw(Graphics g);
 }
