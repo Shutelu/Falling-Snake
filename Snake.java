@@ -46,18 +46,18 @@ public class Snake extends JPanel {
 
         ArrayList<Square> newbody = new ArrayList<Square>();
         Square first = this.body.get(this.length - 1);
-        Square head = new Square(first.getEntityPosX(), first.getEntityPosY());
+        Square head = new Square(first.entity_position_x, first.entity_position_y);
 
         switch (this.direction) {
-            case "right" -> head.setEntityPosX(head.getEntityPosX() + 20);
-            case "left" -> head.setEntityPosX(head.getEntityPosX() - 20);
-            case "up" -> head.setEntityPosY(head.getEntityPosY() - 20);
-            case "down" -> head.setEntityPosY(head.getEntityPosY() + 20);
+            case "right" -> head.setEntityPosX(head.entity_position_x + 20);
+            case "left" -> head.setEntityPosX(head.entity_position_x - 20);
+            case "up" -> head.setEntityPosY(head.entity_position_y - 20);
+            case "down" -> head.setEntityPosY(head.entity_position_y + 20);
         }
 
         for (int i = 1; i < this.body.size(); i++) {
             Square previous = this.body.get(i);
-            Square newRec = new Square(previous.getEntityPosX(), previous.getEntityPosY());
+            Square newRec = new Square(previous.entity_position_x, previous.entity_position_y);
             newbody.add(newRec);
         }
 
@@ -84,8 +84,8 @@ public class Snake extends JPanel {
     }
 
     public void checkWindowLimitCollision() {
-        if (this.body.get(this.length - 1).getEntityPosX() == ConstantVariable.MAIN_WINDOW_WIDTH - 20
-                || this.body.get(this.length - 1).getEntityPosX() == - 20) {
+        if (this.body.get(this.length - 1).entity_position_x == ConstantVariable.MAIN_WINDOW_WIDTH - 20
+                || this.body.get(this.length - 1).entity_position_x == - 20) {
             switch (this.direction) {
                 case "right":
                     this.direction = "down";
@@ -110,8 +110,8 @@ public class Snake extends JPanel {
                 moveSnake();
             }
             for (int j = 0; j < this.body.size(); j++) {
-                g.setColor(this.body.get(j).getEntityColor());
-                g.fillRect(this.body.get(j).getEntityPosX(), this.body.get(j).getEntityPosY(), 20, 20);
+                g.setColor(this.body.get(j).entity_color);
+                g.fillRect(this.body.get(j).entity_position_x, this.body.get(j).entity_position_y, 20, 20);
             }
         } else {
             gameScene.setGameIsFinished(true);

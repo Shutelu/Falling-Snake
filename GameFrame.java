@@ -14,16 +14,8 @@ public class GameFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);
 
-        
-        //Game Scene
-        // gameScene = new GameScene(this);
-        // this.setContentPane(gameScene);       
-        // gameScene = new GameScene(this);
         this.setContentPane(new GameScene(this));       
         this.setVisible(true);//must be last
     }
-
-    // private GameScene gameScene;
-
 
 }

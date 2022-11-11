@@ -45,14 +45,16 @@ public class Projectil extends Entity{
     }
 
     public boolean collisionWithSnake(Square snakeBody){
-        if(this.entity_position_y <= snakeBody.getEntityPosY() + snakeBody.getEntityHeight()
-        && this.entity_position_x >= snakeBody.getEntityPosX()
-        && this.entity_position_y >= snakeBody.getEntityPosY()
-        && this.entity_position_x <= snakeBody.getEntityPosX() + snakeBody.getEntityWidth()
-        || this.entity_position_y <= snakeBody.getEntityPosY() + snakeBody.getEntityHeight()
-        && this.entity_position_x + this.entity_width >= snakeBody.getEntityPosX()
-        && this.entity_position_y >= snakeBody.getEntityPosY()
-        && this.entity_position_x + this.entity_width <= snakeBody.getEntityPosX() + snakeBody.getEntityWidth())
+        if(
+            this.entity_position_y <= snakeBody.entity_position_y + snakeBody.entity_height
+            && this.entity_position_x >= snakeBody.entity_position_x
+            && this.entity_position_y >= snakeBody.entity_position_y
+            && this.entity_position_x <= snakeBody.entity_position_x + snakeBody.entity_width
+            || this.entity_position_y <= snakeBody.entity_position_y + snakeBody.entity_height
+            && this.entity_position_x + this.entity_width >= snakeBody.entity_position_x
+            && this.entity_position_y >= snakeBody.entity_position_y
+            && this.entity_position_x + this.entity_width <= snakeBody.entity_position_x + snakeBody.entity_width
+        )
         {return true;}
         return false;
     }

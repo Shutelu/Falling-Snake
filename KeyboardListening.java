@@ -14,13 +14,11 @@ public class KeyboardListening implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
             case KeyEvent.VK_LEFT:
-                // GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
                 gameScene.getCannon().entity_move_x = -ConstantVariable.CANNON_MOVESPEED_X;
                 break;
 
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
-                // GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
                 gameScene.getCannon().entity_move_x = ConstantVariable.CANNON_MOVESPEED_X;
                 break;
 
@@ -28,13 +26,11 @@ public class KeyboardListening implements KeyListener {
                 if(gameScene.getCannon().getCanFire() == true){
                     Projectil[] projectils_list = gameScene.getProjectilList();
                     int compter = gameScene.getProjectilCounter();
+
                     gameScene.getCannon().setCanFire(false);
-
-                    projectils_list[compter].setEntityPosX(gameScene.getCannon().getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
+                    projectils_list[compter].setEntityPosX(gameScene.getCannon().entity_position_x + ConstantVariable.CANNON_WIDTH/2 - 1);
                     projectils_list[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
-
                     projectils_list[compter].entityIsAlive = true;
-
                     gameScene.setProjectilCounter((compter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER);
                 }
                 break;
