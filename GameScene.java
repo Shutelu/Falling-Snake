@@ -153,10 +153,10 @@ public class GameScene extends JPanel {
     }
 
     private void collisionObstacleSnake() {
-        if(snake.body.size() <= 0)return;
+        if(snake.getBody().size() <= 0)return;
         for (int j = 0; j < obstacle_list.length; j++) {
-            if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
-                if (obstacle_list[j].collisionWithSnake(snake.body.get(snake.length - 1))) {
+            if (obstacle_list[j] != null && snake.getBody().get(snake.getSnakeLength() - 1) != null) {
+                if (obstacle_list[j].collisionWithSnake(snake.getBody().get(snake.getSnakeLength() - 1))) {
                     snake.collisionWithObstacle(obstacle_list[j]);
                     obstacle_list[j] = null;
                 }

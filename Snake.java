@@ -4,38 +4,26 @@ import java.util.ArrayList;
 
 public class Snake extends JPanel {
 
-    public int length;
-
-    public boolean eatFraise = false;
-    public ArrayList<Square> body;
-    // public ObstacleType[] type = new ObstacleType[] {
-
-    //         ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
-
-    // };
-    
-    public Graphics graphics;
-    public String direction;
-
-    public long chrono;
-    public long chrono2;
-    private boolean canKillBodyPart;
     private GameScene gameScene;
+    private ArrayList<Square> body;
+    private int snakeLength;
+    private String direction;
+    private boolean eatFraise;
+    private boolean canKillBodyPart;
 
-    public Snake(int length, GameScene gameScene) {
-
+    public Snake(int snakeLength, GameScene gameScene) {
         this.gameScene = gameScene;
         this.body = new ArrayList<Square>();
-        this.canKillBodyPart = true;
-        this.length = length;
+        this.snakeLength = snakeLength;
         this.direction = "right";
+        this.eatFraise = false;
+        this.canKillBodyPart = true;
 
         createSnake();
-
     }
 
     public void createSnake() {
-        for (int i = 0; i < this.length; i++) {
+        for (int i = 0; i < this.snakeLength; i++) {
             body.add(new Square(((i) * 20), 0));
         }
     }
@@ -44,7 +32,7 @@ public class Snake extends JPanel {
     public void moveSnake() {
 
         ArrayList<Square> newbody = new ArrayList<Square>();
-        Square first = this.body.get(this.length - 1);
+        Square first = this.body.get(this.snakeLength - 1);
         Square head = new Square(first.entity_position_x, first.entity_position_y);
 
         switch (this.direction) {
@@ -63,7 +51,7 @@ public class Snake extends JPanel {
         newbody.add(head);
 
         if (eatFraise ==true) {
-            this.length++;
+            this.snakeLength++;
             switch (this.direction) {
                 case "right":
                     Square teter = new Square(head.entity_position_x + 20, head.entity_position_y);
@@ -83,8 +71,8 @@ public class Snake extends JPanel {
     }
 
     public void checkWindowLimitCollision() {
-        if (this.body.get(this.length - 1).entity_position_x == ConstantVariable.MAIN_WINDOW_WIDTH - 20
-                || this.body.get(this.length - 1).entity_position_x == - 20) {
+        if (this.body.get(this.snakeLength - 1).entity_position_x == ConstantVariable.MAIN_WINDOW_WIDTH - 20
+                || this.body.get(this.snakeLength - 1).entity_position_x == - 20) {
             switch (this.direction) {
                 case "right":
                     this.direction = "down";
@@ -125,7 +113,7 @@ public class Snake extends JPanel {
                     projectil.entity_position_x = -10;
                     projectil.entity_position_y = -10;
                     body.remove(0);
-                    length--;
+                    snakeLength--;
                     break;
                 }
             } 
@@ -194,6 +182,8 @@ public class Snake extends JPanel {
 
     //getter
     public boolean getCanKillBodyPart(){return canKillBodyPart;}
+    public int getSnakeLength(){return snakeLength;}
+    public ArrayList<Square> getBody(){return body;}
 
     //setter
     public void setCanKillBodyPart(boolean b) {canKillBodyPart = b;}
