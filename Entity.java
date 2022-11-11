@@ -9,20 +9,12 @@ public abstract class Entity {
     protected boolean entityIsAlive;
     protected Color entity_color;
 
-
-    //getters
-    // public int getEntityPosX(){return entity_position_x;}
-    // public int getEntityPosY(){return entity_position_y;}
-    // public int getEntityWidth(){return entity_width;}
-    // public int getEntityHeight(){return entity_height;}
-    // public Color getEntityColor(){return entity_color;}
-
     //setters
-    public void setEntityPosX(int x){entity_position_x = x;}
-    public void setEntityPosY(int y){entity_position_y = y;}
-    public void setEntityMoveX(int x){entity_move_x = x;}
-    public void setEntityMoveY(int y){entity_move_y = y;}
-    public void setEntityColor(Color c){entity_color = c;}
+    // public void setEntityPosX(int x){entity_position_x = x;}
+    // public void setEntityPosY(int y){entity_position_y = y;}
+    // public void setEntityMoveX(int x){entity_move_x = x;}
+    // public void setEntityMoveY(int y){entity_move_y = y;}
+    // public void setEntityColor(Color c){entity_color = c;}
 
     public abstract int move();
     public abstract void draw(Graphics g);

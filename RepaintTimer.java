@@ -56,7 +56,7 @@ public class RepaintTimer implements Runnable {
     private void snakeInvincibilityTimer(){
         if(snake.getCanKillBodyPart() == false){
             for(Square s : snake.body){
-                s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
+                s.entity_color = ConstantVariable.COLOR_SNAKE_INVINCIBLE;
             }
             snakeCounter += 4;
             if(snakeCounter % 2000 == 0){

@@ -49,10 +49,10 @@ public class Snake extends JPanel {
         Square head = new Square(first.entity_position_x, first.entity_position_y);
 
         switch (this.direction) {
-            case "right" -> head.setEntityPosX(head.entity_position_x + 20);
-            case "left" -> head.setEntityPosX(head.entity_position_x - 20);
-            case "up" -> head.setEntityPosY(head.entity_position_y - 20);
-            case "down" -> head.setEntityPosY(head.entity_position_y + 20);
+            case "right" -> head.entity_position_x = head.entity_position_x + 20;
+            case "left" -> head.entity_position_x = head.entity_position_x - 20;
+            case "up" -> head.entity_position_y = head.entity_position_y - 20;
+            case "down" -> head.entity_position_y = head.entity_position_y + 20;
         }
 
         for (int i = 1; i < this.body.size(); i++) {
