@@ -23,8 +23,8 @@ public class Snake extends JPanel {
 
     public Snake(int length) {
 
-        canKillBodyPart = true;
-        body = new ArrayList<Square>();
+        this.body = new ArrayList<Square>();
+        this.canKillBodyPart = true;
         this.length = length;
         this.direction = "right";
 
@@ -61,7 +61,6 @@ public class Snake extends JPanel {
         newbody.add(head);
 
         if (eatFraise ==true) {
-
             this.length++;
             switch (this.direction) {
                 case "right":
@@ -104,8 +103,7 @@ public class Snake extends JPanel {
     public void drawSnake(Graphics g) {
 
         if (isKilled() == false) {
-            // Faire bouger le snake tout les 100ms
-            if (RepaintTimer.compteur % 100 == 0) {
+            if (RepaintTimer.getSnakeMoveCounter() % 100 == 0) {
                 moveSnake();
             }
             for (int j = 0; j < this.body.size(); j++) {
@@ -173,22 +171,17 @@ public class Snake extends JPanel {
                     this.canKillBodyPart = false;
                     System.out.println("invincible time !");
                 }
-
                 break;
-            case PIECE_DOR:
 
+            case PIECE_DOR:
                 Random random = new Random();
                 for (int i = 0; i < GameFrame.gameScene.obstacle_list.length - 1; i++) {
-
                     if (GameFrame.gameScene.obstacle_list[i] != null) {
                         GameFrame.gameScene.obstacle_list[i].obstacleType = type[random.nextInt(type.length)];
                     }
-
                 }
                 break;
-
         }
-
     }
 
     private boolean isKilled() {
@@ -201,8 +194,7 @@ public class Snake extends JPanel {
     //getter
     public boolean getCanKillBodyPart(){return canKillBodyPart;}
 
-    public void setCanKillBodyPart(boolean b) {
-        canKillBodyPart = b;
-    }
+    //setter
+    public void setCanKillBodyPart(boolean b) {canKillBodyPart = b;}
 
 }

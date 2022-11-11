@@ -5,7 +5,7 @@ public class RepaintTimer implements Runnable {
     private Cannon cannon;
 
     private final int PAUSE = 5;// temps attente entre 2 boucles 5ms
-    public static int compteur = 0;
+    private static int snakeMoveCounter = 0;
     private int snakeCounter;
     private int cannonCounter;
 
@@ -20,32 +20,11 @@ public class RepaintTimer implements Runnable {
     @Override
     public void run() {
         while (gameScene.getGameIsFinished() == false) {
+            snakeMoveCounter += 5;
 
-            compteur += 5;
-
-            //cannon load timer
-            if(cannon.getCanFire() == false){
-                cannonCounter += 5;
-                if(cannonCounter % 300 == 0){
-                    cannon.setCanFire(true);
-                    cannonCounter = 0;
-                    System.out.println("peut tirer");
-                }
-            }
-
-            //snake invincibility timer
-            if(snake.getCanKillBodyPart() == false){
-                for(Square s : snake.body){
-                    s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
-                }
-                snakeCounter += 4;
-                if(snakeCounter % 2000 == 0){
-                    snake.setCanKillBodyPart(true);
-                    snakeCounter = 0;
-                    System.out.println("fin invincibilité");
-                }
-            }
-
+            // snakeMove();//no flash
+            cannonLoadTimer();
+            snakeInvincibilityTimer();
 
             GameFrame.gameScene.repaint();// call to paintComponent of GameScene
 
@@ -57,4 +36,42 @@ public class RepaintTimer implements Runnable {
             }
         }
     }
+
+    private void snakeMove(){
+        if (snakeMoveCounter % 100 == 0) {
+            snake.moveSnake();
+        }
+    }
+    
+    private void cannonLoadTimer(){
+        if(cannon.getCanFire() == false){
+            cannonCounter += 5;
+            if(cannonCounter % 300 == 0){
+                cannon.setCanFire(true);
+                cannonCounter = 0;
+            }
+        }
+    }
+    
+    private void snakeInvincibilityTimer(){
+        if(snake.getCanKillBodyPart() == false){
+            for(Square s : snake.body){
+                s.setEntityColor(ConstantVariable.COLOR_SNAKE_INVINCIBLE);
+            }
+            snakeCounter += 4;
+            if(snakeCounter % 2000 == 0){
+                snake.setCanKillBodyPart(true);
+                snakeCounter = 0;
+                System.out.println("fin invincibilité");
+            }
+        }
+    }
+
+    //getter
+    public static int getSnakeMoveCounter(){return snakeMoveCounter;}
+
+
+
+
+
 }

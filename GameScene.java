@@ -84,8 +84,8 @@ public class GameScene extends JPanel {
         obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
-            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
-            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
         }
     }
 
