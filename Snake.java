@@ -14,15 +14,18 @@ public class Snake extends JPanel {
             ObstacleType.BOIS, ObstacleType.FRAISE, ObstacleType.MYRTILLE, ObstacleType.PIECE_DOR
 
     };
+    
     public Graphics graphics;
     public String direction;
 
     public long chrono;
     public long chrono2;
     private boolean canKillBodyPart;
+    private GameScene gameScene;
 
-    public Snake(int length) {
+    public Snake(int length, GameScene gameScene) {
 
+        this.gameScene = gameScene;
         this.body = new ArrayList<Square>();
         this.canKillBodyPart = true;
         this.length = length;
@@ -111,8 +114,8 @@ public class Snake extends JPanel {
                 g.fillRect(this.body.get(j).getEntityPosX(), this.body.get(j).getEntityPosY(), 20, 20);
             }
         } else {
-            GameFrame.gameScene.setGameIsFinished(true);
-            GameFrame.gameScene.setWin(true);
+            gameScene.setGameIsFinished(true);
+            gameScene.setWin(true);
         }
     }
 
@@ -140,8 +143,8 @@ public class Snake extends JPanel {
         if (body.size() > 0) {
             Square head = body.get(body.size() - 1);
             if (cannon.collisionWithSnake(head)) {
-                GameFrame.gameScene.setGameIsFinished(true);
-                GameFrame.gameScene.setLose(true);
+                gameScene.setGameIsFinished(true);
+                gameScene.setLose(true);
             }
         }
     }
@@ -175,9 +178,9 @@ public class Snake extends JPanel {
 
             case PIECE_DOR:
                 Random random = new Random();
-                for (int i = 0; i < GameFrame.gameScene.obstacle_list.length - 1; i++) {
-                    if (GameFrame.gameScene.obstacle_list[i] != null) {
-                        GameFrame.gameScene.obstacle_list[i].obstacleType = type[random.nextInt(type.length)];
+                for (int i = 0; i < gameScene.getObstacleList().length - 1; i++) {
+                    if (gameScene.getObstacleList()[i] != null) {
+                        gameScene.getObstacleList()[i].obstacleType = type[random.nextInt(type.length)];
                     }
                 }
                 break;

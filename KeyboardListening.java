@@ -3,31 +3,39 @@ import java.awt.event.KeyListener;
 
 public class KeyboardListening implements KeyListener {
 
+    public KeyboardListening(GameScene gameScene){
+        this.gameScene = gameScene;
+    }
+
+    private GameScene gameScene;
+
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
             case KeyEvent.VK_LEFT:
-                GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
+                // GameFrame.gameScene.cannon.setEntityMoveX(-ConstantVariable.CANNON_MOVESPEED_X);
+                gameScene.getCannon().entity_move_x = -ConstantVariable.CANNON_MOVESPEED_X;
                 break;
 
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
-                GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
+                // GameFrame.gameScene.cannon.setEntityMoveX(ConstantVariable.CANNON_MOVESPEED_X);
+                gameScene.getCannon().entity_move_x = ConstantVariable.CANNON_MOVESPEED_X;
                 break;
 
             case KeyEvent.VK_SPACE:
-                if(GameFrame.gameScene.cannon.getCanFire() == true){
-                    Projectil[] projectils_list = GameFrame.gameScene.projectil_list;
-                    int compter = GameFrame.gameScene.projectilCompter;
-                    GameFrame.gameScene.cannon.setCanFire(false);
+                if(gameScene.getCannon().getCanFire() == true){
+                    Projectil[] projectils_list = gameScene.getProjectilList();
+                    int compter = gameScene.getProjectilCounter();
+                    gameScene.getCannon().setCanFire(false);
 
-                    projectils_list[compter].setEntityPosX(GameFrame.gameScene.cannon.getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
+                    projectils_list[compter].setEntityPosX(gameScene.getCannon().getEntityPosX() + ConstantVariable.CANNON_WIDTH/2 - 1);
                     projectils_list[compter].setEntityPosY(ConstantVariable.CANNON_POSITION_Y - ConstantVariable.PROJECTIL_HEIGHT);
 
                     projectils_list[compter].entityIsAlive = true;
 
-                    GameFrame.gameScene.projectilCompter = (compter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER;
+                    gameScene.setProjectilCounter((compter + 1) % ConstantVariable.PROJECTIL_MAX_NUMBER);
                 }
                 break;
         }
@@ -35,8 +43,7 @@ public class KeyboardListening implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        GameFrame.gameScene.cannon.setEntityMoveX(0);
-        GameFrame.gameScene.cannon.setEntityMoveY(0);
+        gameScene.getCannon().entity_move_x = 0;
     }
 
     @Override

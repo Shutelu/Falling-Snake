@@ -16,12 +16,14 @@ public class GameFrame extends JFrame{
 
         
         //Game Scene
-        gameScene = new GameScene(this);
-        this.setContentPane(gameScene);       
+        // gameScene = new GameScene(this);
+        // this.setContentPane(gameScene);       
+        // gameScene = new GameScene(this);
+        this.setContentPane(new GameScene(this));       
         this.setVisible(true);//must be last
     }
 
-    public static GameScene gameScene;
+    // private GameScene gameScene;
 
 
 }

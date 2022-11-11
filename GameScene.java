@@ -24,18 +24,21 @@ public class GameScene extends JPanel {
         // focus
         this.setFocusable(true);// set the focus
         this.requestFocusInWindow();// focus from this scene
-        this.addKeyListener(new KeyboardListening());
+        this.addKeyListener(new KeyboardListening(this));
 
         Thread repanting = new Thread(new RepaintTimer(this, snake, cannon));
         repanting.start();
     }
 
-    public Obstacle[] obstacle_list;
-    public Projectil[] projectil_list; // munitions
+    private Obstacle[] obstacle_list;
+    private Projectil[] projectil_list; // munitions
+
     private JFrame gameFrame;
-    public Cannon cannon;
-    public Snake snake;
-    public int projectilCompter;
+    private Cannon cannon;
+    private Snake snake;
+
+    private int projectilCounter;
+
     private boolean gameIsFinished;
     private boolean win;
     private boolean lose;
@@ -68,11 +71,11 @@ public class GameScene extends JPanel {
     }
 
     private void snake_init() {
-        snake = new Snake(10);
+        snake = new Snake(10, this);
     }
 
     private void projectil_init() {
-        projectilCompter = 0;
+        projectilCounter = 0;
         projectil_list = new Projectil[ConstantVariable.PROJECTIL_MAX_NUMBER];
 
         for (int i = 0; i < projectil_list.length; i++) {
@@ -84,8 +87,8 @@ public class GameScene extends JPanel {
         obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
-            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
-            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
         }
     }
 
@@ -148,7 +151,7 @@ public class GameScene extends JPanel {
         }
     }
 
-    public void collisionObstacleSnake() {
+    private void collisionObstacleSnake() {
         if(snake.body.size() <= 0)return;
         for (int j = 0; j < obstacle_list.length; j++) {
             if (obstacle_list[j] != null && snake.body.get(snake.length - 1) != null) {
@@ -162,7 +165,7 @@ public class GameScene extends JPanel {
 
     }
 
-    public void collisionProjectilSnake() {
+    private void collisionProjectilSnake() {
         for (int i = 0; i < projectil_list.length; i++) {
             if (projectil_list[i] != null) {
                 snake.collisionWithProjectil(projectil_list[i]);
@@ -196,10 +199,16 @@ public class GameScene extends JPanel {
 
     // getter
     public boolean getGameIsFinished() {return gameIsFinished;}
+    public JFrame getGameFrame(){return gameFrame;}
+    public Cannon getCannon(){return cannon;}
+    public int getProjectilCounter(){return projectilCounter;}
+    public Obstacle[] getObstacleList(){return obstacle_list;}
+    public Projectil[] getProjectilList(){return projectil_list;}
 
     // setter
     public void setGameIsFinished(boolean finished) {gameIsFinished = finished;}
     public void setWin(boolean win) {this.win = win;}
     public void setLose(boolean lose) {this.lose = lose;}
+    public void setProjectilCounter(int i){this.projectilCounter = i;}
 
 }

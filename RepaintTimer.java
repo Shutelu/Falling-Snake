@@ -26,7 +26,7 @@ public class RepaintTimer implements Runnable {
             cannonLoadTimer();
             snakeInvincibilityTimer();
 
-            GameFrame.gameScene.repaint();// call to paintComponent of GameScene
+            gameScene.repaint();// call to paintComponent of GameScene
 
             try {
                 Thread.sleep(PAUSE);
@@ -46,7 +46,7 @@ public class RepaintTimer implements Runnable {
     private void cannonLoadTimer(){
         if(cannon.getCanFire() == false){
             cannonCounter += 5;
-            if(cannonCounter % 300 == 0){
+            if(cannonCounter % 280 == 0){
                 cannon.setCanFire(true);
                 cannonCounter = 0;
             }

@@ -8,8 +8,8 @@ public class Square extends Entity {
         //super class vriable initiation
         super.entity_position_x = positionX;
         super.entity_position_y = positionY;
-        super.entity_width = 20;
-        super.entity_height = 20;
+        super.entity_width = ConstantVariable.SQUARE_WIDTH;
+        super.entity_height = ConstantVariable.SQUARE_HEIGHT;
         super.entity_move_x = 0;
         super.entity_move_y = 0;
         super.entityIsAlive = true;
