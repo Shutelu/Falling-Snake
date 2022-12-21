@@ -7,10 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Game.Entities.Cannon;
-import Game.Entities.Obstacle;
-import Game.Entities.ObstacleType;
 import Game.Entities.Projectil;
 import Game.Entities.Snake;
+import Game.Entities.Obstacle.Obstacle;
+import Game.Entities.Obstacle.ObstacleType;
 /**
  * GameScene will contain the game settings
  */

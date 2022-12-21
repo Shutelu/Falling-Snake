@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import Game.GameScene;
 import Game.ProjectSettings;
 import Game.RepaintTimer;
+import Game.Entities.Obstacle.Obstacle;
+import Game.Entities.Obstacle.ObstacleType;
 
 import java.awt.Graphics;
 import java.util.ArrayList;

@@ -2,6 +2,7 @@ package Game.Entities;
 
 import java.awt.Graphics;
 import Game.ProjectSettings;
+import Game.Entities.Obstacle.Obstacle;
 
 public class Projectil extends Entity{
     
