@@ -1,8 +1,10 @@
+
+
 import java.awt.Color;
 // Class that will store all the constant variable
 //settings or configurations later
 
-public abstract class ConstantVariable{
+public abstract class ProjectSettings{
 
     /***********Window***********/
     public static final int MAIN_WINDOW_WIDTH = 500;

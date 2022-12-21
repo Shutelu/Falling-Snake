@@ -5,10 +5,10 @@ import javax.swing.JFrame;
 public class GameFrame extends JFrame{
     
     public GameFrame(){
-        super(ConstantVariable.MAIN_WINDOW_TITLE);
+        super(ProjectSettings.MAIN_WINDOW_TITLE);
 
         //Window Settings
-        this.setSize(ConstantVariable.MAIN_WINDOW_WIDTH, ConstantVariable.MAIN_WINDOW_HEIGHT);
+        this.setSize(ProjectSettings.MAIN_WINDOW_WIDTH, ProjectSettings.MAIN_WINDOW_HEIGHT);
         this.setResizable(false);
         this.setLocationRelativeTo(null);//put in center should be after size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
