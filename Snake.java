@@ -1,7 +1,4 @@
-
-
 import javax.swing.JPanel;
-
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -134,7 +131,6 @@ public class Snake extends JPanel {
             SnakePart head = body.get(body.size() - 1);
             if (cannon.collisionWithSnake(head)) {
                 gameScene.setGameIsFinished(true);
-                gameScene.setLose(true);
             }
         }
     }

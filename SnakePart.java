@@ -10,8 +10,8 @@ public class SnakePart extends Entity {
         //super class vriable initiation
         super.entity_position_x = positionX;
         super.entity_position_y = positionY;
-        super.entity_width = ProjectSettings.SQUARE_WIDTH;
-        super.entity_height = ProjectSettings.SQUARE_HEIGHT;
+        super.entity_width = ProjectSettings.SNAKEPART_WIDTH;
+        super.entity_height = ProjectSettings.SNAKEPART_HEIGHT;
         super.entityIsAlive = true;
         super.entity_color = ProjectSettings.COLOR_SNAKE;
 
