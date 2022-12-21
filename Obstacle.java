@@ -1,3 +1,5 @@
+
+
 import java.awt.Graphics;
 import java.util.Random;
 
@@ -5,10 +7,10 @@ public class Obstacle extends Entity{
     
     public Obstacle(ObstacleType type){
         //super class variable initiation
-        super.entity_position_x = ( (int) (new Random().nextInt(450 - 30) + 30) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
-        super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
-        super.entity_width = ConstantVariable.OBSTACLE_WIDTH;
-        super.entity_height = ConstantVariable.OBSTACLE_HEIGHT;
+        super.entity_position_x = ( (int) (new Random().nextInt(450 - 30) + 30) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS;
+        super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS;
+        super.entity_width = ProjectSettings.OBSTACLE_WIDTH;
+        super.entity_height = ProjectSettings.OBSTACLE_HEIGHT;
         super.entityIsAlive = true;
 
         //own
@@ -28,7 +30,7 @@ public class Obstacle extends Entity{
         }
     }
 
-    public boolean collisionWithSnake(Square square){
+    public boolean collisionWithSnake(SnakePart square){
 
         if(this.entity_position_y <= square.entity_position_y + square.entity_height
                 && this.entity_position_x >= square.entity_position_x

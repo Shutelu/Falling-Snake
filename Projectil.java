@@ -1,3 +1,5 @@
+
+
 import java.awt.Graphics;
 
 public class Projectil extends Entity{
@@ -6,17 +8,17 @@ public class Projectil extends Entity{
         //super class variable initiation
         super.entity_position_x = -10;
         super.entity_position_y = -10;
-        super.entity_width = ConstantVariable.PROJECTIL_WIDTH;
-        super.entity_height = ConstantVariable.PROJECTIL_HEIGHT;
-        super.entity_move_y = ConstantVariable.PROJECTIL_MOVESPEED_Y;
-        super.entity_color = ConstantVariable.COLOR_PROJECTIL;
+        super.entity_width = ProjectSettings.PROJECTIL_WIDTH;
+        super.entity_height = ProjectSettings.PROJECTIL_HEIGHT;
+        super.entity_move_y = ProjectSettings.PROJECTIL_MOVESPEED_Y;
+        super.entity_color = ProjectSettings.COLOR_PROJECTIL;
         super.entityIsAlive = false;
     }
 
     public int move(){
         if(entityIsAlive == true){
             if(this.entity_position_y > 0){
-                this.entity_position_y -= ConstantVariable.PROJECTIL_MOVESPEED_Y;
+                this.entity_position_y -= ProjectSettings.PROJECTIL_MOVESPEED_Y;
             }
             else{
                 this.entityIsAlive = false;
@@ -44,7 +46,7 @@ public class Projectil extends Entity{
         return false;
     }
 
-    public boolean collisionWithSnake(Square snakeBody){
+    public boolean collisionWithSnake(SnakePart snakeBody){
         if(
             this.entity_position_y <= snakeBody.entity_position_y + snakeBody.entity_height
             && this.entity_position_x >= snakeBody.entity_position_x

@@ -1,11 +1,13 @@
+
+
 import java.awt.Color;
 import java.util.Random;
 
 public enum ObstacleType {
-    BOIS(ConstantVariable.COLOR_BOIS),
-    FRAISE(ConstantVariable.COLOR_FRAISE),
-    MYRTILLE(ConstantVariable.COLOR_MYRTILLE),
-    PIECE_DOR(ConstantVariable.COLOR_OR);
+    BOIS(ProjectSettings.COLOR_BOIS),
+    FRAISE(ProjectSettings.COLOR_FRAISE),
+    MYRTILLE(ProjectSettings.COLOR_MYRTILLE),
+    PIECE_DOR(ProjectSettings.COLOR_OR);
 
     private ObstacleType(Color c){
         this.color = c;

@@ -47,7 +47,7 @@ public class GameScene extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        this.setBackground(ConstantVariable.COLOR_MAIN_WINDOW_BACKGROUND);
+        this.setBackground(ProjectSettings.COLOR_MAIN_WINDOW_BACKGROUND);
 
         draw_platform(g);
         draw_cannon(g);
@@ -76,7 +76,7 @@ public class GameScene extends JPanel {
 
     private void projectil_init() {
         projectilCounter = 0;
-        projectil_list = new Projectil[ConstantVariable.PROJECTIL_MAX_NUMBER];
+        projectil_list = new Projectil[ProjectSettings.PROJECTIL_MAX_NUMBER];
 
         for (int i = 0; i < projectil_list.length; i++) {
             projectil_list[i] = new Projectil();
@@ -84,7 +84,7 @@ public class GameScene extends JPanel {
     }
 
     private void obstacle_init() {
-        obstacle_list = new Obstacle[ConstantVariable.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
+        obstacle_list = new Obstacle[ProjectSettings.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
             obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
@@ -95,7 +95,7 @@ public class GameScene extends JPanel {
     /*********** Draw ***********/
 
     private void draw_platform(Graphics g){
-        g.setColor(ConstantVariable.COLOR_PLATFORM);
+        g.setColor(ProjectSettings.COLOR_PLATFORM);
         g.fillRect(20, 640, 444, 4);
     }
 
