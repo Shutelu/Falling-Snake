@@ -1,21 +1,27 @@
-package Game;
+package Game.Entities;
 import java.awt.Graphics;
+
+import Game.ProjectSettings;
 /**
  * Cannon that move from left to right with A and D and the arrow key, shoot projectil with spacebare
  */
 public class Cannon extends Entity{
     
     /**
-     * Constructor class without parameters
+     * Constructor of the class Cannon without parameters
      */
     public Cannon(){
-        //super class variable initiation
-        super.entity_position_x = ProjectSettings.CANNON_POSITION_X;
-        super.entity_position_y = ProjectSettings.CANNON_POSITION_Y;
-        super.entity_width = ProjectSettings.CANNON_WIDTH;
-        super.entity_height = ProjectSettings.CANNON_HEIGHT;
-        super.entityIsAlive = true;
-        super.entity_color = ProjectSettings.COLOR_CANNON;
+        super(
+            ProjectSettings.CANNON_POSITION_X,
+            ProjectSettings.CANNON_POSITION_Y,
+            ProjectSettings.CANNON_WIDTH,
+            ProjectSettings.CANNON_HEIGHT,
+            0,
+            0,
+            true,
+            ProjectSettings.COLOR_CANNON
+        );
+
         //own
         this.canFire = true;
     }

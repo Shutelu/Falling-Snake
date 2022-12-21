@@ -5,6 +5,12 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Game.Entities.Cannon;
+import Game.Entities.Obstacle;
+import Game.Entities.ObstacleType;
+import Game.Entities.Projectil;
+import Game.Entities.Snake;
 /**
  * GameScene will contain the game settings
  */
@@ -129,8 +135,8 @@ public class GameScene extends JPanel {
         Obstacle temp;
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
-            else if (list[i].entity_position_x == obstacle.entity_position_x
-                    && list[i].entity_position_y == obstacle.entity_position_y) {
+            else if (list[i].getEntityPosX()== obstacle.getEntityPosX()
+                    && list[i].getEntityPosY() == obstacle.getEntityPosY()) {
                 temp = new Obstacle(obstacle.getType());
                 return checkObstaclePosition(list, temp);
             }
@@ -144,8 +150,8 @@ public class GameScene extends JPanel {
                 if (obstacle_list[j] != null && projectil_list[i] != null) {
                     if (projectil_list[i].collisionWithObstacle(obstacle_list[j])) {
                         obstacle_list[j] = null;
-                        projectil_list[i].entity_position_x = -10;
-                        projectil_list[i].entity_position_y = -10;
+                        projectil_list[i].setEntityPosX(-10);
+                        projectil_list[i].setEntityPosY(-10);
                     }
                 }
             }

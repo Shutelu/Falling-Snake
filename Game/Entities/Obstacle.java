@@ -1,19 +1,22 @@
-package Game;
-
-
+package Game.Entities;
 
 import java.awt.Graphics;
 import java.util.Random;
+import Game.ProjectSettings;
 
 public class Obstacle extends Entity{
     
     public Obstacle(ObstacleType type){
-        //super class variable initiation
-        super.entity_position_x = ( (int) (new Random().nextInt(450 - 30) + 30) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS;
-        super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS;
-        super.entity_width = ProjectSettings.OBSTACLE_WIDTH;
-        super.entity_height = ProjectSettings.OBSTACLE_HEIGHT;
-        super.entityIsAlive = true;
+        super(
+            ( (int) (new Random().nextInt(450 - 30) + 30) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
+            ( (int) (new Random().nextInt(540 - 100) + 100) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
+            ProjectSettings.OBSTACLE_WIDTH,
+            ProjectSettings.OBSTACLE_HEIGHT,
+            0,
+            0,
+            true,
+            null
+        );
 
         //own
         this.obstacleType = type;

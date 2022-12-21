@@ -1,5 +1,9 @@
 package Game;
 
+import Game.Entities.Cannon;
+import Game.Entities.Snake;
+import Game.Entities.SnakePart;
+
 public class RepaintTimer implements Runnable {
 
     private GameScene gameScene;
@@ -58,7 +62,7 @@ public class RepaintTimer implements Runnable {
     private void snakeInvincibilityTimer(){
         if(snake.getCanKillBodyPart() == false){
             for(SnakePart s : snake.getBody()){
-                s.entity_color = ProjectSettings.COLOR_SNAKE_INVINCIBLE;
+                s.setEntityColor(ProjectSettings.COLOR_SNAKE_INVINCIBLE);
             }
             snakeCounter += 4;
             if(snakeCounter % 2000 == 0){

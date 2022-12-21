@@ -1,5 +1,9 @@
-package Game;
+package Game.Entities;
 import javax.swing.JPanel;
+
+import Game.GameScene;
+import Game.ProjectSettings;
+import Game.RepaintTimer;
 
 import java.awt.Graphics;
 import java.util.ArrayList;

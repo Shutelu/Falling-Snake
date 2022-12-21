@@ -1,8 +1,10 @@
-package Game;
+package Game.Entities;
 
 
 import java.awt.Color;
 import java.util.Random;
+
+import Game.ProjectSettings;
 
 public enum ObstacleType {
     BOIS(ProjectSettings.COLOR_BOIS),
