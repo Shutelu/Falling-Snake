@@ -14,7 +14,6 @@ public class GameScene extends JPanel {
         gameFrame = frame;
         gameIsFinished = false;
         win = false;
-        lose = false;
 
         cannon_init();
         snake_init();
@@ -41,7 +40,6 @@ public class GameScene extends JPanel {
 
     private boolean gameIsFinished;
     private boolean win;
-    private boolean lose;
 
     @Override
     public void paintComponent(Graphics g) {
@@ -186,7 +184,7 @@ public class GameScene extends JPanel {
             if (win) {
                 dialog.setTitle("Bien jouer !");
                 label.setText("Vous avez gagné !");
-            } else if (lose) {
+            } else if (!win) {
                 dialog.setTitle("Oh non !");
                 label.setText("Vous avez perdu !");
             }
@@ -209,7 +207,6 @@ public class GameScene extends JPanel {
     // setter
     public void setGameIsFinished(boolean finished) {gameIsFinished = finished;}
     public void setWin(boolean win) {this.win = win;}
-    public void setLose(boolean lose) {this.lose = lose;}
     public void setProjectilCounter(int i){this.projectilCounter = i;}
 
 }

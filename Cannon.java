@@ -1,9 +1,12 @@
-
-
 import java.awt.Graphics;
-
+/**
+ * Cannon that move from left to right with A and D and the arrow key, shoot projectil with spacebare
+ */
 public class Cannon extends Entity{
     
+    /**
+     * Constructor class without parameters
+     */
     public Cannon(){
         //super class variable initiation
         super.entity_position_x = ProjectSettings.CANNON_POSITION_X;
@@ -12,13 +15,16 @@ public class Cannon extends Entity{
         super.entity_height = ProjectSettings.CANNON_HEIGHT;
         super.entityIsAlive = true;
         super.entity_color = ProjectSettings.COLOR_CANNON;
-
         //own
         this.canFire = true;
     }
 
     private boolean canFire;
 
+    /**
+     * Calculate the position and movement of the entity 
+     * @return the position of the entity
+     */
     public int move(){
         //left and limit | -1
         if(entity_move_x < 0 && ProjectSettings.CANNON_BORDER_LIMIT_LEFT < entity_position_x){
@@ -31,11 +37,20 @@ public class Cannon extends Entity{
         return entity_position_x;
     }
 
+    /**
+     * Draw the entity on screen
+     * @param g the graphic of the game
+     */
     public void draw(Graphics g){
         g.setColor(entity_color);
         g.fillRect(move(), entity_position_y, entity_width, entity_height);
     }
 
+    /**
+     * Check the collision between the Cannon and the snake
+     * @param snakeHead the first part of the snake that will collide with the cannon
+     * @return true if collide else false
+     */
     public boolean collisionWithSnake(SnakePart snakeHead){
         if(
             //between left and right
@@ -49,8 +64,16 @@ public class Cannon extends Entity{
     }
 
     //getter
+    /**
+     * Get if the cannon can fire
+     * @return true if can fire else false
+     */
     public boolean getCanFire(){return canFire;}
 
     //setter
+    /**
+     * Set the cannon to fire
+     * @param b true if can fire else false
+     */
     public void setCanFire(boolean b){canFire = b;}
 }
