@@ -144,40 +144,43 @@ public class Snake extends JPanel {
     }
 
     public void collisionWithObstacle(Obstacle obstacle) {
-        switch (obstacle.getType()) {
-            case BOIS:
-                if (this.direction == "right") {
-                    this.direction = "down";
-                    moveSnake();
-                    this.direction = "left";
-                    moveSnake();
-                } else if (this.direction == "left") {
-                    this.direction = "down";
-                    moveSnake();
-                    this.direction = "right";
-                    moveSnake();
-                }
-                break;
+        //effect
+        obstacle.effect(this);
+        //switch
+        // switch (obstacle.getType()) {
+        //     case BOIS:
+        //         if (this.direction == "right") {
+        //             this.direction = "down";
+        //             moveSnake();
+        //             this.direction = "left";
+        //             moveSnake();
+        //         } else if (this.direction == "left") {
+        //             this.direction = "down";
+        //             moveSnake();
+        //             this.direction = "right";
+        //             moveSnake();
+        //         }
+        //         break;
 
-            case FRAISE:
-                this.eatFraise = true;
-                break;
+        //     case FRAISE:
+        //         this.eatFraise = true;
+        //         break;
 
-            case MYRTILLE:
-                if(canKillBodyPart){
-                    this.canKillBodyPart = false;
-                    System.out.println("invincible time !");
-                }
-                break;
+        //     case MYRTILLE:
+        //         if(canKillBodyPart){
+        //             this.canKillBodyPart = false;
+        //             System.out.println("invincible time !");
+        //         }
+        //         break;
 
-            case PIECE_DOR:
-                for (int i = 0; i < gameScene.getObstacleList().length - 1; i++) {
-                    if (gameScene.getObstacleList()[i] != null) {
-                        gameScene.getObstacleList()[i].setType(ObstacleType.randomType());
-                    }
-                }
-                break;
-        }
+        //     case PIECE_DOR:
+        //         for (int i = 0; i < gameScene.getObstacleList().length - 1; i++) {
+        //             if (gameScene.getObstacleList()[i] != null) {
+        //                 gameScene.getObstacleList()[i].setType(ObstacleType.randomType());
+        //             }
+        //         }
+        //         break;
+        // }
     }
 
     private boolean isKilled() {
@@ -191,8 +194,12 @@ public class Snake extends JPanel {
     public boolean getCanKillBodyPart(){return canKillBodyPart;}
     public int getSnakeLength(){return snakeLength;}
     public ArrayList<SnakePart> getBody(){return body;}
+    public String getDirection(){return direction;}
+    public GameScene getSnakGameScene(){return gameScene;}
 
     //setter
     public void setCanKillBodyPart(boolean b) {canKillBodyPart = b;}
+    public void setDirection(String s){direction = s;}
+    public void setEatFraise(boolean b){eatFraise = b;}
 
 }

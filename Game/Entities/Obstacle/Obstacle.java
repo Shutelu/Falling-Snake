@@ -2,10 +2,16 @@ package Game.Entities.Obstacle;
 
 import java.awt.Graphics;
 import java.util.Random;
+
+import Game.GameScene;
 import Game.ProjectSettings;
 import Game.Entities.Entity;
+import Game.Entities.Snake;
 import Game.Entities.SnakePart;
 
+/**
+ * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect
+ */
 public class Obstacle extends Entity{
     
     public Obstacle(ObstacleType type){
@@ -48,6 +54,42 @@ public class Obstacle extends Entity{
         {return true;}
 
         return false;
+    }
+
+    /**
+     * Change the old obstacle to a new random one
+     * @return new random obstacle
+     */
+    public Obstacle changeObstacle(){
+        Obstacle o = Obstacle.randomObstacle();
+        o.entity_position_x = this.entity_position_x;
+        o.entity_position_y = this.entity_position_y;
+        return o;
+    }
+
+    /**
+     * The effect of the obstacle/fruit
+     */
+    public void effect(Snake snake){System.out.println("tetst");}
+
+    /**
+     * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 
+     * @return Obstacle to place
+     */
+    public static Obstacle randomObstacle(){
+        int randObs = new Random().nextInt(4);
+        switch (randObs) {
+            case 0:
+                return new Bois();
+            case 1:
+                return new Fraise();
+            case 2:
+                return new Myrtille();
+            case 3:
+                return new PieceOr();
+            default:
+                return new Bois();
+        }
     }
     
     //getter

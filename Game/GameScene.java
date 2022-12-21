@@ -93,7 +93,8 @@ public class GameScene extends JPanel {
         obstacle_list = new Obstacle[ProjectSettings.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
-            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, Obstacle.randomObstacle());
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
             // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
         }
     }
@@ -135,7 +136,7 @@ public class GameScene extends JPanel {
         Obstacle temp;
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
-            else if (list[i].getEntityPosX()== obstacle.getEntityPosX()
+            if (list[i].getEntityPosX()== obstacle.getEntityPosX()
                     && list[i].getEntityPosY() == obstacle.getEntityPosY()) {
                 temp = new Obstacle(obstacle.getType());
                 return checkObstaclePosition(list, temp);
