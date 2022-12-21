@@ -1,8 +1,16 @@
+package Game;
+
 import java.awt.Graphics;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Game.Entities.Cannon;
+import Game.Entities.Projectil;
+import Game.Entities.Snake;
+import Game.Entities.Obstacle.Obstacle;
+import Game.Entities.Obstacle.ObstacleType;
 /**
  * GameScene will contain the game settings
  */
@@ -85,7 +93,8 @@ public class GameScene extends JPanel {
         obstacle_list = new Obstacle[ProjectSettings.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
         for (int i = 0; i < obstacle_list.length; i++) {
-            obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
+            obstacle_list[i] = checkObstaclePosition(obstacle_list, Obstacle.randomObstacle());
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
             // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
         }
     }
@@ -127,8 +136,8 @@ public class GameScene extends JPanel {
         Obstacle temp;
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
-            else if (list[i].entity_position_x == obstacle.entity_position_x
-                    && list[i].entity_position_y == obstacle.entity_position_y) {
+            if (list[i].getEntityPosX()== obstacle.getEntityPosX()
+                    && list[i].getEntityPosY() == obstacle.getEntityPosY()) {
                 temp = new Obstacle(obstacle.getType());
                 return checkObstaclePosition(list, temp);
             }
@@ -142,8 +151,8 @@ public class GameScene extends JPanel {
                 if (obstacle_list[j] != null && projectil_list[i] != null) {
                     if (projectil_list[i].collisionWithObstacle(obstacle_list[j])) {
                         obstacle_list[j] = null;
-                        projectil_list[i].entity_position_x = -10;
-                        projectil_list[i].entity_position_y = -10;
+                        projectil_list[i].setEntityPosX(-10);
+                        projectil_list[i].setEntityPosY(-10);
                     }
                 }
             }

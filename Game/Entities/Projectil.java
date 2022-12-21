@@ -1,18 +1,22 @@
-
+package Game.Entities;
 
 import java.awt.Graphics;
+import Game.ProjectSettings;
+import Game.Entities.Obstacle.Obstacle;
 
 public class Projectil extends Entity{
     
     public Projectil(){
-        //super class variable initiation
-        super.entity_position_x = -10;
-        super.entity_position_y = -10;
-        super.entity_width = ProjectSettings.PROJECTIL_WIDTH;
-        super.entity_height = ProjectSettings.PROJECTIL_HEIGHT;
-        super.entity_move_y = ProjectSettings.PROJECTIL_MOVESPEED_Y;
-        super.entity_color = ProjectSettings.COLOR_PROJECTIL;
-        super.entityIsAlive = false;
+        super(
+            -10,
+            -10,
+            ProjectSettings.PROJECTIL_WIDTH,
+            ProjectSettings.PROJECTIL_HEIGHT,
+            0,
+            ProjectSettings.PROJECTIL_MOVESPEED_Y,
+            false,
+            ProjectSettings.COLOR_PROJECTIL
+        );
     }
 
     public int move(){

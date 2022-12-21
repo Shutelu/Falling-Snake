@@ -1,3 +1,4 @@
+package Game;
 import java.awt.Color;
 /**
  *  Class that contains all the game configurations/settings as constant variable 

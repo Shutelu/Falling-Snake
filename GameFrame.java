@@ -1,4 +1,8 @@
+
 import javax.swing.JFrame;
+
+import Game.GameScene;
+import Game.ProjectSettings;
 /**
  * GameFrame will contain the frame settings
  */
