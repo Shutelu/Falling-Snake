@@ -1,3 +1,5 @@
+package Game;
+
 public class RepaintTimer implements Runnable {
 
     private GameScene gameScene;

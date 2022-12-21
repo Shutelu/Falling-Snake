@@ -1,3 +1,4 @@
+package Game;
 import java.awt.Graphics;
 /**
  * Cannon that move from left to right with A and D and the arrow key, shoot projectil with spacebare
