@@ -3,9 +3,9 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-//GameScene will contain the game settings
-
+/**
+ * GameScene will contain the game settings
+ */
 public class GameScene extends JPanel {
 
     public GameScene(JFrame frame) {

@@ -1,9 +1,12 @@
 import javax.swing.JFrame;
-
-//Game Frame will contain the frame settings
-
+/**
+ * GameFrame will contain the frame settings
+ */
 public class GameFrame extends JFrame{
     
+    /**
+     * Constructor without parameters an launch GameScene
+     */
     public GameFrame(){
         super(ProjectSettings.MAIN_WINDOW_TITLE);
 

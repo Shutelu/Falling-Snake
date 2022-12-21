@@ -1,8 +1,14 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/**
+ * Read the input from keyboard to do action with the Cannon
+ */
 public class KeyboardListening implements KeyListener {
 
+    /**
+     * Constructor 
+     * @param gameScene the scene of the game
+     */
     public KeyboardListening(GameScene gameScene){
         this.gameScene = gameScene;
     }
