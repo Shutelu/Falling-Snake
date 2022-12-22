@@ -3,11 +3,14 @@ package Game.Entities.Player;
 import java.awt.Graphics;
 import Game.ProjectSettings;
 import Game.Entities.Entity;
-import Game.Entities.SnakePart;
+import Game.Entities.Enemy.SnakePart;
 import Game.Entities.Obstacle.Obstacle;
 
 public class Projectil extends Entity{
     
+    /**
+     * Constructor of the Projectil class
+     */
     public Projectil(){
         super(
             -10,
@@ -21,6 +24,7 @@ public class Projectil extends Entity{
         );
     }
 
+    @Override
     public int move(){
         if(entityIsAlive == true){
             if(this.entity_position_y > 0){
@@ -33,6 +37,7 @@ public class Projectil extends Entity{
         return this.entity_position_y;
     }
 
+    @Override
     public void draw(Graphics g){
         if(entityIsAlive == true){
             g.setColor(entity_color);
@@ -40,6 +45,11 @@ public class Projectil extends Entity{
         }
     }
 
+    /**
+     * Check the collision between Projectil and Obstacle
+     * @param obstacle the obstacle to collide
+     * @return true if collide else false
+     */
     public boolean collisionWithObstacle(Obstacle obstacle){
         if(this.entity_position_y <= obstacle.getEntityPosY() + obstacle.getEntityHeight() 
             && this.entity_position_x >= obstacle.getEntityPosX()
@@ -53,6 +63,11 @@ public class Projectil extends Entity{
         return false;
     }
 
+    /**
+     * Check the collision between Projectil and Snake head
+     * @param snakeBody the head of the snake
+     * @return true if collide else false
+     */
     public boolean collisionWithSnake(SnakePart snakeBody){
         if(this.entity_position_y <= snakeBody.getEntityPosY() + snakeBody.getEntityHeight()
             && this.entity_position_x >= snakeBody.getEntityPosX()

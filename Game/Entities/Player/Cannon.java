@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 import Game.ProjectSettings;
 import Game.Entities.Entity;
-import Game.Entities.SnakePart;
+import Game.Entities.Enemy.SnakePart;
 /**
  * Cannon that move from left to right with A and D and the arrow key, shoot projectil with spacebare
  */

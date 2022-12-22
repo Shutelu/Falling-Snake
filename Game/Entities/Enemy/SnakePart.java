@@ -1,10 +1,16 @@
-package Game.Entities;
+package Game.Entities.Enemy;
 
 import java.awt.Graphics;
 import Game.ProjectSettings;
+import Game.Entities.Entity;
 
 public class SnakePart extends Entity {
 
+    /**
+     * Constructor of the SnakePart class
+     * @param positionX initial position x 
+     * @param positionY initial position y
+     */
     public SnakePart(int positionX, int positionY) {
         super(
             positionX,

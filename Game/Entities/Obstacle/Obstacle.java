@@ -4,8 +4,9 @@ import java.awt.Graphics;
 import java.util.Random;
 import Game.ProjectSettings;
 import Game.Entities.Entity;
-import Game.Entities.Snake;
-import Game.Entities.SnakePart;
+import Game.Entities.Enemy.Snake;
+import Game.Entities.Enemy.SnakePart;
+
 import java.awt.Color;
 /**
  * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect

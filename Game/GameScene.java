@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Game.Entities.Snake;
+import Game.Entities.Enemy.Snake;
+import Game.Entities.Obstacle.Bois;
 import Game.Entities.Obstacle.Obstacle;
 import Game.Entities.Player.Cannon;
 import Game.Entities.Player.Projectil;
@@ -107,8 +108,7 @@ public class GameScene extends JPanel {
 
         for (int i = 0; i < obstacle_list.length; i++) {
             obstacle_list[i] = checkObstaclePosition(obstacle_list, Obstacle.randomObstacle());
-            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.randomType()));
-            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Obstacle(ObstacleType.MYRTILLE));//test
+            // obstacle_list[i] = checkObstaclePosition(obstacle_list, new Bois());
         }
     }
 
@@ -126,7 +126,7 @@ public class GameScene extends JPanel {
     }
 
     /**
-     * Draw the cannon on scene
+     * Draw the cannon on the scene
      * @param g graphics object
      */
     private void draw_cannon(Graphics g) {
@@ -134,13 +134,17 @@ public class GameScene extends JPanel {
     }
 
     /**
-     * Draw the snake on scene
+     * Draw the snake on the scene
      * @param g graphics object
      */
     private void draw_snake(Graphics g) {
         snake.drawSnake(g);
     }
 
+    /**
+     * Draw the projectil on the scene
+     * @param g
+     */
     private void draw_projectil(Graphics g) {
         for (int i = 0; i < projectil_list.length; i++) {
             if (projectil_list[i] != null) {
@@ -149,6 +153,10 @@ public class GameScene extends JPanel {
         }
     }
 
+    /**
+     * Draw the obstacle on the scene
+     * @param g
+     */
     private void draw_obstacle(Graphics g) {
         for (int i = 0; i < obstacle_list.length; i++) {
             if (obstacle_list[i] != null) {

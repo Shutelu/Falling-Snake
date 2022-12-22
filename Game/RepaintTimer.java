@@ -1,7 +1,7 @@
 package Game;
 
-import Game.Entities.Snake;
-import Game.Entities.SnakePart;
+import Game.Entities.Enemy.Snake;
+import Game.Entities.Enemy.SnakePart;
 import Game.Entities.Player.Cannon;
 
 public class RepaintTimer implements Runnable {
