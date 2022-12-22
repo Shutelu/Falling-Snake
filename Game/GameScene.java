@@ -5,17 +5,19 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Game.Entities.Cannon;
 import Game.Entities.Projectil;
 import Game.Entities.Snake;
 import Game.Entities.Obstacle.Obstacle;
-import Game.Entities.Obstacle.ObstacleType;
 /**
  * GameScene will contain the game settings
  */
 public class GameScene extends JPanel {
 
+    /**
+     * Constructor of GameScene
+     * @param frame the game frame
+     */
     public GameScene(JFrame frame) {
         super();
 
@@ -28,7 +30,6 @@ public class GameScene extends JPanel {
         projectil_init();
         obstacle_init();
 
-        // focus
         this.setFocusable(true);// set the focus
         this.requestFocusInWindow();// focus from this scene
         this.addKeyListener(new KeyboardListening(this));
@@ -39,13 +40,10 @@ public class GameScene extends JPanel {
 
     private Obstacle[] obstacle_list;
     private Projectil[] projectil_list; // munitions
-
     private JFrame gameFrame;
     private Cannon cannon;
     private Snake snake;
-
     private int projectilCounter;
-
     private boolean gameIsFinished;
     private boolean win;
 
@@ -70,16 +68,27 @@ public class GameScene extends JPanel {
 
     }
 
-    /*********** Initialisation ***********/
+    /*================================================================================*/
+    /*================================ INITIALISATION ================================*/
+    /*================================================================================*/
 
+    /**
+     * Initialise the cannon
+     */
     private void cannon_init() {
         cannon = new Cannon();
     }
 
+    /**
+     * Initialise the snake
+     */
     private void snake_init() {
-        snake = new Snake(10, this);
+        snake = new Snake(ProjectSettings.SNAKE_INIT_LENGHT, this);
     }
 
+    /**
+     * Initialise all the projectils
+     */
     private void projectil_init() {
         projectilCounter = 0;
         projectil_list = new Projectil[ProjectSettings.PROJECTIL_MAX_NUMBER];
@@ -89,6 +98,9 @@ public class GameScene extends JPanel {
         }
     }
 
+    /**
+     * Initialise all the obstacles
+     */
     private void obstacle_init() {
         obstacle_list = new Obstacle[ProjectSettings.OBSTACLE_INITAIL_OBSTACLE_NOMBER];
 
@@ -99,17 +111,31 @@ public class GameScene extends JPanel {
         }
     }
 
-    /*********** Draw ***********/
+    /*================================================================================*/
+    /*===================================== DRAW =====================================*/
+    /*================================================================================*/
 
+    /**
+     * Draw a little platform down the scene
+     * @param g graphics object
+     */
     private void draw_platform(Graphics g){
         g.setColor(ProjectSettings.COLOR_PLATFORM);
         g.fillRect(20, 640, 444, 4);
     }
 
+    /**
+     * Draw the cannon on scene
+     * @param g graphics object
+     */
     private void draw_cannon(Graphics g) {
         cannon.draw(g);
     }
 
+    /**
+     * Draw the snake on scene
+     * @param g graphics object
+     */
     private void draw_snake(Graphics g) {
         snake.drawSnake(g);
     }
@@ -130,16 +156,22 @@ public class GameScene extends JPanel {
         }
     }
 
-    /*********** Methodes ***********/
+    /*================================================================================*/
+    /*==================================== METHODS ===================================*/
+    /*================================================================================*/
 
+    /**
+     * Check if there is obstacles with the same coordinate in the list with the obstacle in parameters if true then generate a new obstacle  
+     * @param list list of the obstacle to check
+     * @param obstacle the obstacle to check
+     * @return the obstacle with different coordinate with those in the list
+     */
     private Obstacle checkObstaclePosition(Obstacle[] list, Obstacle obstacle) {
-        Obstacle temp;
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
             if (list[i].getEntityPosX()== obstacle.getEntityPosX()
                     && list[i].getEntityPosY() == obstacle.getEntityPosY()) {
-                temp = new Obstacle(obstacle.getType());
-                return checkObstaclePosition(list, temp);
+                return checkObstaclePosition(list, Obstacle.randomObstacle());
             }
         }
         return obstacle;
@@ -164,10 +196,9 @@ public class GameScene extends JPanel {
         for (int j = 0; j < obstacle_list.length; j++) {
             if (obstacle_list[j] != null && snake.getBody().get(snake.getSnakeLength() - 1) != null) {
                 if (obstacle_list[j].collisionWithSnake(snake.getBody().get(snake.getSnakeLength() - 1))) {
-                    snake.collisionWithObstacle(obstacle_list[j]);
+                    obstacle_list[j].effect(snake);
                     obstacle_list[j] = null;
                 }
-
             }
         }
 
@@ -185,6 +216,9 @@ public class GameScene extends JPanel {
         snake.collisionWithCannon(cannon);
     }
 
+    /**
+     * Check if the game is end, either if the player lost or the player won a window will popup to announce
+     */
     private void checkEndGame(){
         if (gameIsFinished) {
             JDialog dialog = new JDialog(gameFrame);
@@ -205,7 +239,9 @@ public class GameScene extends JPanel {
         }
     }
 
-    // getter
+    /*================================================================================*/
+    /*==================================== GETTER ====================================*/
+    /*================================================================================*/
     public boolean getGameIsFinished() {return gameIsFinished;}
     public JFrame getGameFrame(){return gameFrame;}
     public Cannon getCannon(){return cannon;}
@@ -213,7 +249,9 @@ public class GameScene extends JPanel {
     public Obstacle[] getObstacleList(){return obstacle_list;}
     public Projectil[] getProjectilList(){return projectil_list;}
 
-    // setter
+    /*================================================================================*/
+    /*==================================== SETTER ====================================*/
+    /*================================================================================*/
     public void setGameIsFinished(boolean finished) {gameIsFinished = finished;}
     public void setWin(boolean win) {this.win = win;}
     public void setProjectilCounter(int i){this.projectilCounter = i;}
