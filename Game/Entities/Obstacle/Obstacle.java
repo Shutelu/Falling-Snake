@@ -2,8 +2,6 @@ package Game.Entities.Obstacle;
 
 import java.awt.Graphics;
 import java.util.Random;
-
-import Game.GameScene;
 import Game.ProjectSettings;
 import Game.Entities.Entity;
 import Game.Entities.Snake;
@@ -70,7 +68,7 @@ public class Obstacle extends Entity{
     /**
      * The effect of the obstacle/fruit
      */
-    public void effect(Snake snake){System.out.println("tetst");}
+    public void effect(Snake snake){System.out.println("error Effect");}
 
     /**
      * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 

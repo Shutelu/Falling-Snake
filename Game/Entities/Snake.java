@@ -1,12 +1,8 @@
 package Game.Entities;
 import javax.swing.JPanel;
-
 import Game.GameScene;
 import Game.ProjectSettings;
 import Game.RepaintTimer;
-import Game.Entities.Obstacle.Obstacle;
-import Game.Entities.Obstacle.ObstacleType;
-
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -141,46 +137,6 @@ public class Snake extends JPanel {
                 gameScene.setGameIsFinished(true);
             }
         }
-    }
-
-    public void collisionWithObstacle(Obstacle obstacle) {
-        //effect
-        obstacle.effect(this);
-        //switch
-        // switch (obstacle.getType()) {
-        //     case BOIS:
-        //         if (this.direction == "right") {
-        //             this.direction = "down";
-        //             moveSnake();
-        //             this.direction = "left";
-        //             moveSnake();
-        //         } else if (this.direction == "left") {
-        //             this.direction = "down";
-        //             moveSnake();
-        //             this.direction = "right";
-        //             moveSnake();
-        //         }
-        //         break;
-
-        //     case FRAISE:
-        //         this.eatFraise = true;
-        //         break;
-
-        //     case MYRTILLE:
-        //         if(canKillBodyPart){
-        //             this.canKillBodyPart = false;
-        //             System.out.println("invincible time !");
-        //         }
-        //         break;
-
-        //     case PIECE_DOR:
-        //         for (int i = 0; i < gameScene.getObstacleList().length - 1; i++) {
-        //             if (gameScene.getObstacleList()[i] != null) {
-        //                 gameScene.getObstacleList()[i].setType(ObstacleType.randomType());
-        //             }
-        //         }
-        //         break;
-        // }
     }
 
     private boolean isKilled() {

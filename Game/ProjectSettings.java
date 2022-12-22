@@ -40,8 +40,9 @@ public abstract class ProjectSettings{
     public static final int CANNON_BORDER_LIMIT_RIGHT = 455;
 
     /*================================================================================*/
-    /*=================================== SNAKEPART ==================================*/
+    /*================================= SNAKE AND PART ===============================*/
     /*================================================================================*/
+    public static final int SNAKE_INIT_LENGHT = 10;
     public static final int SNAKEPART_WIDTH = 20;
     public static final int SNAKEPART_HEIGHT = 20;
 
