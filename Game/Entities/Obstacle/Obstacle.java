@@ -41,14 +41,17 @@ public class Obstacle extends Entity{
         }
     }
 
-    public boolean collisionWithSnake(SnakePart square){
+    public boolean collisionWithSnake(SnakePart head){
 
-        if(this.entity_position_y <= square.getEntityPosY() + square.getEntityHeight()
-                && this.entity_position_x >= square.getEntityPosX()
-                && this.entity_position_x <= square.getEntityPosX() + square.getEntityWidth()
-                || this.entity_position_y <= square.getEntityPosY() + square.getEntityHeight()
-                && this.entity_position_x + this.entity_width <= square.getEntityPosX() + square.getEntityWidth()
-                && this.entity_position_x + this.entity_width >= square.getEntityPosX())
+        if(
+            this.entity_position_y <= head.getEntityPosY() + head.getEntityHeight()
+            && this.entity_position_x >= head.getEntityPosX()
+            && this.entity_position_y >= head.getEntityPosY()
+            && this.entity_position_x <= head.getEntityPosX() + head.getEntityWidth()
+            || this.entity_position_y <= head.getEntityPosY() + head.getEntityHeight()
+            && this.entity_position_x + this.entity_width <= head.getEntityPosX() + head.getEntityWidth()
+            && this.entity_position_y >= head.getEntityPosY()
+            && this.entity_position_x + this.entity_width >= head.getEntityPosX())
         {return true;}
 
         return false;
