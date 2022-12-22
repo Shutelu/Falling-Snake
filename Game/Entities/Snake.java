@@ -3,6 +3,9 @@ import javax.swing.JPanel;
 import Game.GameScene;
 import Game.ProjectSettings;
 import Game.RepaintTimer;
+import Game.Entities.Player.Cannon;
+import Game.Entities.Player.Projectil;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 

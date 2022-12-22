@@ -3,7 +3,7 @@ package Game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Game.Entities.Projectil;
+import Game.Entities.Player.Projectil;
 /**
  * Read the input from keyboard to do action with the Cannon
  */

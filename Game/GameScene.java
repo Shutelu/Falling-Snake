@@ -5,10 +5,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Game.Entities.Cannon;
-import Game.Entities.Projectil;
+
 import Game.Entities.Snake;
 import Game.Entities.Obstacle.Obstacle;
+import Game.Entities.Player.Cannon;
+import Game.Entities.Player.Projectil;
 /**
  * GameScene will contain the game settings
  */

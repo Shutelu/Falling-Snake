@@ -1,7 +1,9 @@
-package Game.Entities;
+package Game.Entities.Player;
 import java.awt.Graphics;
 
 import Game.ProjectSettings;
+import Game.Entities.Entity;
+import Game.Entities.SnakePart;
 /**
  * Cannon that move from left to right with A and D and the arrow key, shoot projectil with spacebare
  */
@@ -59,12 +61,10 @@ public class Cannon extends Entity{
      * @return true if collide else false
      */
     public boolean collisionWithSnake(SnakePart snakeHead){
-        if(
-            //between left and right
-            this.entity_position_x <= snakeHead.entity_position_x + snakeHead.entity_width
-            && this.entity_position_y <= snakeHead.entity_position_y + snakeHead.entity_height
-            && this.entity_position_x + this.entity_width >= snakeHead.entity_position_x
-            && this.entity_position_y <= snakeHead.entity_position_y + snakeHead.entity_height
+        if(this.entity_position_x <= snakeHead.getEntityPosX() + snakeHead.getEntityWidth()
+            && this.entity_position_y <= snakeHead.getEntityPosY() + snakeHead.getEntityHeight()
+            && this.entity_position_x + this.entity_width >= snakeHead.getEntityPosX()
+            && this.entity_position_y <= snakeHead.getEntityPosY() + snakeHead.getEntityHeight()
         )
         {return true;}
         return false;
