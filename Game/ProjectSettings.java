@@ -38,11 +38,13 @@ public abstract class ProjectSettings{
     public static final int CANNON_MOVESPEED_Y = 1;
     public static final int CANNON_BORDER_LIMIT_LEFT = 5;
     public static final int CANNON_BORDER_LIMIT_RIGHT = 455;
+    public static final int CANNON_CANFIRE_DURATION = 280;
 
     /*================================================================================*/
     /*================================= SNAKE AND PART ===============================*/
     /*================================================================================*/
     public static final int SNAKE_INIT_LENGHT = 10;
+    public static final int SNAKE_INVINCIBLE_DURATION = 4000;
     public static final int SNAKEPART_WIDTH = 20;
     public static final int SNAKEPART_HEIGHT = 20;
 

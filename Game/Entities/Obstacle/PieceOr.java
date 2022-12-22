@@ -1,11 +1,15 @@
 package Game.Entities.Obstacle;
 
+import Game.ProjectSettings;
 import Game.Entities.Snake;
 
 public class PieceOr extends Obstacle{
     
+    /**
+     * Constructor of the PieceOr class
+     */
     public PieceOr(){
-        super(ObstacleType.PIECE_DOR);
+        super(ProjectSettings.COLOR_OR);
     }
 
     @Override

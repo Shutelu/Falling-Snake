@@ -6,13 +6,17 @@ import Game.ProjectSettings;
 import Game.Entities.Entity;
 import Game.Entities.Snake;
 import Game.Entities.SnakePart;
-
+import java.awt.Color;
 /**
  * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect
  */
-public class Obstacle extends Entity{
+public abstract class Obstacle extends Entity{
     
-    public Obstacle(ObstacleType type){
+    /**
+     * Constructor of the Obstacle class
+     * @param type type of the obstacle
+     */
+    public Obstacle(Color color){
         super(
             ( (int) (new Random().nextInt(450 - 30) + 30) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
             ( (int) (new Random().nextInt(540 - 100) + 100) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
@@ -21,14 +25,9 @@ public class Obstacle extends Entity{
             0,
             0,
             true,
-            null
+            color
         );
-
-        //own
-        this.obstacleType = type;
     }
-
-    private ObstacleType obstacleType;
 
     @Override
     public int move(){return 0;}
@@ -36,13 +35,17 @@ public class Obstacle extends Entity{
     @Override 
     public void draw(Graphics g){
         if(entityIsAlive == true){
-            g.setColor(obstacleType.getObstacleColor());
+            g.setColor(entity_color);
             g.fillRect(entity_position_x, entity_position_y, entity_width, entity_height);
         }
     }
 
+    /**
+     * Check the collision between obstacle with snake
+     * @param head head of the snake to collide
+     * @return true if collide else false
+     */
     public boolean collisionWithSnake(SnakePart head){
-
         if(
             this.entity_position_y <= head.getEntityPosY() + head.getEntityHeight()
             && this.entity_position_x >= head.getEntityPosX()
@@ -71,7 +74,7 @@ public class Obstacle extends Entity{
     /**
      * The effect of the obstacle/fruit
      */
-    public void effect(Snake snake){System.out.println("error Effect");}
+    public abstract void effect(Snake snake);
 
     /**
      * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 
@@ -92,10 +95,5 @@ public class Obstacle extends Entity{
                 return new Bois();
         }
     }
-    
-    //getter
-    public ObstacleType getType(){return obstacleType;}
-    
-    //setter
-    public void setType(ObstacleType type){this.obstacleType = type;}
+
 }

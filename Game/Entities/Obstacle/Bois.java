@@ -1,10 +1,14 @@
 package Game.Entities.Obstacle;
+import Game.ProjectSettings;
 import Game.Entities.Snake;
 
 public class Bois extends Obstacle{
     
+    /**
+     * Constructor of the Bois class
+     */
     public Bois(){
-        super(ObstacleType.BOIS);
+        super(ProjectSettings.COLOR_BOIS);
     }
 
     @Override
