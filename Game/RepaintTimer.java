@@ -44,15 +44,17 @@ public class RepaintTimer implements Runnable {
     }
 
     private void snakeMove(){
+        snakeMoveCounter ++;
         if (snakeMoveCounter % 100 == 0) {
             snake.moveSnake();
+            snakeMoveCounter = 0;
         }
     }
     
     private void cannonLoadTimer(){
         if(cannon.getCanFire() == false){
             cannonCounter += 5;
-            if(cannonCounter % 280 == 0){
+            if(cannonCounter % ProjectSettings.CANNON_CANFIRE_DURATION == 0){
                 cannon.setCanFire(true);
                 cannonCounter = 0;
             }
@@ -65,7 +67,7 @@ public class RepaintTimer implements Runnable {
                 s.setEntityColor(ProjectSettings.COLOR_SNAKE_INVINCIBLE);
             }
             snakeCounter += 4;
-            if(snakeCounter % 2000 == 0){
+            if(snakeCounter % ProjectSettings.SNAKE_INVINCIBLE_DURATION == 0){
                 snake.setCanKillBodyPart(true);
                 snakeCounter = 0;
                 System.out.println("fin invincibilité");

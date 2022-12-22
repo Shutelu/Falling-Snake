@@ -1,11 +1,15 @@
 package Game.Entities.Obstacle;
 
+import Game.ProjectSettings;
 import Game.Entities.Snake;
 
 public class Fraise extends Obstacle{
     
+    /**
+     * Constructor of the Fraise class
+     */
     public Fraise(){
-        super(ObstacleType.FRAISE);
+        super(ProjectSettings.COLOR_FRAISE);
     }
 
     @Override

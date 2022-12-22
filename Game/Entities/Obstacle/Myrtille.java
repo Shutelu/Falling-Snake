@@ -1,11 +1,15 @@
 package Game.Entities.Obstacle;
 
+import Game.ProjectSettings;
 import Game.Entities.Snake;
 
 public class Myrtille extends Obstacle {
     
+    /**
+     * Constructor of the Myrtille class
+     */
     public Myrtille(){
-        super(ObstacleType.MYRTILLE);
+        super(ProjectSettings.COLOR_MYRTILLE);
     }
 
     @Override
