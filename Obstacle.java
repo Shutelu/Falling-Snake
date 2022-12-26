@@ -1,24 +1,50 @@
+package Game.Entities.Obstacle;
+
 import java.awt.Graphics;
 import java.util.Random;
+import Game.ProjectSettings;
+import Game.Entities.Entity;
+import Game.Entities.Enemy.Snake;
+import Game.Entities.Enemy.SnakePart;
 
-public class Obstacle extends Entity{
-    
-    public Obstacle(ObstacleType type){
-        //super class variable initiation
-        super.entity_position_x = ( (int) (new Random().nextInt(450 - 30) + 30) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
-        super.entity_position_y = ( (int) (new Random().nextInt(540 - 100) + 100) / ConstantVariable.OBSTACLE_BLOCS) * ConstantVariable.OBSTACLE_BLOCS;
-        super.entity_width = ConstantVariable.OBSTACLE_WIDTH;
-        super.entity_height = ConstantVariable.OBSTACLE_HEIGHT;
-        //super.entity_move_x = 0;
-        //super.entity_move_y = ConstantVariable.PROJECTIL_MOVESPEED_Y;
-        super.entityIsAlive = true;
-        //super.entity_color = null;
+import java.awt.Color;
+/**
+ * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect
+ */
+public abstract class Obstacle extends Entity implements StateObstacle {
 
-        //own
-        obstacleType = type;
+
+    StateObstacle state;
+
+
+    public void setState(StateObstacle state) {
+        this.state=state;
     }
 
-    ObstacleType obstacleType;
+
+    @Override
+    public void doAction(Snake snake){
+
+        this.state.doAction(snake);
+
+    }
+
+    /**
+     * Constructor of the Obstacle class
+     * @param type type of the obstacle
+     */
+    public Obstacle(Color color){
+        super(
+            ( (int) (new Random().nextInt(450 - 30) + 30) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
+            ( (int) (new Random().nextInt(540 - 100) + 100) / ProjectSettings.OBSTACLE_BLOCS) * ProjectSettings.OBSTACLE_BLOCS,
+            ProjectSettings.OBSTACLE_WIDTH,
+            ProjectSettings.OBSTACLE_HEIGHT,
+            0,
+            0,
+            true,
+            color
+        );
+    }
 
     @Override
     public int move(){return 0;}
@@ -26,24 +52,65 @@ public class Obstacle extends Entity{
     @Override 
     public void draw(Graphics g){
         if(entityIsAlive == true){
-            g.setColor(obstacleType.getObstacleColor());
+            g.setColor(entity_color);
             g.fillRect(entity_position_x, entity_position_y, entity_width, entity_height);
         }
     }
 
-    //getter
-    public ObstacleType gType(){return obstacleType;}
-    public boolean collisionWithObstacle(Square square){
-
-        if(this.entity_position_y <= square.entity_position_y + square.entity_height
-                && this.entity_position_x >= square.entity_position_x
-                && this.entity_position_x <= square.entity_position_x + square.entity_width
-                || this.entity_position_y <= square.entity_position_y + square.entity_height
-                && this.entity_position_x + this.entity_width <= square.entity_position_x + square.entity_width
-                && this.entity_position_x + this.entity_width >= square.entity_position_x)
+    /**
+     * Check the collision between obstacle with snake
+     * @param head head of the snake to collide
+     * @return true if collide else false
+     */
+    public boolean collisionWithSnake(SnakePart head){
+        if(
+            this.entity_position_y <= head.getEntityPosY() + head.getEntityHeight()
+            && this.entity_position_x >= head.getEntityPosX()
+            && this.entity_position_y >= head.getEntityPosY()
+            && this.entity_position_x <= head.getEntityPosX() + head.getEntityWidth()
+            || this.entity_position_y <= head.getEntityPosY() + head.getEntityHeight()
+            && this.entity_position_x + this.entity_width <= head.getEntityPosX() + head.getEntityWidth()
+            && this.entity_position_y >= head.getEntityPosY()
+            && this.entity_position_x + this.entity_width >= head.getEntityPosX())
         {return true;}
 
         return false;
+    }
+
+    /**
+     * Change the old obstacle to a new random one
+     * @return new random obstacle
+     */
+    public Obstacle changeObstacle(){
+        Obstacle o = Obstacle.randomObstacle();
+        o.entity_position_x = this.entity_position_x;
+        o.entity_position_y = this.entity_position_y;
+        return o;
+    }
+
+    /**
+     * The effect of the obstacle/fruit
+     */
+    /*public abstract void effect(Snake snake);*/
+
+    /**
+     * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 
+     * @return Obstacle to place
+     */
+    public static Obstacle randomObstacle(){
+        int randObs = new Random().nextInt(4);
+        switch (randObs) {
+            case 0:
+                return new Bois();
+            case 1:
+                return new Fraise();
+            case 2:
+                return new Myrtille();
+            case 3:
+                return new PieceOr();
+            default:
+                return new Bois();
+        }
     }
 
 }
