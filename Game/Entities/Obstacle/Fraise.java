@@ -3,7 +3,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class Fraise extends Obstacle implements StateObstacle {
+public class Fraise extends Obstacle{
     
     /**
      * Constructor of the Fraise class

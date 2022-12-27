@@ -3,7 +3,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class Myrtille extends Obstacle implements StateObstacle {
+public class Myrtille extends Obstacle{
     
     /**
      * Constructor of the Myrtille class

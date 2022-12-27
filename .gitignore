@@ -7,6 +7,8 @@
 *.o
 *.so
 *.json
+*.xml
+*.iml
 
 # Packages #
 ############
@@ -21,6 +23,7 @@
 *.tar
 *.zip
 *.vscode
+*.idea
 
 # Logs and databases #
 ######################

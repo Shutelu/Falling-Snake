@@ -2,7 +2,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class Bois extends Obstacle implements StateObstacle {
+public class Bois extends Obstacle{
     
     /**
      * Constructor of the Bois class

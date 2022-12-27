@@ -3,7 +3,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class PieceOr extends Obstacle implements StateObstacle {
+public class PieceOr extends Obstacle{
 
     /**
      * Constructor of the PieceOr class

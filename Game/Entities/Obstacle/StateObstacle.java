@@ -6,5 +6,4 @@ public interface StateObstacle {
 
     public void doAction(Snake snake);
 
-
 }
