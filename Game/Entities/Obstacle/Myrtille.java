@@ -3,7 +3,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class Myrtille extends Obstacle {
+public class Myrtille extends Obstacle implements StateObstacle {
     
     /**
      * Constructor of the Myrtille class
@@ -13,7 +13,7 @@ public class Myrtille extends Obstacle {
     }
 
     @Override
-    public void effect(Snake snake){
+    public void doAction(Snake snake){
         if(snake.getCanKillBodyPart()){
             snake.setCanKillBodyPart(false);
             System.out.println("invincible time !");

@@ -11,8 +11,18 @@ import java.awt.Color;
 /**
  * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect
  */
-public abstract class Obstacle extends Entity{
-    
+public abstract class Obstacle extends Entity implements StateObstacle {
+
+
+    StateObstacle state;
+
+    @Override
+    public void doAction(Snake snake){
+
+        this.state.doAction(snake);
+
+    }
+
     /**
      * Constructor of the Obstacle class
      * @param type type of the obstacle
@@ -75,7 +85,7 @@ public abstract class Obstacle extends Entity{
     /**
      * The effect of the obstacle/fruit
      */
-    public abstract void effect(Snake snake);
+    /*public abstract void effect(Snake snake);*/
 
     /**
      * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 

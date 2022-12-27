@@ -205,7 +205,7 @@ public class GameScene extends JPanel {
         for (int j = 0; j < obstacle_list.length; j++) {
             if (obstacle_list[j] != null && snake.getBody().get(snake.getSnakeLength() - 1) != null) {
                 if (obstacle_list[j].collisionWithSnake(snake.getBody().get(snake.getSnakeLength() - 1))) {
-                    obstacle_list[j].effect(snake);
+                    obstacle_list[j].doAction(snake);
                     obstacle_list[j] = null;
                 }
             }

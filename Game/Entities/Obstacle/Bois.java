@@ -2,7 +2,7 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
-public class Bois extends Obstacle{
+public class Bois extends Obstacle implements StateObstacle {
     
     /**
      * Constructor of the Bois class
@@ -12,7 +12,7 @@ public class Bois extends Obstacle{
     }
 
     @Override
-    public void effect(Snake snake){
+    public void doAction(Snake snake) {
         if (snake.getDirection() == "right") {
             snake.setDirection("down");
             snake.moveSnake();
