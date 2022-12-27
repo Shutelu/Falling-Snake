@@ -22,5 +22,5 @@ use `javac App.java` in command line
 use `java App.java` in command line
 
 ## Author :
-Changkai WANG | Contact : [Linkedin](https://www.linkedin.com/in/changkaiwang/)
+Changkai WANG | Contact : [Linkedin](https://www.linkedin.com/in/changkaiwang/)<br>
 Liyam AIT OUAKLI | Contact : [Linkedin](https://www.linkedin.com/in/liyam-a%C3%AFt-ouakli/)
