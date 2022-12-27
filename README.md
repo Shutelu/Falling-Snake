@@ -12,6 +12,9 @@ There will be destructible obstacles with effect for the snake : <br>
 - Piece d'Or : the obstacles still present will randomly change their type
 
 
+## How to use:
+Download the project and extract some where, open a bash (cmd..)
+
 **How to compile :** <br>
 use `javac App.java` in command line
 
