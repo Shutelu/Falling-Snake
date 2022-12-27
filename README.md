@@ -3,13 +3,13 @@
 Object Design Java programming project UPEC L3S5
 
 ## Description :</br>
-The project consists of the realisation of the game Falling Snakes in a 2D grill <br>
-A snake will begin to descend from the top to the bottom and a cannon controled by the player had to shoot the snake to win otherwise he lose.<br>
-There will be destructible obstacles with effect for the snake : <br>
+The project consists of creating the game Falling Snakes in a 2D grid. <br>
+A snake will start descending from the top to the bottom and the player must use a cannon to shoot the snake in order to win, otherwise they lose. <br>
+There will be destructible obstacles that have effects on the snake: <br>
 - Bois : the snake will descend and change direction
-- Fraise : the snake will be longer
+- Fraise : the snake will become longer
 - Myrtille : the snake will be invincible for a time
-- Piece d'Or : the obstacles still present will randomly change their type
+- Piece d'Or : the remaining obstacles will randomly change their type.
 
 
 ## How to use :
