@@ -21,6 +21,6 @@ use `javac App.java` in command line
 **How to execute :** <br>
 use `java App.java` in command line
 
-## Author :
+## Authors :
 Changkai WANG | Contact : [Linkedin](https://www.linkedin.com/in/changkaiwang/)<br>
 Liyam AIT OUAKLI | Contact : [Linkedin](https://www.linkedin.com/in/liyam-a%C3%AFt-ouakli/)
