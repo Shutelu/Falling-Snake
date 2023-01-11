@@ -47,6 +47,8 @@ public abstract class ProjectSettings{
     public static final int SNAKE_INVINCIBLE_DURATION = 4000;
     public static final int SNAKEPART_WIDTH = 20;
     public static final int SNAKEPART_HEIGHT = 20;
+    public static final int SNAKE_REPAINT_DURATION = 100;
+
 
     /*================================================================================*/
     /*=================================== PROJECTIL ==================================*/
@@ -55,6 +57,8 @@ public abstract class ProjectSettings{
     public static final int PROJECTIL_HEIGHT = 3;
     public static final int PROJECTIL_MOVESPEED_Y = 1;
     public static final int PROJECTIL_MAX_NUMBER = 10;//the maximum number of projectil you may store
+    public static final int PROJECTIL_OUT = -10;
+
 
     /*================================================================================*/
     /*=================================== OBSTACLE ===================================*/
@@ -63,11 +67,5 @@ public abstract class ProjectSettings{
     public static final int OBSTACLE_HEIGHT = 15;
     public static final int OBSTACLE_INITAIL_OBSTACLE_NOMBER = 15;
     public static final int OBSTACLE_BLOCS = 20;
-
-    /*================================================================================*/
-    /*================================== TIMER(ms) ===================================*/
-    /*================================================================================*/
-    public static final int TIMER_CANKILL = 500;
-    public static final int TIMER_INVINCIBLE = 2000;
 
 }

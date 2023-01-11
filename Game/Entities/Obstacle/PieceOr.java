@@ -15,7 +15,6 @@ public class PieceOr extends Obstacle{
     public void doAction(Snake snake) {
         for (int i = 0; i < snake.getSnakGameScene().getObstacleList().length - 1; i++) {
             if (snake.getSnakGameScene().getObstacleList()[i] != null) {
-                // snake.getSnakGameScene().getObstacleList()[i].setType(ObstacleType.randomType());
                 snake.getSnakGameScene().getObstacleList()[i] = snake.getSnakGameScene().getObstacleList()[i].changeObstacle();
             }
         }

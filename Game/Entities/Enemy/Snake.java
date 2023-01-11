@@ -116,7 +116,7 @@ public class Snake extends JPanel {
     public void drawSnake(Graphics g) {
 
         if (isKilled() == false) {
-            if (RepaintTimer.getSnakeMoveCounter() % 100 == 0) {
+            if (RepaintTimer.getSnakeMoveCounter() % ProjectSettings.SNAKE_REPAINT_DURATION == 0) {
                 moveSnake();
             }
             for (int j = 0; j < this.body.size(); j++) {
@@ -137,8 +137,8 @@ public class Snake extends JPanel {
         for (SnakePart snakeBody : body) {
             if (canKillBodyPart) {
                 if (projectil.collisionWithSnake(snakeBody)) {
-                    projectil.setEntityPosX(-10);
-                    projectil.setEntityPosY(-10);
+                    projectil.setEntityPosX(ProjectSettings.PROJECTIL_OUT);
+                    projectil.setEntityPosY(ProjectSettings.PROJECTIL_OUT);
                     body.remove(0);
                     snakeLength--;
                     break;
@@ -146,8 +146,8 @@ public class Snake extends JPanel {
             } 
             else {
                 if (projectil.collisionWithSnake(snakeBody)) {
-                    projectil.setEntityPosX(-10);
-                    projectil.setEntityPosY(-10);
+                    projectil.setEntityPosX(ProjectSettings.PROJECTIL_OUT);
+                    projectil.setEntityPosY(ProjectSettings.PROJECTIL_OUT);
                 }
             }
         }

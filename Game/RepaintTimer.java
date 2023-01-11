@@ -42,14 +42,6 @@ public class RepaintTimer implements Runnable {
             }
         }
     }
-
-    private void snakeMove(){
-        snakeMoveCounter ++;
-        if (snakeMoveCounter % 100 == 0) {
-            snake.moveSnake();
-            snakeMoveCounter = 0;
-        }
-    }
     
     private void cannonLoadTimer(){
         if(cannon.getCanFire() == false){
