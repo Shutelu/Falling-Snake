@@ -38,11 +38,10 @@ public class Snake extends JPanel {
      */
     public void createSnake() {
         for (int i = 0; i < this.snakeLength; i++) {
-            body.add(new SnakePart(((i) * 20), 0));
+            body.add(new SnakePart(((i) * ProjectSettings.SNAKEPART_WIDTH), 0));
         }
     }
 
-    // FAIT AVANCER LE SNAKE DUNE CASE SUR L'AXE DES X
     /**
      * Make the Snake move
      */
@@ -53,10 +52,10 @@ public class Snake extends JPanel {
         SnakePart head = new SnakePart(first.getEntityPosX(), first.getEntityPosY());
 
         switch (this.direction) {
-            case"right" -> head.setEntityPosX(head.getEntityPosX() + 20);
-            case"left" -> head.setEntityPosX(head.getEntityPosX() - 20);
-            case "up" -> head.setEntityPosY(head.getEntityPosY() - 20);
-            case "down" -> head.setEntityPosY(head.getEntityPosY() + 20);
+            case"right" -> head.setEntityPosX(head.getEntityPosX() + ProjectSettings.SNAKEPART_WIDTH);
+            case"left" -> head.setEntityPosX(head.getEntityPosX() - ProjectSettings.SNAKEPART_WIDTH);
+            case "up" -> head.setEntityPosY(head.getEntityPosY() - ProjectSettings.SNAKEPART_WIDTH);
+            case "down" -> head.setEntityPosY(head.getEntityPosY() + ProjectSettings.SNAKEPART_WIDTH);
         }
 
         for (int i = 1; i < this.body.size(); i++) {
@@ -71,12 +70,12 @@ public class Snake extends JPanel {
             this.snakeLength++;
             switch (this.direction) {
                 case "right":
-                    SnakePart teter = new SnakePart(head.getEntityPosX() + 20, head.getEntityPosY());
+                    SnakePart teter = new SnakePart(head.getEntityPosX() + ProjectSettings.SNAKEPART_WIDTH, head.getEntityPosY());
                     newbody.add(teter);
                     break;
 
                 case "left":
-                    SnakePart tetel = new SnakePart(head.getEntityPosX() - 20, head.getEntityPosY());
+                    SnakePart tetel = new SnakePart(head.getEntityPosX() - ProjectSettings.SNAKEPART_WIDTH, head.getEntityPosY());
                     newbody.add(tetel);
                     break;
 
@@ -91,8 +90,8 @@ public class Snake extends JPanel {
      * Check the Snake collision limit
      */
     public void checkWindowLimitCollision() {
-        if (this.body.get(this.snakeLength - 1).getEntityPosX() == ProjectSettings.MAIN_WINDOW_WIDTH - 20
-                || this.body.get(this.snakeLength - 1).getEntityPosX() == - 20) {
+        if (this.body.get(this.snakeLength - 1).getEntityPosX() == ProjectSettings.MAIN_WINDOW_WIDTH - ProjectSettings.SNAKEPART_WIDTH
+                || this.body.get(this.snakeLength - 1).getEntityPosX() == - ProjectSettings.SNAKEPART_WIDTH) {
             switch (this.direction) {
                 case "right":
                     this.direction = "down";
@@ -122,7 +121,7 @@ public class Snake extends JPanel {
             }
             for (int j = 0; j < this.body.size(); j++) {
                 g.setColor(this.body.get(j).getEntityColor());
-                g.fillRect(this.body.get(j).getEntityPosX(), this.body.get(j).getEntityPosY(), 20, 20);
+                g.fillRect(this.body.get(j).getEntityPosX(), this.body.get(j).getEntityPosY(), ProjectSettings.SNAKEPART_WIDTH, ProjectSettings.SNAKEPART_HEIGHT);
             }
         } else {
             gameScene.setGameIsFinished(true);
