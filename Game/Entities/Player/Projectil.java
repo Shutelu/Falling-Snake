@@ -6,6 +6,9 @@ import Game.Entities.Entity;
 import Game.Entities.Enemy.SnakePart;
 import Game.Entities.Obstacle.Obstacle;
 
+/**
+ * Projectil that will interact will all Obstacles and the Snake
+ */
 public class Projectil extends Entity{
     
     /**
@@ -47,6 +50,7 @@ public class Projectil extends Entity{
 
     /**
      * Check the collision between Projectil and Obstacle
+     * return true if collide else false
      * @param obstacle the obstacle to collide
      * @return true if collide else false
      */
@@ -65,6 +69,7 @@ public class Projectil extends Entity{
 
     /**
      * Check the collision between Projectil and Snake head
+     * return true if collide else false
      * @param snakeBody the head of the snake
      * @return true if collide else false
      */

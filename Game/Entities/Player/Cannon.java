@@ -10,7 +10,7 @@ import Game.Entities.Enemy.SnakePart;
 public class Cannon extends Entity{
     
     /**
-     * Constructor of the class Cannon without parameters
+     * Constructor of the class Cannon 
      */
     public Cannon(){
         super(
@@ -23,8 +23,6 @@ public class Cannon extends Entity{
             true,
             ProjectSettings.COLOR_CANNON
         );
-
-        //own
         this.canFire = true;
     }
 
@@ -70,14 +68,12 @@ public class Cannon extends Entity{
         return false;
     }
 
-    //getter
     /**
      * Get if the cannon can fire
      * @return true if can fire else false
      */
     public boolean getCanFire(){return canFire;}
 
-    //setter
     /**
      * Set the cannon to fire
      * @param b true if can fire else false
