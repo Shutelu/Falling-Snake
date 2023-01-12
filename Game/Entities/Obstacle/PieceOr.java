@@ -3,6 +3,9 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
+/**
+ * Obstacle PieceOr
+ */
 public class PieceOr extends Obstacle{
 
     /**
@@ -11,6 +14,7 @@ public class PieceOr extends Obstacle{
     public PieceOr() {
         super(ProjectSettings.COLOR_OR);
     }
+    
     @Override
     public void doAction(Snake snake) {
         for (int i = 0; i < snake.getSnakGameScene().getObstacleList().length - 1; i++) {

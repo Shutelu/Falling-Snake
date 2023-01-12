@@ -3,6 +3,9 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
+/**
+ * Obstacle Myrtille 
+ */
 public class Myrtille extends Obstacle{
     
     /**

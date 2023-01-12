@@ -6,26 +6,16 @@ import Game.ProjectSettings;
 import Game.Entities.Entity;
 import Game.Entities.Enemy.Snake;
 import Game.Entities.Enemy.SnakePart;
-
 import java.awt.Color;
+
 /**
  * The obstacle/fruit that will be placed on the scene, extends from it to create a new fruit and override the effect
  */
 public abstract class Obstacle extends Entity implements StateObstacle {
 
-
-    StateObstacle state;
-
-    @Override
-    public void doAction(Snake snake){
-
-        this.state.doAction(snake);
-
-    }
-
     /**
      * Constructor of the Obstacle class
-     * @param type type of the obstacle
+     * @param color color of the obstacle
      */
     public Obstacle(Color color){
         super(
@@ -40,6 +30,8 @@ public abstract class Obstacle extends Entity implements StateObstacle {
         );
     }
 
+    StateObstacle state;
+
     @Override
     public int move(){return 0;}
 
@@ -51,8 +43,14 @@ public abstract class Obstacle extends Entity implements StateObstacle {
         }
     }
 
+    @Override
+    public void doAction(Snake snake){
+        this.state.doAction(snake);
+    }
+
     /**
      * Check the collision between obstacle with snake
+     * return true if collide else false
      * @param head head of the snake to collide
      * @return true if collide else false
      */
@@ -88,7 +86,7 @@ public abstract class Obstacle extends Entity implements StateObstacle {
     /*public abstract void effect(Snake snake);*/
 
     /**
-     * Give one of the 4 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 
+     * Give one of the 5 initial random Obstacle between Bois, Fraise, Myrtille, PiereOr 
      * @return Obstacle to place
      */
     public static Obstacle randomObstacle(){

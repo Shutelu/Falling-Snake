@@ -2,6 +2,9 @@ package Game.Entities.Obstacle;
 import Game.ProjectSettings;
 import Game.Entities.Enemy.Snake;
 
+/**
+ * Obstacle Bois
+ */
 public class Bois extends Obstacle{
     
     /**
