@@ -8,7 +8,28 @@ import Game.Entities.Player.Projectil;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+/**
+ * The Snake will move from top to bottom
+ * if the snake touch an Obstacle an effect will occur
+ * if the snake touch the Cannon the game will end and the player will lose
+ * if the snake is killed before colliding with the Cannon the game will end and the player will win 
+ */
 public class Snake extends JPanel {
+
+    /**
+     * Constructor of the Snake class
+     * @param snakeLength length of the snake
+     * @param gameScene game scene
+     */
+    public Snake(int snakeLength, GameScene gameScene) {
+        this.body = new ArrayList<SnakePart>();
+        this.gameScene = gameScene;
+        this.snakeLength = snakeLength;
+        this.direction = "right";
+        this.eatFraise = false;
+        this.canKillBodyPart = true;
+        createSnake();
+    }
 
     private GameScene gameScene;
     private ArrayList<SnakePart> body;
@@ -17,36 +38,36 @@ public class Snake extends JPanel {
     private boolean eatFraise;
     private boolean canKillBodyPart;
 
-    /**
-     * Constructor of the Snake class
-     * @param snakeLength length of the snake
-     * @param gameScene game scene
-     */
-    public Snake(int snakeLength, GameScene gameScene) {
-        this.gameScene = gameScene;
-        this.body = new ArrayList<SnakePart>();
-        this.snakeLength = snakeLength;
-        this.direction = "right";
-        this.eatFraise = false;
-        this.canKillBodyPart = true;
-
-        createSnake();
-    }
-
-    /**
-     * Create the Snake
-     */
-    public void createSnake() {
+    private void createSnake() {
         for (int i = 0; i < this.snakeLength; i++) {
             body.add(new SnakePart(((i) * ProjectSettings.SNAKEPART_WIDTH), 0));
         }
     }
 
+    private void checkWindowLimitCollision() {
+        if (this.body.get(this.snakeLength - 1).getEntityPosX() == ProjectSettings.MAIN_WINDOW_WIDTH - ProjectSettings.SNAKEPART_WIDTH
+                || this.body.get(this.snakeLength - 1).getEntityPosX() == - ProjectSettings.SNAKEPART_WIDTH) {
+            switch (this.direction) {
+                case "right":
+                    this.direction = "down";
+                    moveSnake();
+                    this.direction = "left";
+                    moveSnake();
+                    break;
+                case "left":
+                    this.direction = "down";
+                    moveSnake();
+                    this.direction = "right";
+                    moveSnake();
+                    break;
+            }
+        }
+    }
+
     /**
-     * Make the Snake move
+     * move the snake
      */
     public void moveSnake() {
-
         ArrayList<SnakePart> newbody = new ArrayList<SnakePart>();
         SnakePart first = this.body.get(this.snakeLength - 1);
         SnakePart head = new SnakePart(first.getEntityPosX(), first.getEntityPosY());
@@ -73,12 +94,10 @@ public class Snake extends JPanel {
                     SnakePart teter = new SnakePart(head.getEntityPosX() + ProjectSettings.SNAKEPART_WIDTH, head.getEntityPosY());
                     newbody.add(teter);
                     break;
-
                 case "left":
                     SnakePart tetel = new SnakePart(head.getEntityPosX() - ProjectSettings.SNAKEPART_WIDTH, head.getEntityPosY());
                     newbody.add(tetel);
                     break;
-
             }
             this.eatFraise = false;
         }
@@ -87,34 +106,10 @@ public class Snake extends JPanel {
     }
 
     /**
-     * Check the Snake collision limit
-     */
-    public void checkWindowLimitCollision() {
-        if (this.body.get(this.snakeLength - 1).getEntityPosX() == ProjectSettings.MAIN_WINDOW_WIDTH - ProjectSettings.SNAKEPART_WIDTH
-                || this.body.get(this.snakeLength - 1).getEntityPosX() == - ProjectSettings.SNAKEPART_WIDTH) {
-            switch (this.direction) {
-                case "right":
-                    this.direction = "down";
-                    moveSnake();
-                    this.direction = "left";
-                    moveSnake();
-                    break;
-                case "left":
-                    this.direction = "down";
-                    moveSnake();
-                    this.direction = "right";
-                    moveSnake();
-                    break;
-            }
-        }
-    }
-
-    /**
-     * Draw the Snake, flash if invincible
+     * Draw the Snake on the scene
      * @param g graphics g
      */
     public void drawSnake(Graphics g) {
-
         if (isKilled() == false) {
             if (RepaintTimer.getSnakeMoveCounter() % ProjectSettings.SNAKE_REPAINT_DURATION == 0) {
                 moveSnake();
@@ -130,7 +125,9 @@ public class Snake extends JPanel {
     }
 
     /**
-     * Check the collision between Snake and Projectil
+     * Check the collision between Snake and Projectil 
+     * the snake will lose one of its part if collision is true and the projectil will be placed out of the scene
+     * if the snake if invicible then only the projectil will be placed out of the scene
      * @param projectil the projectil to collide
      */
     public void collisionWithProjectil(Projectil projectil) {
@@ -168,6 +165,7 @@ public class Snake extends JPanel {
 
     /**
      * Check if the Snake is killed
+     * return true if is killed else false
      */
     private boolean isKilled() {
         if (body.size() < 1) {
