@@ -1,6 +1,7 @@
 package Game.Entities;
 import java.awt.Color;
 import java.awt.Graphics;
+
 /**
  *  Abstract Entity Class that assemble position, width, move_speed, alive, color
  */

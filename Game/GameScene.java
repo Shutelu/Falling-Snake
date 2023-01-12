@@ -12,7 +12,7 @@ import Game.Entities.Obstacle.Obstacle;
 import Game.Entities.Player.Cannon;
 import Game.Entities.Player.Projectil;
 /**
- * GameScene will contain the game settings
+ * GameScene that the game will happend
  */
 public class GameScene extends JPanel {
 
@@ -169,12 +169,6 @@ public class GameScene extends JPanel {
     /*==================================== METHODS ===================================*/
     /*================================================================================*/
 
-    /**
-     * Check if there is obstacles with the same coordinate in the list with the obstacle in parameters if true then generate a new obstacle  
-     * @param list list of the obstacle to check
-     * @param obstacle the obstacle to check
-     * @return the obstacle with different coordinate with those in the list
-     */
     private Obstacle checkObstaclePosition(Obstacle[] list, Obstacle obstacle) {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == null) continue;
@@ -225,9 +219,6 @@ public class GameScene extends JPanel {
         snake.collisionWithCannon(cannon);
     }
 
-    /**
-     * Check if the game is end, either if the player lost or the player won a window will popup to announce
-     */
     private void checkEndGame(){
         if (gameIsFinished) {
             JDialog dialog = new JDialog(gameFrame);

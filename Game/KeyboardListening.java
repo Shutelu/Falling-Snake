@@ -8,7 +8,7 @@ import Game.Entities.Player.Projectil;
 public class KeyboardListening implements KeyListener {
 
     /**
-     * Constructor 
+     * Constructor of the KeyboardListening class
      * @param gameScene the scene of the game
      */
     public KeyboardListening(GameScene gameScene){

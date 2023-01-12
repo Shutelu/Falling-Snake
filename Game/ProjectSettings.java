@@ -49,7 +49,6 @@ public abstract class ProjectSettings{
     public static final int SNAKEPART_HEIGHT = 20;
     public static final int SNAKE_REPAINT_DURATION = 100;
 
-
     /*================================================================================*/
     /*=================================== PROJECTIL ==================================*/
     /*================================================================================*/
@@ -58,7 +57,6 @@ public abstract class ProjectSettings{
     public static final int PROJECTIL_MOVESPEED_Y = 1;
     public static final int PROJECTIL_MAX_NUMBER = 10;//the maximum number of projectil you may store
     public static final int PROJECTIL_OUT = -10;
-
 
     /*================================================================================*/
     /*=================================== OBSTACLE ===================================*/
